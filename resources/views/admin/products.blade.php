@@ -196,7 +196,7 @@
                     @csrf
                     <div class="modal-body pb-0">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Category<span class="text-danger"> *</span></label>
                                     <select class="select" name="category_id" class="form-control">
@@ -393,7 +393,7 @@
         $('#content,#edit_content').summernote({
             placeholder: 'Write description...',
             tabsize: 2,
-            height: 300,
+            height: 200,
 
             toolbar: [
                 ['style', ['style']],

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController as Home;
+use App\Http\Controllers\Front\FleetController as Fleet;
 use App\Http\Controllers\Front\ContactController as FrontContact;
 use App\Http\Controllers\Front\BlogController as FrontBlog;
 use App\Http\Controllers\Front\SeoController as Seo;
@@ -20,7 +21,11 @@ use App\Http\Controllers\Admin\CmsController as AdminCms;
 
 
 // Frontend Routes
-
+Route::get('/',[Home::class,'index'])->name('home');
+Route::get('/about-us',[Seo::class,'about_us'])->name('about');
+Route::get('/our-fleets',[Fleet::class,'index'])->name('fleets');
+Route::get('/fleet-detail',[Fleet::class,'fleet_detail'])->name('fleet.detail');
+Route::get('/contact',[Fleet::class,'index'])->name('contact');
 
 
 // Admin Routes

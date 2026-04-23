@@ -10,8 +10,10 @@ class SeoController extends Controller
     //
 
     public function about_us(){
-        return view('front.about-us');
+        return view('front.about');
     }
+
+    
 
     public function terms_condition(){
         return view('front.terms-condition');

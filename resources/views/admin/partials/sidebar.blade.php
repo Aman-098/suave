@@ -96,7 +96,7 @@
                                 <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                 <li><a href="{{ route('admin.sliders') }}">Sliders</a></li>
                                 <li><a href="{{ route('admin.cat') }}">Categories</a></li>
-                                <li><a href="{{ route('admin.product') }}">Products</a></li>
+                                <li><a href="{{ route('admin.product') }}">Fleets</a></li>
                                 <li><a href="{{ route('admin.customers') }}">Customers</a></li>
                                 <li><a href="{{ route('admin.blogs') }}">Blogs</a></li>
                                 <li><a href="{{ route('admin.contact') }}">Contact Enquiry</a></li>

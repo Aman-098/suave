@@ -218,7 +218,7 @@
                                     <span id="nameError" class="text-danger"></span>
                                 </div>
                             </div>
-                         
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Price <span class="text-danger"> *</span></label>
@@ -243,7 +243,17 @@
                                     <span id="imageError" class="text-danger"></span>
                                 </div>
                             </div>
-                            
+
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Video </label>
+                                    <input type="file" id="edit_video" name="video" class="form-control">
+                                    <video id="edit_video_preview" style="max-width:150px; margin-top:10px; display:none;"
+                                        class="img-thumbnail" controls>
+                                    </video>
+                                </div>
+                            </div>
+
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Status<span class="text-danger"> *</span></label>
@@ -304,7 +314,7 @@
                                     <span id="edit_nameError" class="text-danger"></span>
                                 </div>
                             </div>
-                          
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Price <span class="text-danger"> *</span></label>
@@ -529,7 +539,7 @@
                 // Validation
 
                 if (name === '') return showError('#edit_nameError', 'Name is required.');
-                
+
                 if (price === '') return showError('#edit_priceError', 'Price is required.');
 
                 // Validate content (tinyMCE)
@@ -602,7 +612,7 @@
                     $('#edit_id').val(data.id);
                     $('#edit_category_id').val(data.category_id).trigger('change');
                     $('#edit_name').val(data.name ?? '');
-                   
+
                     $('#edit_price').val(data.price ?? '');
                     // Set Summernote content here
                     $('#edit_content').summernote('code', data.description ?? '');

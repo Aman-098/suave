@@ -30,16 +30,13 @@ class ProductController extends Controller
 
             $validated = $request->validate([
                 'name'=>'required',
-                'stock'=>'required',
                 'price'=>'required',
+                'badge'=>'nullable|string',
                 'content'=>'required',
 
                 // 👉 image validation add kar
                 'image1' => 'required|image|mimes:jpg,jpeg,png|max:2048',
                 'video' => 'nullable|mimes:mp4,webm|max:10240', // 10MB
-                'image2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'image3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'image4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             ]); 
 
             $slug = Str::slug($validated['name']);
@@ -55,22 +52,20 @@ class ProductController extends Controller
                 'category_id' => $request->input('category_id'), 
                 'name' => $validated['name'],
                 'slug' => $slug,
-                'stock' => $validated['stock'],
                 'price' => $validated['price'], 
+                'badge' => $validated['badge'], 
                 'description'=> $validated['content'],
-                'is_trending' => $request->input('trending'),
-                'new_arrival' => $request->input('new_arrival'),
                 'status' => $request->input('status')
             ]);
 
             
-            $folder = 'products';
+            $folder = 'fleets';
 
             if (!Storage::disk('public')->exists($folder)) {
                 Storage::disk('public')->makeDirectory($folder);
             }
 
-            $imageFields = ['image1','video' ,'image2', 'image3', 'image4'];
+            $imageFields = ['image1','video'];
 
             foreach ($imageFields as $field) {
 
@@ -82,19 +77,19 @@ class ProductController extends Controller
 
                     Storage::disk('public')->putFileAs($folder, $file, $imageName);
 
-                    $product->update([$field => 'products/' . $imageName]);
+                    $product->update([$field => 'fleets/' . $imageName]);
                 }
             }
 
             if($product){
                 return response()->json([
                     'status'=>true,
-                    'message'=>'Product added successfully'
+                    'message'=>'Fleet added successfully'
                 ]);
             }else{
                 return response()->json([
                     'status'=>false,
-                    'message'=>'Failed to add Product'
+                    'message'=>'Failed to add Fleet'
                 ]);
             }
         }
@@ -105,17 +100,15 @@ class ProductController extends Controller
         if ($request->isMethod('post')) {
 
             $validated = $request->validate([
-                'name'   => 'required',
-                'stock'  => 'required',
-                'price'  => 'required',
-                'content'=> 'required',
+                'name'=>'required',
+                'price'=>'required',
+                'badge'=>'nullable|string',
+                'content'=>'required',
 
                 // multiple image validation
                 'image1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
                 'video' => 'nullable|mimes:mp4,webm|max:10240', // 10MB
-                'image2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'image3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'image4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                
             ]);
 
             $product = Product::findOrFail($id);
@@ -141,14 +134,14 @@ class ProductController extends Controller
             // 🔥 multiple image logic
             $images = [];
 
-            foreach (['image1', 'video' ,'image2','image3','image4'] as $imgField) {
+            foreach (['image1', 'video'] as $imgField) {
 
                 $images[$imgField] = $product->$imgField; // old image
 
                 if ($request->hasFile($imgField)) {
 
                     $file = $request->file($imgField);
-                    $folder = 'products';
+                    $folder = 'fleets';
 
                     if (!Storage::disk('public')->exists($folder)) {
                         Storage::disk('public')->makeDirectory($folder);
@@ -171,23 +164,18 @@ class ProductController extends Controller
                 'category_id' => $request->input('category_id'),
                 'name'        => $validated['name'],
                 'slug'        => $slug,
-                'stock'       => $validated['stock'],
                 'price'       => $validated['price'],
+                'badge'       => $validated['badge'],
                 'description' => $validated['content'],
-                'is_trending' => $request->input('trending'),
-                'new_arrival' => $request->input('new_arrival'),
                 'status'      => $request->input('status'),
 
                 'image1' => $images['image1'],
                 'video' => $images['video'],
-                'image2' => $images['image2'],
-                'image3' => $images['image3'],
-                'image4' => $images['image4'],
             ]);
 
             return response()->json([
                 'status' => true,
-                'message' => 'Product updated successfully!'
+                'message' => 'Fleet updated successfully!'
             ]);
         }
 
@@ -203,7 +191,7 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        foreach (['image1', 'video' ,'image2','image3','image4'] as $imgField) {
+        foreach (['image1', 'video' ] as $imgField) {
 
             if ($product->$imgField && Storage::disk('public')->exists($product->$imgField)) {
                 Storage::disk('public')->delete($product->$imgField);
@@ -214,7 +202,7 @@ class ProductController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Product deleted successfully'
+            'message' => 'Fleet deleted successfully'
         ]);
     }
 

@@ -24,8 +24,11 @@ use App\Http\Controllers\Admin\CmsController as AdminCms;
 Route::get('/',[Home::class,'index'])->name('home');
 Route::get('/about-us',[Seo::class,'about_us'])->name('about');
 Route::get('/our-fleets',[Fleet::class,'index'])->name('fleets');
-Route::get('/fleet-detail',[Fleet::class,'fleet_detail'])->name('fleet.detail');
-Route::get('/contact',[Fleet::class,'index'])->name('contact');
+Route::get('/fleet/{slug}',[Fleet::class,'fleet_detail'])->name('fleet.detail');
+Route::get('/contact',[FrontContact::class,'index'])->name('contact');
+Route::get('/gallery',[Seo::class,'gallery'])->name('gallery');
+Route::get('/blogs',[FrontBlog::class,'index'])->name('blog');
+Route::get('/blog/{slug}',[FrontBlog::class,'blog_detail']);
 
 
 // Admin Routes

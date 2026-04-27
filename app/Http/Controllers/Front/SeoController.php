@@ -13,6 +13,10 @@ class SeoController extends Controller
         return view('front.about');
     }
 
+    public function gallery(){
+        return view('front.gallery');
+    }
+
     
 
     public function terms_condition(){

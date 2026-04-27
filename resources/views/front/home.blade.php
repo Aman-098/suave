@@ -109,9 +109,9 @@
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
                     <!-- <a href="#" class="explore-car-item">
-                                        <img src="assets_front/img/car5.jpg">
-                                        <h5 class="title-explore">Luxury</h5>
-                                    </a> -->
+                                            <img src="assets_front/img/car5.jpg">
+                                            <h5 class="title-explore">Luxury</h5>
+                                        </a> -->
                 </div>
                 <div class="cen-btn"><a href="#" class="review-btn">From £599/day | Free Delivery
                         Available</a>
@@ -1094,42 +1094,44 @@
                     <h2 class="title wow fadeInUp">Latest news & article</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <article class="widget-blog bl-v2">
-                            <div class="feature-post">
-                                <div class="category">
-                                    <ul class="flex">
-                                        <li>
-                                            <a href="#"><i class="icon-Group-12"></i>Business</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a href="#">
-                                    <img src="assets_front/img/car3.jpg" alt="image">
-                                </a>
-                            </div>
-                            <div class="main-post">
-                                <div class="entry-meta flex">
-                                    <span class="author">
-                                        <i class="icon-Group-13"></i>
-                                        <a href="#">Mehedii</a>
-                                    </span>
-                                </div>
-                                <div class="line"></div>
-                                <h2 class="entry-title">
-                                    <a href="#">How the Maruti Invicto is a
-                                        lesson in brand buil...</a>
-                                </h2>
-                                <div class="btn-read-more">
-                                    <a class="more-link" href="#">
-                                        <span>Read More</span>
-                                        <i class="icon-Group-21"></i>
+                    @foreach ($blogs as $item)
+                        <div class="col-md-4">
+                            <article class="widget-blog bl-v2">
+                                <div class="feature-post">
+                                    {{-- <div class="category">
+                                        <ul class="flex">
+                                            <li>
+                                                <a href="#"><i class="icon-Group-12"></i>Business</a>
+                                            </li>
+                                        </ul>
+                                    </div> --}}
+                                    <a href="{{ url('blog/' . $item->slug) }}">
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="image">
                                     </a>
                                 </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-md-4">
+                                <div class="main-post">
+                                    <div class="entry-meta flex">
+                                        <span class="author">
+                                            <i class="icon-Group-13"></i>
+                                            <a href="#">{{ ucfirst($item->author) }}</a>
+                                        </span>
+                                    </div>
+                                    <div class="line"></div>
+                                    <h2 class="entry-title">
+                                        <a href="#">{{ ucfirst($item->title) }}</a>
+                                    </h2>
+                                    <div class="btn-read-more">
+                                        <a class="more-link" href="{{ url('blog/' . $item->slug) }}">
+                                            <span>Read More</span>
+                                            <i class="icon-Group-21"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="col-md-4">
                         <article class="widget-blog bl-v2">
                             <div class="feature-post">
                                 <div class="category">
@@ -1198,7 +1200,7 @@
                                 </div>
                             </div>
                         </article>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

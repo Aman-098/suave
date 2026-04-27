@@ -87,19 +87,19 @@
 <div class="footer-section">
     <div class="footer-container">
         <div class="footer-col">
-            <img src="assets_front/images/logo/logo2.png" alt="Logo">
+            <img src="{{asset('assets_front/images/logo/logo2.png')}}" alt="Logo">
             <div class="footer-add-contact">
                 <p class="s-icon">Call: <a href="tel:+4408081680808">+44 0808 168 0808</a></p>
                 <p class="s-icon">Email: <a
                         href="mailto:info@suaveexecutivetravel.co.uk">info@suaveexecutivetravel.co.uk</a></p>
                 <div class="social-icons">
                     <ul class="footer-social-links">
-                        <li><a href="#"><img src="assets_front/img/icons/facebook.svg" alt=""></a>
+                        <li><a href="#"><img src="{{asset('assets_front/img/icons/facebook.svg')}}" alt=""></a>
                         </li>
-                        <li><a href="#"><img src="assets_front/img/icons/instagram.svg" alt=""></a></li>
-                        <li><a href="#"><img src="assets_front/img/icons/linkedin.svg" alt=""></a>
+                        <li><a href="#"><img src="{{asset('assets_front/img/icons/instagram.svg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('assets_front/img/icons/linkedin.svg')}}" alt=""></a>
                         </li>
-                        <li><a href="#"><img src="assets_front/img/icons/youtube.svg" alt=""></a>
+                        <li><a href="#"><img src="{{asset('assets_front/img/icons/youtube.svg')}}" alt=""></a>
                         </li>
                     </ul>
                 </div>
@@ -108,12 +108,12 @@
             <div class="reviews">
                 <div class="review-box">
                     <a href="#">
-                        <img src="assets_front/img/logo/google-pro.png" alt="Google"><br>
+                        <img src="{{asset('assets_front/img/logo/google-pro.png')}}" alt="Google"><br>
                         ⭐ 4.8 Google Reviews</a>
                 </div>
                 <div class="review-box">
                     <a href="#">
-                        <img src="assets_front/img/logo/trustpilot-pro.png" alt="Trustpilot"><br>
+                        <img src="{{asset('assets_front/img/logo/trustpilot-pro.png')}}" alt="Trustpilot"><br>
                         ⭐ 4.7 Trustpilot</a>
                 </div>
             </div>
@@ -170,7 +170,7 @@
 
 <div class="sticky-video">
     <video controls autoplay muted loop>
-        <source src="assets_front/5309381.mp4" type="video/mp4">
+        <source src="{{asset('assets_front/5309381.mp4')}}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <span class="close-video">✕</span>

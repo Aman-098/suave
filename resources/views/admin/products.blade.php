@@ -124,7 +124,7 @@
 
                                         <td>{{ $index + 1 }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/' . $item->image1) }}"
+                                            <img src="{{ asset('storage/' . $item->image) }}"
                                                 style="width:60px; height:60px; object-fit:cover;"
                                                 class="img-fluid rounded">
                                         </td>
@@ -234,12 +234,20 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Specifications<span class="text-danger"> *</span></label>
+                                    <div id="specification"></div>
+                                    <span class="text-danger" id="edit_specError"></span>
+                                </div>
+                            </div>
+
 
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Image<span class="text-danger"> *</span></label>
-                                    <input type="file" id="image1" name="image1" class="form-control">
+                                    <input type="file" id="image" name="image" class="form-control">
                                     <span id="imageError" class="text-danger"></span>
                                 </div>
                             </div>
@@ -254,7 +262,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Badge</label>
+                                    <input type="text" id="badge" name="badge" placeholder="e.g. Limited Availability" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Status<span class="text-danger"> *</span></label>
                                     <select class="select" name="status" id="status">
@@ -291,7 +306,7 @@
                     <div class="modal-body pb-0">
                         <div class="row">
                             <input type="hidden" name="edit_id" id="edit_id" value="">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Category<span class="text-danger"> *</span></label>
                                     <select class="select" name="category_id" id="edit_category_id"
@@ -331,6 +346,14 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Specifications<span class="text-danger"> *</span></label>
+                                    <div id="edit_specification"></div>
+                                    <span class="text-danger" id="edit_specError"></span>
+                                </div>
+                            </div>
+
 
 
                             <div class="col-md-12">
@@ -353,7 +376,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Badge</label>
+                                    <input type="text" id="edit_badge" name="badge" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Status<span class="text-danger"> *</span></label>
                                     <select class="select" name="status" id="edit_status">
@@ -400,7 +430,7 @@
 @push('scripts')
     {{-- summernote script  --}}
     <script>
-        $('#content,#edit_content').summernote({
+        $('#content,#edit_content,#specification,#edit_specification').summernote({
             placeholder: 'Write description...',
             tabsize: 2,
             height: 200,
@@ -458,16 +488,17 @@
 
                 // Collect form values
                 var name = $('#name').val().trim();
-                var stock = $('#stock').val().trim();
+                
                 var price = $('#price').val().trim();
                 var content = $('#content').summernote('code');
+                var specification = $('#specification').summernote('code');
 
 
 
                 // Validation
 
                 if (name === '') return showError('#nameError', 'Name is required.');
-                if (stock === '') return showError('#stockError', 'Stock is required.');
+                
                 if (price === '') return showError('#priceError', 'Price is required.');
 
                 // Validate content (tinyMCE)
@@ -480,6 +511,7 @@
                 // Prepare FormData
                 var formData = new FormData(this);
                 formData.append('content', content);
+                formData.append('specification', specification);
 
                 // CSRF setup
                 $.ajaxSetup({
@@ -528,6 +560,7 @@
 
                 var edit_id = $('#edit_id').val();
                 var content = $('#edit_content').summernote('code');
+                var specification = $('#edit_specification').summernote('code');
 
                 // Collect form values
                 var name = $('#edit_name').val().trim();
@@ -551,6 +584,7 @@
                 // Prepare FormData
                 var formData = new FormData(this);
                 formData.append('content', content);
+                formData.append('specification', specification);
 
 
                 // CSRF setup
@@ -614,8 +648,11 @@
                     $('#edit_name').val(data.name ?? '');
 
                     $('#edit_price').val(data.price ?? '');
+                    
                     // Set Summernote content here
                     $('#edit_content').summernote('code', data.description ?? '');
+                    $('#edit_specification').summernote('code', data.specification ?? '');
+
                     // image preview
                     if (data.image) {
                         $('#edit_image_preview1')
@@ -624,6 +661,8 @@
                     } else {
                         $('#edit_image_preview1').hide();
                     }
+
+                    $('#edit_badge').val(data.badge ?? '');
 
                     $('#edit_status').val(data.status).trigger('change');
                 },

@@ -33,10 +33,11 @@ class ProductController extends Controller
                 'price'=>'required',
                 'badge'=>'nullable|string',
                 'content'=>'required',
+                'specification'=>'nullable',
 
                 // 👉 image validation add kar
-                'image1' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-                'video' => 'nullable|mimes:mp4,webm|max:10240', // 10MB
+                'image' => 'required|image|mimes:jpg,jpeg,png',
+                'video' => 'nullable|mimes:mp4,webm', // 10MB
             ]); 
 
             $slug = Str::slug($validated['name']);
@@ -53,8 +54,9 @@ class ProductController extends Controller
                 'name' => $validated['name'],
                 'slug' => $slug,
                 'price' => $validated['price'], 
-                'badge' => $validated['badge'], 
+                'badge' =>  $request->input('badge'), 
                 'description'=> $validated['content'],
+                'specification'=> $validated['specification'],
                 'status' => $request->input('status')
             ]);
 
@@ -65,7 +67,7 @@ class ProductController extends Controller
                 Storage::disk('public')->makeDirectory($folder);
             }
 
-            $imageFields = ['image1','video'];
+            $imageFields = ['image','video'];
 
             foreach ($imageFields as $field) {
 
@@ -104,10 +106,11 @@ class ProductController extends Controller
                 'price'=>'required',
                 'badge'=>'nullable|string',
                 'content'=>'required',
+                'specification'=>'nullable',
 
                 // multiple image validation
-                'image1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'video' => 'nullable|mimes:mp4,webm|max:10240', // 10MB
+                'image' => 'nullable|image|mimes:jpg,jpeg,png',
+                'video' => 'nullable|mimes:mp4,webm', // 10MB
                 
             ]);
 
@@ -134,7 +137,7 @@ class ProductController extends Controller
             // 🔥 multiple image logic
             $images = [];
 
-            foreach (['image1', 'video'] as $imgField) {
+            foreach (['image', 'video'] as $imgField) {
 
                 $images[$imgField] = $product->$imgField; // old image
 
@@ -167,9 +170,10 @@ class ProductController extends Controller
                 'price'       => $validated['price'],
                 'badge'       => $validated['badge'],
                 'description' => $validated['content'],
+                'specification' => $validated['specification'],
                 'status'      => $request->input('status'),
 
-                'image1' => $images['image1'],
+                'image' => $images['image'],
                 'video' => $images['video'],
             ]);
 
@@ -191,7 +195,7 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        foreach (['image1', 'video' ] as $imgField) {
+        foreach (['image', 'video' ] as $imgField) {
 
             if ($product->$imgField && Storage::disk('public')->exists($product->$imgField)) {
                 Storage::disk('public')->delete($product->$imgField);

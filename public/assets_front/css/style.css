@@ -2516,6 +2516,7 @@ ul.social-icon li a i:hover {
   color: #838383;
   background: #ffffff;
   line-height: 26px;
+  border: 1px solid #ccc;
 }
 
 .widget-search .search-form button {
@@ -3634,8 +3635,7 @@ ul.social-icon li a i:hover {
 /*------------ Page Title ---------------- */
 .tf-page-title .page-title {
   padding: 144px 0;
-  /* background-image: url(./../images/abc.jpg); */
-  background-image: url('/assets_front/images/abc.jpg');
+  background-image: url(./../images/abc.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -3756,8 +3756,9 @@ ul.social-icon li a i:hover {
   font-weight: 700;
   line-height: 44.2px;
   letter-spacing: 0.015em;
+  color: #fff;
 }
-
+.format-standard-details .entry-title a{color: #fff;}
 .text-box-blog {
   padding: 38px 38px 33px 38px;
   background-image: url(./../images/blog/quote.jpg);
@@ -3817,6 +3818,7 @@ ul.social-icon li a i:hover {
   font-size: 28px;
   line-height: 56px;
   margin-bottom: 30px;
+  color: #fff;
 }
 
 .post-wrap .imgae-list {
@@ -3833,7 +3835,6 @@ ul.social-icon li a i:hover {
 .tag-wrap {
   padding-top: 50px;
   padding-bottom: 35px;
-  border-bottom: 1px solid #EAEAEA;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -3851,7 +3852,7 @@ ul.social-icon li a i:hover {
   font-size: 20px;
   font-weight: 500;
   line-height: 30px;
-  color: #000000;
+  color: #fff;
   margin-right: 15px;
 }
 
@@ -3916,33 +3917,13 @@ ul.social-icon li a i:hover {
 }
 
 .entry-meta span a:hover {
-  color: #000000;
-}
-
-.entry-meta .line:not(:last-child)::after {
-  position: absolute;
-  content: "";
-  height: 60%;
-  width: 1px;
-  right: -10%;
-  bottom: 0;
-  top: 28%;
-  background-color: #83827F;
-  rotate: 22deg;
+  color: #fff;
 }
 
 .horizontal span {
-  margin-right: 32px;
+  margin-right: 12px;
 }
 
-.horizontal .line:not(:last-child)::after {
-  rotate: 0deg;
-  width: 10px;
-  height: 1px;
-  bottom: 50%;
-  top: 50%;
-  right: -21%;
-}
 
 /*------------ Comment List ---------------- */
 .wrap-review {
@@ -4585,6 +4566,7 @@ ul.social-icon li a i:hover {
   color: #00205C;
   text-transform: capitalize;
   letter-spacing: 0;
+  background: transparent;
 }
 
 .bl-v2 .main-post .btn-read-more .more-link i {
@@ -7071,10 +7053,12 @@ ul.social-icon li a i:hover {
 }
 
 .contact-form {
-  display: flex;
+  display: block;
   gap: 40px;
 }
-
+.contact-form h3{
+  margin-bottom: 15px;
+}
 .contact-form .form-buy-car-form {
   padding: 50px;
   border-radius: 12px;
@@ -11932,7 +11916,7 @@ a.mapboxgl-ctrl-logo {
 
 .section-title {
   text-align: center;
-  font-size: 32px;
+  font-size: 35px;
   color: #be9b5a;
   margin-bottom: 40px;
 }
@@ -12211,8 +12195,8 @@ a.mapboxgl-ctrl-logo {
   cursor: pointer;
   transition: 0.3s;
   position: absolute;
-  right: 0;
-  top: 0px;
+  right: 10px;
+  top: 10px;
 
 
 }
@@ -14141,7 +14125,7 @@ a.mapboxgl-ctrl-logo {
 }
 
 .google-review h2 {
-  color: #fff;
+  color:#ba9758;
   margin-bottom: 15px;
 }
 
@@ -16761,7 +16745,7 @@ a.mapboxgl-ctrl-logo {
 
 /* CTA Button */
 .review-btn {
-    display: inline-block;
+    display: block;
     padding: 14px 32px;
     font-size: 15px;
     color: #000;
@@ -18110,4 +18094,326 @@ a.mapboxgl-ctrl-logo {
 /* Fix slide height */
 .swiper-slide {
     height: auto;
+}
+
+
+
+.google-review {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.google-review h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.google-review .feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD DESIGN */
+.google-review .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.google-review .card:hover {
+    transform: translateY(-5px);
+}
+
+/* STARS */
+.google-review .stars {
+    color: #f5a623;
+    margin-bottom: 10px;
+}
+
+/* USER */
+.google-review .user {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.google-review .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.google-review .user span {
+    font-weight: 600;
+    color: #000;
+}
+
+
+
+
+.contact-section {
+    padding: 80px 20px;
+    background: #08080c;
+    color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0.8;
+}
+
+/* CARDS */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    transition: 0.3s;
+    border: 1px solid #ba9758;
+}
+.contact-card h4{color: #fff;}
+.contact-card i {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ba9758;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    background:#000;
+}
+
+/* MAIN WRAPPER */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* FORM */
+.contact-form {
+    background: #fff;
+    color: #000;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background: #08080d;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+}
+
+/* MAP */
+.contact-map {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #c6a661;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+
+
+
+.gallery-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* ITEM */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 480px){
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.gallery-grid {
+    column-count: 4;
+    column-gap: 15px;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.flat-blog .entry-title a{color: #Fff;}
+
+.tf-pagination .icon-3:before {
+
+    color: #fff;
+}
+.tf-pagination .page-numbers.active{
+  color: #ba9758;
+
+}
+.tf-pagination .page-numbers{
+  color: #fff;
+  padding: 15px;
+}
+
+.tf-pagination .icon-3:after {
+
+    color: #fff;
+}
+
+.populer-makes .nav {
+    position: relative;
 }

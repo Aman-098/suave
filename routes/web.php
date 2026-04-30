@@ -26,6 +26,7 @@ Route::get('/about-us',[Seo::class,'about_us'])->name('about');
 Route::get('/our-fleets',[Fleet::class,'index'])->name('fleets');
 Route::get('/fleet/{slug}',[Fleet::class,'fleet_detail'])->name('fleet.detail');
 Route::get('/contact',[FrontContact::class,'index'])->name('contact');
+Route::post('/save/contact-form',[FrontContact::class,'save_form'])->name('contact.save');
 Route::get('/gallery',[Seo::class,'gallery'])->name('gallery');
 Route::get('/blogs',[FrontBlog::class,'index'])->name('blog');
 Route::get('/blog/{slug}',[FrontBlog::class,'blog_detail']);
@@ -64,10 +65,10 @@ Route::middleware(['auth:admin','admin'])->group(function () {
 
     Route::get('sysadmin/contacts-enquiry',[Contact::class,'index'])->name('admin.contact');
 
-    Route::get('sysadmin/manage-videos',[AdminCms::class,'videos'])->name('admin.video');
-    Route::post('/video/add',[AdminCms::class,'add_video'])->name('admin.video-add');
-    Route::match(['get','post'],'/edit-video/{id}',[AdminCms::class,'edit_video'])->name('edit.video');
-    Route::delete('delete-video/{id}',[AdminCms::class,'delete_video'])->name('video.delete');
+    Route::get('sysadmin/manage-gallery',[AdminCms::class,'videos'])->name('admin.video');
+    Route::post('/gallery/add',[AdminCms::class,'add_video'])->name('admin.video-add');
+    Route::match(['get','post'],'/edit-gallery/{id}',[AdminCms::class,'edit_video'])->name('edit.video');
+    Route::delete('delete-gallery/{id}',[AdminCms::class,'delete_video'])->name('video.delete');
 
     Route::get('sysadmin/manage-cms',[AdminCms::class,'index'])->name('admin.cms');
     Route::post('/cms/add',[AdminCms::class,'add_cms'])->name('admin.cms-add');

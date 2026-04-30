@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cms;
 use App\Models\Video;
+use App\Models\Gallery;
 
 class CmsController extends Controller
 {
@@ -75,11 +76,11 @@ class CmsController extends Controller
     // Mnaage videos function
 
     public function videos(){
-        $videos=Video::all();
+        $videos=Gallery::all();
 
         $total_video=$videos->count();
-        $active_video=Video::where('status',1)->count();
-        $inactive_video=Video::where('status',0)->count();
+        $active_video=Gallery::where('status',1)->count();
+        $inactive_video=Gallery::where('status',0)->count();
 
         return view('admin.manage-videos',compact('videos','total_video','active_video','inactive_video'));
 
@@ -95,17 +96,17 @@ class CmsController extends Controller
                 'code'=>'required',
             ]);
 
-            $video = Video::create([
+            $gallery = Gallery::create([
                 'title' => $validated['title'],
                 'code'=>$validated['code'],
                 'status'=>$request->input('status'),
             ]);
 
             
-            if($video){
-                return response()->json(['status'=>true,'message'=>'Video added successfully']);
+            if($gallery){
+                return response()->json(['status'=>true,'message'=>'Image added successfully']);
             }else{
-                return response()->json(['status'=>false,'message'=>'Failed to add Video']);
+                return response()->json(['status'=>false,'message'=>'Failed to add Image']);
             }
         }
 
@@ -116,37 +117,38 @@ class CmsController extends Controller
         if($request->isMethod('post')){
             // dd($request->input());
             $validated=$request->validate([
-                'title'=>'required',
-                'code'=>'required',
+                'image'=>'required',
+               
             ]);
 
-            $video = Video::findOrFail($id);
+            $image = Gallery::findOrFail($id);
 
 
             $video->update([
-                'title'=>$validated['title'],
-                'code'=>$validated['code'],
+                
+                'image'=>$validated['image'],
                 'status'=>$request->input('status'),
             ]);
 
             return response()->json([
                 'status' => true,
-                'message' => 'Video has been updated!'
+                'message' => 'Image has been updated!'
             ]);
 
         }else{
-            $video=Video::findOrFail($id);
+            $gallery=Gallery::findOrFail($id);
             // dd($video);
             
             return response()->json([
-                'video'   => $video
+                'gallery'   => $gallery
             ]);
+            
         }
 
     }
 
     public function delete_video($id){
-        $video = Video::findOrFail($id);
+        $video = Gallery::findOrFail($id);
 
         
         // Finally, delete the video
@@ -154,7 +156,7 @@ class CmsController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Video deleted successfully'
+            'message' => 'Image deleted successfully'
         ]);
     }
 }

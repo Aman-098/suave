@@ -15,9 +15,9 @@
                 <h1 class="main-title">Contact Us</h1>
 
                 <!-- <ul class="breadcrum">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                            </ul> -->
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="#">About us</a></li>
+                                    </ul> -->
             </div>
         </div>
     </div>
@@ -57,16 +57,23 @@
                 <div class="contact-form">
                     <h3>Send Message</h3>
 
-                    <form>
-                        <div class="form-row">
-                            <input type="text" placeholder="Your Name">
-                            <input type="tel" placeholder="Phone Number">
-                        </div>
+                    <form id="contact_form">
+                        {{-- <div class="form-row">
+                            
+                            
+                        </div> --}}
+                        <input type="text" id="name" name="name" placeholder="Your Name">
+                        <span class="text-danger" id="nameError"></span>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                        <span class="text-danger" id="phoneError"></span>
 
-                        <input type="email" placeholder="Email Address">
-                        <textarea placeholder="Write your message..."></textarea>
+                        <input type="email" id="email" name="email" placeholder="Email Address">
+                        <span class="text-danger" id="emailError"></span>
 
-                        <button>Send Message</button>
+                        <textarea id="message" name="message" placeholder="Write your message..."></textarea>
+                        <span class="text-danger" id="messageError"></span>
+
+                        <button type="submit">Send Message</button>
                     </form>
                 </div>
 
@@ -79,9 +86,9 @@
 
 
                     <!-- <div class="map-overlay">
-                                    <h4>Office Address</h4>
-                                    <p>3 Uxbridge Rd, Hayes UB4 0JN</p>
-                                </div> -->
+                                            <h4>Office Address</h4>
+                                            <p>3 Uxbridge Rd, Hayes UB4 0JN</p>
+                                        </div> -->
                 </div>
 
             </div>
@@ -90,3 +97,82 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            //alert('hello world');
+
+            $('#contact_form').submit(function(e) {
+                e.preventDefault();
+
+                // Clear old errors
+                $('.text-danger').text('');
+
+                var name = $('#name').val().trim();
+                var phone = $('#phone').val().trim();
+                var email = $('#email').val().trim();
+                var message = $('#message').val().trim();
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                // Name validation
+                if (name === '') {
+                    showError('#nameError', 'Name is required.');
+                    return false;
+                }
+
+                // Phone validation
+                if (phone === '') {
+                    showError('#phoneError', 'Phone is required.');
+                    return false;
+                }
+
+                // Email validation
+                if (email === '') {
+                    showError('#emailError', 'Email is required.');
+                    return false;
+                } else if (!emailRegex.test(email)) {
+                    showError('#emailError', 'Enter a valid email.');
+                    return false;
+                }
+
+                // Message validation
+                if (message === '') {
+                    showError('#messageError', 'Message is required.');
+                    return false;
+                }
+
+                var formdata = $(this).serialize();
+
+                $.ajax({
+                    url: "{{ route('contact.save') }}",
+                    type: 'POST',
+                    data: formdata,
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === true) {
+                            notyf.success(response.message);
+                        } else {
+                            notyf.error(response.message);
+                        }
+                    },
+                    error: function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            notyf.error(xhr.responseJSON.message);
+                        } else {
+                            notyf.error('Something went wrong');
+                        }
+                    }
+                });
+
+                function showError(element, message) {
+                    $(element).text(message).show();
+                    setTimeout(() => {
+                        $(element).fadeOut();
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+@endpush

@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     public function add_product(Request $request){
         if($request->isMethod('post')){
+            // dd($request);
 
             $validated = $request->validate([
                 'name'=>'required',
@@ -34,10 +35,14 @@ class ProductController extends Controller
                 'badge'=>'nullable|string',
                 'content'=>'required',
                 'specification'=>'nullable',
+                'rating'=>'nullable',
 
                 // 👉 image validation add kar
                 'image' => 'required|image|mimes:jpg,jpeg,png',
                 'video' => 'nullable|mimes:mp4,webm', // 10MB
+                'gallery_image' => 'nullable|array',
+                'gallery_image.*' => 'image|mimes:jpg,jpeg,png'
+                
             ]); 
 
             $slug = Str::slug($validated['name']);
@@ -57,6 +62,7 @@ class ProductController extends Controller
                 'badge' =>  $request->input('badge'), 
                 'description'=> $validated['content'],
                 'specification'=> $validated['specification'],
+                'rating'=> $validated['rating'],
                 'status' => $request->input('status')
             ]);
 
@@ -81,6 +87,25 @@ class ProductController extends Controller
 
                     $product->update([$field => 'fleets/' . $imageName]);
                 }
+            }
+
+            $galleryPaths = [];
+
+            if ($request->hasFile('gallery_image')) {
+                foreach ($request->file('gallery_image') as $file) {
+                    $imageName = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+                    Storage::disk('public')->putFileAs($folder, $file, $imageName);
+
+                    $galleryPaths[] = 'fleets/' . $imageName;
+                }
+            }
+
+            if (!empty($galleryPaths)) {
+                $product->update([
+                    // 'gallery_images' => json_encode($galleryPaths)
+                    'gallery_images' => $galleryPaths
+                ]);
             }
 
             if($product){

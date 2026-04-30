@@ -12,11 +12,17 @@ class Product extends Model
         'name',
         'slug',
         'image',
+        'gallery_images',
+        'rating',
         'description',
         'specification',
         'price',
         'badge',
         'status',
+    ];
+
+    protected $casts = [
+        'gallery_images' => 'array',
     ];
 
     public function category(){

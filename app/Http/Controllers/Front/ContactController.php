@@ -36,7 +36,7 @@ class ContactController extends Controller
             if($contact){
 
                 // Send Email
-                Mail::to(config('mail.admin_email'))->send(new ContactEnquiry($validated));
+                // Mail::to(config('mail.admin_email'))->send(new ContactEnquiry($validated));
                 
 
                 return response()->json(['status'=>true,'message'=>'Thank you for submission! We will contact you soon!']);
@@ -48,7 +48,7 @@ class ContactController extends Controller
 
     }
 
-    public function thank_you(){
-        return view('front.thankyou');
-    }
+    // public function thank_you(){
+    //     return view('front.thankyou');
+    // }
 }

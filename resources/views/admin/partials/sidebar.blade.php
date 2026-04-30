@@ -94,14 +94,15 @@
                             <ul>
 
                                 <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                <li><a href="{{ route('admin.sliders') }}">Sliders</a></li>
+                                {{-- <li><a href="{{ route('admin.sliders') }}">Sliders</a></li> --}}
                                 <li><a href="{{ route('admin.cat') }}">Categories</a></li>
                                 <li><a href="{{ route('admin.product') }}">Fleets</a></li>
-                                <li><a href="{{ route('admin.customers') }}">Customers</a></li>
+                                {{-- <li><a href="{{ route('admin.customers') }}">Customers</a></li> --}}
                                 <li><a href="{{ route('admin.blogs') }}">Blogs</a></li>
                                 <li><a href="{{ route('admin.contact') }}">Contact Enquiry</a></li>
-                                <li><a href="{{ route('admin.video') }}">Manage Videos</a></li>
-                                <li><a href="{{ route('admin.cms') }}">Manage CMS</a></li>
+                                <li><a href="{{ route('admin.video') }}">Manage Gallery</a></li>
+                                {{-- <li><a href="{{ route('admin.video') }}">Manage video</a></li> --}}
+                                {{-- <li><a href="{{ route('admin.cms') }}">Manage CMS</a></li> --}}
 
                             </ul>
                         </li>

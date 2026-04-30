@@ -196,7 +196,7 @@
                     @csrf
                     <div class="modal-body pb-0">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Category<span class="text-danger"> *</span></label>
                                     <select class="select" name="category_id" class="form-control">
@@ -216,6 +216,14 @@
                                     <label class="form-label">Name <span class="text-danger"> *</span></label>
                                     <input type="text" id="name" name="name" class="form-control">
                                     <span id="nameError" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Rating</label>
+                                    <input type="text" id="rating" name="rating" class="form-control">
+
                                 </div>
                             </div>
 
@@ -262,10 +270,21 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="mb-3">
+
+                                    <label class="form-label">Gallery Image</label>
+                                    <input type="file" id="gallery_image" name="gallery_image[]" class="form-control"
+                                        multiple>
+
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Badge</label>
-                                    <input type="text" id="badge" name="badge" placeholder="e.g. Limited Availability" class="form-control">
+                                    <input type="text" id="badge" name="badge"
+                                        placeholder="e.g. Limited Availability" class="form-control">
                                 </div>
                             </div>
 
@@ -306,7 +325,7 @@
                     <div class="modal-body pb-0">
                         <div class="row">
                             <input type="hidden" name="edit_id" id="edit_id" value="">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Category<span class="text-danger"> *</span></label>
                                     <select class="select" name="category_id" id="edit_category_id"
@@ -327,6 +346,14 @@
                                     <label class="form-label">Name <span class="text-danger"> *</span></label>
                                     <input type="text" id="edit_name" name="name" class="form-control">
                                     <span id="edit_nameError" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Rating</label>
+                                    <input type="text" id="edit_rating" name="rating" class="form-control">
+
                                 </div>
                             </div>
 
@@ -376,7 +403,18 @@
                                 </div>
                             </div>
 
-                             <div class="col-md-6">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Gallery Image<span class="text-danger"> *</span></label>
+                                    <input type="file" id="gallery_image" name="gallery_image[]" class="form-control"
+                                        multiple>
+                                    <!-- image preview -->
+                                    <img id="edit_gallery_preview" src=""
+                                        style="max-width:150px; margin-top:10px; display:none;" class="img-thumbnail">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Badge</label>
                                     <input type="text" id="edit_badge" name="badge" class="form-control">
@@ -488,7 +526,7 @@
 
                 // Collect form values
                 var name = $('#name').val().trim();
-                
+
                 var price = $('#price').val().trim();
                 var content = $('#content').summernote('code');
                 var specification = $('#specification').summernote('code');
@@ -498,7 +536,7 @@
                 // Validation
 
                 if (name === '') return showError('#nameError', 'Name is required.');
-                
+
                 if (price === '') return showError('#priceError', 'Price is required.');
 
                 // Validate content (tinyMCE)
@@ -647,8 +685,10 @@
                     $('#edit_category_id').val(data.category_id).trigger('change');
                     $('#edit_name').val(data.name ?? '');
 
+                    $('#edit_rating').val(data.rating ?? '');
+
                     $('#edit_price').val(data.price ?? '');
-                    
+
                     // Set Summernote content here
                     $('#edit_content').summernote('code', data.description ?? '');
                     $('#edit_specification').summernote('code', data.specification ?? '');
@@ -660,6 +700,19 @@
                             .show();
                     } else {
                         $('#edit_image_preview1').hide();
+                    }
+
+                    if (data.gallery_image && data.gallery_image.length > 0) {
+                        let html = '';
+
+                        data.gallery_image.forEach(function(image) {
+                            html += `<img src="/storage/${image}" 
+                                    style="width:100px; height:100px; margin:5px; border-radius:5px;">`;
+                        });
+
+                        $('#edit_gallery_image').html(html).show();
+                    } else {
+                        $('#edit_gallery_image').html('').hide();
                     }
 
                     $('#edit_badge').val(data.badge ?? '');

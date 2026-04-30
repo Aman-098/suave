@@ -198,6 +198,15 @@
 <script src="{{ asset('assets_front/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/main.js') }}"></script>
 
+<script>
+    const notyf = new Notyf({
+        position: {
+            x: 'right', // left / center / right
+            y: 'top' // top / bottom
+        }
+    });
+</script>
+
 @stack('scripts')
 
 

@@ -109,9 +109,9 @@
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
                     <!-- <a href="#" class="explore-car-item">
-                                            <img src="assets_front/img/car5.jpg">
-                                            <h5 class="title-explore">Luxury</h5>
-                                        </a> -->
+                                                                                        <img src="assets_front/img/car5.jpg">
+                                                                                        <h5 class="title-explore">Luxury</h5>
+                                                                                    </a> -->
                 </div>
                 <div class="cen-btn"><a href="#" class="review-btn">From £599/day | Free Delivery
                         Available</a>
@@ -192,22 +192,19 @@
                 </div>
                 <ul class="nav nav-pills tab-car-service-v2 justify-content-center mb-30" id="pills-tab-service-v2"
                     role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
-                            data-bs-target="#pills-cadilliac-service-v2" type="button" role="tab"
-                            aria-selected="true"> Luxury Car Rental</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-audi-tab-service-v2" data-bs-toggle="pill"
-                            data-bs-target="#pills-audi-service-v2" type="button" role="tab"
-                            aria-selected="false">SUV Car Rental</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-bmw-tab-service-v2" data-bs-toggle="pill"
-                            data-bs-target="#pills-bmw-service-v2" type="button" role="tab"
-                            aria-selected="false">Sport Car</button>
-                    </li>
+                    @php $i = 0; @endphp
+                    @foreach ($fleets as $categoryName => $products)
+                        {{-- @php $slug = Str::slug($categoryName); @endphp --}}
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
+                                data-bs-toggle="pill" data-bs-target="#tab-{{ $categoryName }}" type="button"
+                                role="tab" aria-selected="true"> {{ $categoryName }}</button>
+                        </li>
+                        @php $i++; @endphp
+                    @endforeach
+
                 </ul>
+
 
                 <div id="videoPopup" class="video-popup">
                     <div class="video-content">
@@ -236,616 +233,93 @@
                 </div>
 
                 <div class="tab-content" id="pills-tabContent-v2">
-                    <div class="tab-pane fade show active" id="pills-cadilliac-service-v2" role="tabpanel">
-                        <div class="car-list-item">
+                    @php $i = 0; @endphp
 
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
+                    @foreach ($fleets as $categoryName => $products)
+                        {{-- @php $slug = Str::slug($categoryName); @endphp --}}
+                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}"
+                            id="tab-{{ $categoryName }}" role="tabpanel">
+                            <div class="car-list-item">
+                                @foreach ($products as $item)
+                                    <div class="tf-car-service">
+                                        <a href="{{ url('fleet/' . $item->slug) }}" class="image">
+                                            <div class="stm-badge-top">
+                                                <div class="feature">
+                                                    <span>{{ $item->badge }}</span>
+                                                </div>
+                                                @if (!empty($item->video))
+                                                    <div class="play-btn" onclick="openVideo('{{ $item->video }}')">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon points="8,5 19,12 8,19"></polygon>
+                                                        </svg>
                                                     </div>
+                                                @endif
+                                            </div>
+                                            <div class="listing-images">
+                                                <div class="hover-listing-image">
+                                                    <div class="wrap-hover-listing">
+                                                        <div class="listing-item active" title="">
+                                                            <div class="images">
+                                                                <img src="{{ asset('storage/' . $item->image) }}"
+                                                                    class="swiper-image tfcl-light-gallery"
+                                                                    alt="images">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="content">
+                                            <h6 class="title">{{ $item->name }}</h6>
+                                            <div class="description">
+                                                <ul>
+                                                    <li class="listing-information fuel">
+                                                        <div class="inner">
+                                                            <span>{{ number_format($item->price, 2) }} ₤/DAY</span>
+                                                        </div>
+                                                    </li>
+                                                    {{-- <li class="listing-information size-engine">
+                                                        <div class="inner">
+                                                            <span>1,500 ₤/HOUR</span>
+                                                        </div>
+                                                    </li> --}}
+                                                </ul>
+                                            </div>
+                                            <div class="bottom-btn-wrap">
+                                                <div class="btn-read-more">
+                                                    <a class="more-link" href="{{ url('fleet/' . $item->slug) }}">
+                                                        <span>View details</span>
+                                                        <i class="icon-arrow-right2"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="#" class="icon-service">
+                                                        <svg width="18" height="18" viewBox="0 0 24 24"
+                                                            fill="#fff">
+                                                            <path
+                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
+                                                        </svg>
+                                                    </a>
+                                                    <a href="https://wa.me/919988998899" target="_blank"
+                                                        class="icon-service">
+                                                        <i class="icon-whatsapp-1"></i>
+                                                    </a>
+                                                    <a href="#" class="icon-service">
+                                                        Book Now
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Luxury Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
 
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Luxury Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Luxury Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-audi-service-v2" role="tabpanel">
-                        <div class="car-list-item">
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">SUV Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">SUV Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">SUV Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-bmw-service-v2" role="tabpanel">
-
-                        <div class="car-list-item">
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Sport Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Sport Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tf-car-service">
-                                <a href="#" class="image">
-                                    <div class="stm-badge-top">
-                                        <div class="feature">
-                                            <span>Limited Availability</span>
-                                        </div>
-                                        <div class="play-btn" onclick="openVideo()">
-                                            <svg viewBox="0 0 24 24">
-                                                <polygon points="8,5 19,12 8,19"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="listing-images">
-                                        <div class="hover-listing-image">
-                                            <div class="wrap-hover-listing">
-                                                <div class="listing-item active" title="">
-                                                    <div class="images">
-                                                        <img src="assets_front/img/car1.jpg"
-                                                            class="swiper-image tfcl-light-gallery" alt="images">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="content">
-                                    <h6 class="title">Sport Rolls Royce Cullinan</h6>
-                                    <div class="description">
-                                        <ul>
-                                            <li class="listing-information fuel">
-                                                <div class="inner">
-                                                    <span>4,320 ₤/DAY</span>
-                                                </div>
-                                            </li>
-                                            <li class="listing-information size-engine">
-                                                <div class="inner">
-                                                    <span>1,500 ₤/HOUR</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bottom-btn-wrap">
-                                        <div class="btn-read-more">
-                                            <a class="more-link" href="#">
-                                                <span>View details</span>
-                                                <i class="icon-arrow-right2"></i>
-                                            </a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="icon-service">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                    <path
-                                                        d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                </svg>
-                                            </a>
-                                            <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
-                                                <i class="icon-whatsapp-1"></i>
-                                            </a>
-                                            <a href="#" class="icon-service">
-                                                Book Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @php $i++; @endphp
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>

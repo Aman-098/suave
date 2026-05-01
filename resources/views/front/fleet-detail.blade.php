@@ -13,9 +13,9 @@
             <div class="page-title t-al-center">
                 <h1 class="main-title">Our Fleet</h1>
                 <!-- <ul class="breadcrum">
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                </ul> -->
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="#">About us</a></li>
+                                        </ul> -->
             </div>
         </div>
     </div>
@@ -26,14 +26,19 @@
         <div class="container">
 
             <div class="product-grid">
+                @php
+                    $gallery = is_array($fleet->gallery_images)
+                        ? $fleet->gallery_images
+                        : json_decode($fleet->gallery_images, true);
+                @endphp
 
                 <!-- LEFT: IMAGE GALLERY -->
-                <div class="product-gallery">
+                {{-- <div class="product-gallery">
                     <div class="main-image">
                         <img src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
                     </div>
 
-                    {{-- <div class="thumb-wrapper">
+                    <div class="thumb-wrapper">
 
                         <button class="thumb-btn prev" onclick="scrollThumbs(-1)">‹</button>
 
@@ -48,42 +53,68 @@
 
                         <button class="thumb-btn next" onclick="scrollThumbs(1)">›</button>
 
-                    </div> --}}
+                    </div>
+                </div> --}}
+
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
+                    </div>
+
+                    <div class="thumb-wrapper">
+
+                        <button class="thumb-btn prev" onclick="scrollThumbs(-1)">‹</button>
+
+                        <div class="thumbs" id="thumbSlider">
+                            @if (!empty($gallery))
+                                @foreach ($gallery as $img)
+                                    <img src="{{ asset('storage/' . $img) }}" onclick="changeImg(this)">
+                                @endforeach
+                            @endif
+                        </div>
+
+                        <button class="thumb-btn next" onclick="scrollThumbs(1)">›</button>
+
+                    </div>
                 </div>
 
                 <!-- RIGHT: PRODUCT INFO -->
                 <div class="product-info">
 
-                    <h1>{{$fleet->name}}</h1>
+                    <h1>{{ $fleet->name }}</h1>
 
-                    <div class="rating">
-                        <div class="stars">
-                            <span class="star filled"></span>
-                            <span class="star filled"></span>
-                            <span class="star filled"></span>
-                            <span class="star filled"></span>
-                            <span class="star"></span>
+                    @php
+                        $rating = $fleet->rating;
+                    @endphp
+
+                    @if (isset($rating) && $rating != null)
+                        <div class="rating">
+                            <div class="stars">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <span class="star {{ $i <= $rating ? 'filled' : '' }}"></span>
+                                @endfor
+                            </div>
+                            <span class="rating-text">{{ $rating }} • Premium Experience</span>
                         </div>
-                        <span class="rating-text">4.0 • Premium Experience</span>
-                    </div>
+                    @endif
 
                     <div class="price">
                         {{-- <span class="day">₹ 4,320 / Day</span> --}}
-                        <span class="hour">₤ {{ number_format($fleet->price,2) }} / Hour</span>
+                        <span class="hour">₤ {{ number_format($fleet->price, 2) }} / Hour</span>
                     </div>
 
-                    
+
                     <p class="desc">
-                       {!! $fleet->description !!}
+                        {!! $fleet->description !!}
                     </p>
 
-                    <!-- FEATURES -->
+                    {{-- <!-- FEATURES -->
                     <ul class="highlights">
                         <li>✔ Chauffeur Included</li>
                         <li>✔ Premium Leather Interior</li>
                         <li>✔ Starlight Ceiling</li>
                         <li>✔ Smooth Silent Drive</li>
-                    </ul>
+                    </ul> --}}
 
                     <!-- ACTION -->
                     <div class="actions">
@@ -99,9 +130,9 @@
                     </div>
 
                     <!-- <div class="extra">
-              <p>✔ Instant Confirmation</p>
-              <p>✔ Free Cancellation (24 hrs)</p>
-            </div> -->
+                      <p>✔ Instant Confirmation</p>
+                      <p>✔ Free Cancellation (24 hrs)</p>
+                    </div> -->
 
                 </div>
 
@@ -120,7 +151,7 @@
                     <div id="desc" class="tab-content active">
                         {!! $fleet->description !!}
 
-                        
+
                     </div>
 
                     <div id="specs" class="tab-content">
@@ -176,7 +207,7 @@
                         From supercars to premium SUVs, our fleet is perfect for weddings,
                         business trips, airport transfers, photo shoots and weekend drives.
                     </p>
-                    <a href="{{route('fleets')}}" class="btn">Explore Our Fleet</a>
+                    <a href="{{ route('fleets') }}" class="btn">Explore Our Fleet</a>
                 </div>
 
                 <div class="right">
@@ -185,17 +216,17 @@
             </div>
 
             <!-- Cards -->
-            @if(count($related_fleet) > 0)
+            @if (count($related_fleet) > 0)
                 <div class="car-grid">
 
-                    @foreach($related_fleet as $fleet)
+                    @foreach ($related_fleet as $fleet)
                         <div class="car-card">
                             <img src="{{ asset('storage/' . $item->image) }}" />
                             <div class="card-overlay">
                                 <span>{{ $item->catgegory->name }}</span>
                                 <h3>{{ $item->name }}</h3>
                                 <p>Price</p>
-                                <h4>£ {{ number_format($item->price,2) }} /day</h4>
+                                <h4>£ {{ number_format($item->price, 2) }} /day</h4>
                             </div>
                         </div>
                     @endforeach
@@ -229,247 +260,252 @@
 @endsection
 
 @push('scripts')
- <script>
-            function changeImg(el) {
-                document.getElementById("mainCarImg").src = el.src;
+    <script>
+        function changeImg(el) {
+            document.getElementById("mainCarImg").src = el.src;
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            const $track = $(".feedback-track");
+            let $cards = $(".feedback-track .card");
+
+            // ✅ Responsive visible count
+            function getVisible() {
+                if (window.innerWidth <= 576) return 1; // mobile
+                if (window.innerWidth <= 992) return 2; // tablet
+                return 3; // desktop
             }
-        </script>
 
-        <script>
-            $(document).ready(function () {
-                const $track = $(".feedback-track");
-                let $cards = $(".feedback-track .card");
+            let visible = getVisible();
+            let index = visible;
 
-                // ✅ Responsive visible count
-                function getVisible() {
-                    if (window.innerWidth <= 576) return 1;   // mobile
-                    if (window.innerWidth <= 992) return 2;   // tablet
-                    return 3; // desktop
+            function initSlider() {
+
+                $track.css("transition", "none");
+
+                $track.empty();
+                $track.append($cards.clone());
+
+                let allCards = $(".feedback-track .card");
+
+                // Clone last items to start
+                for (let i = allCards.length - visible; i < allCards.length; i++) {
+                    $track.prepend(allCards.eq(i).clone());
                 }
 
-                let visible = getVisible();
-                let index = visible;
-
-                function initSlider() {
-
-                    $track.css("transition", "none");
-
-                    $track.empty();
-                    $track.append($cards.clone());
-
-                    let allCards = $(".feedback-track .card");
-
-                    // Clone last items to start
-                    for (let i = allCards.length - visible; i < allCards.length; i++) {
-                        $track.prepend(allCards.eq(i).clone());
-                    }
-
-                    // Clone first items to end
-                    allCards = $(".feedback-track .card");
-                    for (let i = 0; i < visible; i++) {
-                        $track.append(allCards.eq(i).clone());
-                    }
-
-                    allCards = $(".feedback-track .card");
-
-                    let cardWidth = allCards.outerWidth(true);
-                    index = visible;
-
-                    $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-
-                    // NEXT
-                    function nextSlide() {
-                        index++;
-                        $track.css({
-                            "transition": "0.5s",
-                            "transform": "translateX(-" + (index * cardWidth) + "px)"
-                        });
-
-                        if (index >= allCards.length - visible) {
-                            setTimeout(function () {
-                                $track.css("transition", "none");
-                                index = visible;
-                                $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-                            }, 500);
-                        }
-                    }
-
-                    // PREV
-                    function prevSlide() {
-                        index--;
-                        $track.css({
-                            "transition": "0.5s",
-                            "transform": "translateX(-" + (index * cardWidth) + "px)"
-                        });
-
-                        if (index <= 0) {
-                            setTimeout(function () {
-                                $track.css("transition", "none");
-                                index = allCards.length - (visible * 2);
-                                $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-                            }, 500);
-                        }
-                    }
-
-                    // Remove old events and rebind
-                    $(".next").off().on("click", nextSlide);
-                    $(".prev").off().on("click", prevSlide);
-
-                    // Auto slide
-                    clearInterval(window.autoSlide);
-                    window.autoSlide = setInterval(nextSlide, 3000);
-
-                    // Pause on hover
-                    $(".feedback-slider").off().hover(
-                        function () { clearInterval(window.autoSlide); },
-                        function () { window.autoSlide = setInterval(nextSlide, 3000); }
-                    );
+                // Clone first items to end
+                allCards = $(".feedback-track .card");
+                for (let i = 0; i < visible; i++) {
+                    $track.append(allCards.eq(i).clone());
                 }
 
-                // Init
-                initSlider();
-                // Resize handling
-                $(window).resize(function () {
-                    let newVisible = getVisible();
+                allCards = $(".feedback-track .card");
 
-                    if (newVisible !== visible) {
-                        visible = newVisible;
-                        initSlider(); // reinitialize slider
-                    }
-                });
-            });
-        </script>
-        <script>
-            document.querySelector(".close-video").onclick = function () {
-                document.querySelector(".sticky-video").style.display = "none";
-            }
-        </script>
-        <script>
-            function openVideo() {
-                document.getElementById("videoPopup").style.display = "flex";
-                document.getElementById("videoFrame").src =
-                    "https://www.youtube.com/embed/c0C5Vl1CNQs?autoplay=1";
-            }
-            function closeVideo(e) {
-                if (e) e.stopPropagation(); // prevent bubbling
+                let cardWidth = allCards.outerWidth(true);
+                index = visible;
 
-                document.getElementById("videoPopup").style.display = "none";
-                document.getElementById("videoFrame").src = "";
-            }
-            /* Close when clicking outside video */
-            function outsideClick(e) {
-                const content = document.querySelector(".video-content");
-                if (!content.contains(e.target)) {
-                    closeVideo();
-                }
-            }
-        </script>
+                $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
 
-
-        <script>
-            document.getElementById('carSearch').addEventListener('keyup', function () {
-                let value = this.value.toLowerCase();
-                let cards = document.querySelectorAll('#carContainer .tf-car-service');
-
-                cards.forEach(function (card) {
-                    let title = card.querySelector('.title').innerText.toLowerCase();
-
-                    if (title.includes(value)) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            });
-        </script>
-
-        <script>
-            const itemsPerPage = 6; // kitne cards per page
-            const container = document.getElementById("carContainer");
-            const items = Array.from(container.getElementsByClassName("tf-car-service"));
-            const pagination = document.getElementById("pagination");
-
-            let currentPage = 1;
-
-            function showPage(page) {
-                currentPage = page;
-
-                let start = (page - 1) * itemsPerPage;
-                let end = start + itemsPerPage;
-
-                items.forEach((item, index) => {
-                    item.style.display = (index >= start && index < end) ? "block" : "none";
-                });
-
-                updatePagination();
-            }
-
-            function updatePagination() {
-                const pageCount = Math.ceil(items.length / itemsPerPage);
-                pagination.innerHTML = "";
-
-                for (let i = 1; i <= pageCount; i++) {
-                    let btn = document.createElement("button");
-                    btn.innerText = i;
-
-                    if (i === currentPage) {
-                        btn.classList.add("active");
-                    }
-
-                    btn.addEventListener("click", () => showPage(i));
-                    pagination.appendChild(btn);
-                }
-            }
-
-            // INIT
-            showPage(1);
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-
-                const tabs = document.querySelectorAll(".detail-listing .tab-btn");
-
-                tabs.forEach(btn => {
-                    btn.addEventListener("click", function () {
-
-                        const parent = this.closest(".product-tabs");
-
-                        // remove active from buttons
-                        parent.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-
-                        // hide all content
-                        parent.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-                        // activate clicked button
-                        this.classList.add("active");
-
-                        // show selected tab
-                        const target = this.getAttribute("data-tab");
-                        const content = parent.querySelector("#" + target);
-
-                        if (content) {
-                            content.classList.add("active");
-                        }
-
+                // NEXT
+                function nextSlide() {
+                    index++;
+                    $track.css({
+                        "transition": "0.5s",
+                        "transform": "translateX(-" + (index * cardWidth) + "px)"
                     });
-                });
 
-            });
-        </script>
+                    if (index >= allCards.length - visible) {
+                        setTimeout(function() {
+                            $track.css("transition", "none");
+                            index = visible;
+                            $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
+                        }, 500);
+                    }
+                }
 
+                // PREV
+                function prevSlide() {
+                    index--;
+                    $track.css({
+                        "transition": "0.5s",
+                        "transform": "translateX(-" + (index * cardWidth) + "px)"
+                    });
 
+                    if (index <= 0) {
+                        setTimeout(function() {
+                            $track.css("transition", "none");
+                            index = allCards.length - (visible * 2);
+                            $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
+                        }, 500);
+                    }
+                }
 
-        <script>
-            function scrollThumbs(direction) {
-                const slider = document.getElementById("thumbSlider");
-                const scrollAmount = 100;
+                // Remove old events and rebind
+                $(".next").off().on("click", nextSlide);
+                $(".prev").off().on("click", prevSlide);
 
-                slider.scrollBy({
-                    left: direction * scrollAmount,
-                    behavior: "smooth"
-                });
+                // Auto slide
+                clearInterval(window.autoSlide);
+                window.autoSlide = setInterval(nextSlide, 3000);
+
+                // Pause on hover
+                $(".feedback-slider").off().hover(
+                    function() {
+                        clearInterval(window.autoSlide);
+                    },
+                    function() {
+                        window.autoSlide = setInterval(nextSlide, 3000);
+                    }
+                );
             }
-        </script>
-    
+
+            // Init
+            initSlider();
+            // Resize handling
+            $(window).resize(function() {
+                let newVisible = getVisible();
+
+                if (newVisible !== visible) {
+                    visible = newVisible;
+                    initSlider(); // reinitialize slider
+                }
+            });
+        });
+    </script>
+    <script>
+        document.querySelector(".close-video").onclick = function() {
+            document.querySelector(".sticky-video").style.display = "none";
+        }
+    </script>
+    <script>
+        function openVideo() {
+            document.getElementById("videoPopup").style.display = "flex";
+            document.getElementById("videoFrame").src =
+                "https://www.youtube.com/embed/c0C5Vl1CNQs?autoplay=1";
+        }
+
+        function closeVideo(e) {
+            if (e) e.stopPropagation(); // prevent bubbling
+
+            document.getElementById("videoPopup").style.display = "none";
+            document.getElementById("videoFrame").src = "";
+        }
+        /* Close when clicking outside video */
+        function outsideClick(e) {
+            const content = document.querySelector(".video-content");
+            if (!content.contains(e.target)) {
+                closeVideo();
+            }
+        }
+    </script>
+
+
+    <script>
+        document.getElementById('carSearch').addEventListener('keyup', function() {
+            let value = this.value.toLowerCase();
+            let cards = document.querySelectorAll('#carContainer .tf-car-service');
+
+            cards.forEach(function(card) {
+                let title = card.querySelector('.title').innerText.toLowerCase();
+
+                if (title.includes(value)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+    <script>
+        const itemsPerPage = 6; // kitne cards per page
+        const container = document.getElementById("carContainer");
+        const items = Array.from(container.getElementsByClassName("tf-car-service"));
+        const pagination = document.getElementById("pagination");
+
+        let currentPage = 1;
+
+        function showPage(page) {
+            currentPage = page;
+
+            let start = (page - 1) * itemsPerPage;
+            let end = start + itemsPerPage;
+
+            items.forEach((item, index) => {
+                item.style.display = (index >= start && index < end) ? "block" : "none";
+            });
+
+            updatePagination();
+        }
+
+        function updatePagination() {
+            const pageCount = Math.ceil(items.length / itemsPerPage);
+            pagination.innerHTML = "";
+
+            for (let i = 1; i <= pageCount; i++) {
+                let btn = document.createElement("button");
+                btn.innerText = i;
+
+                if (i === currentPage) {
+                    btn.classList.add("active");
+                }
+
+                btn.addEventListener("click", () => showPage(i));
+                pagination.appendChild(btn);
+            }
+        }
+
+        // INIT
+        showPage(1);
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const tabs = document.querySelectorAll(".detail-listing .tab-btn");
+
+            tabs.forEach(btn => {
+                btn.addEventListener("click", function() {
+
+                    const parent = this.closest(".product-tabs");
+
+                    // remove active from buttons
+                    parent.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+
+                    // hide all content
+                    parent.querySelectorAll(".tab-content").forEach(c => c.classList.remove(
+                        "active"));
+
+                    // activate clicked button
+                    this.classList.add("active");
+
+                    // show selected tab
+                    const target = this.getAttribute("data-tab");
+                    const content = parent.querySelector("#" + target);
+
+                    if (content) {
+                        content.classList.add("active");
+                    }
+
+                });
+            });
+
+        });
+    </script>
+
+
+
+    <script>
+        function scrollThumbs(direction) {
+            const slider = document.getElementById("thumbSlider");
+            const scrollAmount = 100;
+
+            slider.scrollBy({
+                left: direction * scrollAmount,
+                behavior: "smooth"
+            });
+        }
+    </script>
 @endpush

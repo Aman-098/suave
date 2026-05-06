@@ -16,9 +16,9 @@
                                          <li><a href="{{ route('home') }}">Home</a></li>
                                          <li><a href="{{ route('fleets') }}">Our Fleet</a></li>
                                          <li><a href="{{ route('about') }}">About Us</a></li>
-                                         <li><a href="{{route('gallery')}}">Gallery</a></li>
+                                         <li><a href="{{ route('gallery') }}">Gallery</a></li>
                                          {{-- <li><a href="{{route('about')}}">Testimonial</a></li> --}}
-                                         <li><a href="{{route('blog')}}">Blog</a></li>
+                                         <li><a href="{{ route('blog') }}">Blog</a></li>
                                          <li><a href="{{ route('contact') }}">Contact us</a></li>
                                      </ul>
                                  </div>
@@ -29,7 +29,7 @@
                                      src="{{ asset('assets_front/img/call.svg') }}">
                                  +44 0808 168 0808</a>
                              <div class="flat-bt-top sc-btn-top ml--20 ">
-                                 <a class="btn-icon-list" href="#">
+                                 <a class="btn-icon-list" href="{{route('contact')}}">
                                      <span>Get Free Quote</span>
                                  </a>
                              </div>
@@ -57,9 +57,9 @@
                          <li><a href="{{ route('home') }}">Home</a></li>
                          <li><a href="{{ route('fleets') }}">Our Fleet</a></li>
                          <li><a href="{{ route('about') }}">About Us</a></li>
-                         <li><a href="{{route('gallery')}}">Gallery</a></li>
-                        {{-- <li><a href="{{route('about')}}">Testimonial</a></li> --}}
-                         <li><a href="{{route('blog')}}">Blog</a></li>
+                         <li><a href="{{ route('gallery') }}">Gallery</a></li>
+                         {{-- <li><a href="{{route('about')}}">Testimonial</a></li> --}}
+                         <li><a href="{{ route('blog') }}">Blog</a></li>
                          <li><a href="{{ route('contact') }}">Contact us</a></li>
                      </ul>
                  </div>

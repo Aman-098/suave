@@ -51,7 +51,7 @@
 
             <div class="row">
 
-                <!-- Total Order -->
+                <!-- Total booking -->
                 <div class="col-xl-3 col-sm-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body">
@@ -63,16 +63,36 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
-                                    <h2 class="mb-1">{{ $total_order ?? 0 }}</h2>
-                                    <p class="fs-13">Total Orders</p>
+                                    <h2 class="mb-1">{{ $total_bookings ?? 0 }}</h2>
+                                    <p class="fs-13">Total Bookings</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /Total Companies -->
+                <!-- /Total booking -->
 
-                <!-- Delivered Order -->
+                <!-- comfirmed booking -->
+                <div class="col-xl-3 col-sm-6 d-flex">
+                    <div class="card flex-fill">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="avatar avatar-md bg-dark mb-3">
+                                    <i class="ti ti-user-check fs-16"></i>
+                                </span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h2 class="mb-1">{{ $completed_bookings ?? 0 }}</h2>
+                                    <p class="fs-13">Confirmed Bookings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /comfirmed booking -->
+
+                <!-- comfirmed booking -->
                 <div class="col-xl-3 col-sm-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-body">
@@ -83,19 +103,19 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
-                                    <h2 class="mb-1">{{ $delivered_order ?? 0 }}</h2>
-                                    <p class="fs-13">Delivered Orders</p>
+                                    <h2 class="mb-1">{{ $cancelled_bookings ?? 0 }}</h2>
+                                    <p class="fs-13">Cancelled Bookings</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /Delivered Order -->
+                <!-- /comfirmed booking -->
             </div>
 
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-                    <h5>Orders</h5>
+                    <h5>Booking Enquiry</h5>
 
                 </div>
                 <div class="card-body p-0">
@@ -105,50 +125,47 @@
                                 <tr>
 
                                     <th>S.No</th>
-                                    <th>Order ID</th>
+                                    <th>Fleet Name</th>
                                     <th>Name</th>
                                     <th>Phone</th>
-                                    <th>Order Date</th>
-                                    <th>Payment Status</th>
+                                    <th>Email</th>
+                                    <th>Pickup Date</th>
+                                    <th>Return Date</th>
+                                    <th>Message</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($orders as $index => $item)
+                                @foreach ($bookings as $index => $item)
                                     <tr>
 
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $item->order_number }}</td>
+                                        <td>{{ $item->fleet_name }}</td>
 
                                         <td>{{ ucfirst($item->name) }}</td>
                                         <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->email }}</td>
                                         <td>
-                                            {{ \Carbon\Carbon::parse($item['created_at'])->format('d M Y') }}
+                                            {{ \Carbon\Carbon::parse($item['pickup_date'])->format('d M Y') }}
                                         </td>
-                                        <td>
-                                            @if ($item->payment_status == 'paid')
-                                                <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Paid
-                                                </span>
-                                            @elseif($item->payment_status == 'pending')
-                                                <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Pending
-                                                </span>
-                                            @endif
+                                         <td>
+                                            {{ \Carbon\Carbon::parse($item['return_date'])->format('d M Y') }}
                                         </td>
+                                        <td>{{ $item->message ?? '-' }}</td>
+                                       
                                         <td>
                                             @if ($item->status == 'confirmed')
-                                                <span class="badge badge-primary d-inline-flex align-items-center badge-xs">
+                                                <span class="badge badge-success d-inline-flex align-items-center badge-xs">
                                                     <i class="ti ti-point-filled me-1"></i>Confirmed
                                                 </span>
-                                            @elseif($item->status == 'processing')
+                                            @elseif($item->status == 'pending')
                                                 <span class="badge badge-warning d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Processing
+                                                    <i class="ti ti-point-filled me-1"></i>Pending
                                                 </span>
-                                            @elseif($item->status == 'delivered')
-                                                <span class="badge badge-success d-inline-flex align-items-center badge-xs">
-                                                    <i class="ti ti-point-filled me-1"></i>Delivered
+                                            @elseif($item->status == 'cancelled')
+                                                <span class="badge badge-danger d-inline-flex align-items-center badge-xs">
+                                                    <i class="ti ti-point-filled me-1"></i>Cancelled
                                                 </span>
                                             @endif
                                         </td>
@@ -181,7 +198,7 @@
                                         </td>
 
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
 

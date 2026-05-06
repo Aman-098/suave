@@ -16,26 +16,26 @@
         <div class="themesflat-container">
             <div class="slider-v3 t-al-center">
                 <span class="wow fadeInUp" data-wow-delay="100ms" data-wow-duration="2000ms">
-                    Hire A <span class="text-golden">Supercar</span>
+                    Suave <span class="text-golden">Executive Travel</span>
                 </span>
 
                 <h1 class="wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                    Turn Every Drive Into An Experience.
+                    Prestige. Power. Presence.<br>That’s Suave.
                 </h1>
 
                 <p class="wow fadeInUp" data-wow-delay="600ms" data-wow-duration="2000ms">
-                    Drive Ferrari, Lamborghini & more across the UK —
-                    perfect for weekends, weddings & special occasions.
+                    Welcome to Suave Executive Travel — where meticulous attention meets unmatched luxury. From heart‑racing
+                    supercars to elegant executive limousines, we deliver exceptional journeys tailored to your taste.
                 </p>
 
                 <div class="group-button wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
                     <div class="btn-main">
-                        <a href="#" class="button_main_inner">
+                        <a href="{{ route('contact') }}" class="button_main_inner">
                             <span>Book Now </span>
                         </a>
                     </div>
                     <div class="btn-main">
-                        <a href="#" class="button_main_inner-new">
+                        <a href="{{ route('fleets') }}" class="button_main_inner-new">
                             <span>View Fleet</span>
                         </a>
                     </div>
@@ -85,33 +85,30 @@
                 <div class="header-section-main mb-46">
                     <h2 class="title-section-main wow fadeInUp">Explore all cars</h2>
                     <div class="btn-read-more wow fadeInUp">
-                        <a class="more-link" href="#">
+                        <a class="more-link" href="{{ route('fleets') }}">
                             <span>More cars</span>
                             <i class="icon-arrow-up-right2"></i>
                         </a>
                     </div>
                 </div>
                 <div class="explore-car">
-                    <a href="#" class="explore-car-item">
+                    <a href="{{ route('fleets') }}" class="explore-car-item">
                         <img src="assets_front/img/car2.jpg" alt="">
                         <h5 class="title-explore">Sports Cars</h5>
                     </a>
-                    <a href="#" class="explore-car-item">
+                    <a href="{{ route('fleets') }}" class="explore-car-item">
                         <img src="assets_front/img/car1.jpg" alt="">
                         <h5 class="title-explore">Luxury Cars</h5>
                     </a>
-                    <a href="#" class="explore-car-item">
+                    <a href="{{ route('fleets') }}" class="explore-car-item">
                         <img src="assets_front/img/car3.jpg" alt="">
                         <h5 class="title-explore">Wedding Hire</h5>
                     </a>
-                    <a href="#" class="explore-car-item">
+                    <a href="{{ route('fleets') }}" class="explore-car-item">
                         <img src="assets_front/img/car4.jpg" alt="">
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
-                    <!-- <a href="#" class="explore-car-item">
-                                                                                        <img src="assets_front/img/car5.jpg">
-                                                                                        <h5 class="title-explore">Luxury</h5>
-                                                                                    </a> -->
+                    
                 </div>
                 <div class="cen-btn"><a href="#" class="review-btn">From £599/day | Free Delivery
                         Available</a>
@@ -175,7 +172,7 @@
                         long term Hire Vehicles or PCO licensed vehicles such as Mercedes E class to Toyota
                         Prius.
                     </p>
-                    <a class="btn-icon-list" href="#">
+                    <a class="btn-icon-list" href="{{ route('fleets') }}">
                         <span>Explore Our Cars</span>
                     </a>
                 </div>
@@ -237,8 +234,8 @@
 
                     @foreach ($fleets as $categoryName => $products)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
-                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}"
-                            id="tab-{{ $categoryName }}" role="tabpanel">
+                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $categoryName }}"
+                            role="tabpanel">
                             <div class="car-list-item">
                                 @foreach ($products as $item)
                                     <div class="tf-car-service">

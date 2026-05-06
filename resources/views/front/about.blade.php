@@ -27,21 +27,11 @@
                         </div>
                     </div>
                     <div class="about-left">
-                        <h2>About Suave Executive Travel</h2>
+                        <h2>About Us</h2>
 
-                        <p>At Suave Executive Travel, we specialise in delivering premium luxury car hire and
-                            executive
-                            chauffeur services across the United Kingdom. Since our establishment in 2020, our
-                            mission
-                            has been simple — to provide exceptional travel experiences that combine style,
-                            comfort,
-                            reliability, and professionalism.</p>
+                        <p>Suave Executive Travel was founded by Jagmeet Singh and Balmeet Singh Gulati, two entrepreneurs with a passion for luxury vehicles and delivering exceptional customer experiences. Their vision was to build a modern luxury car hire brand that combines world-class vehicles with reliable, personalised service.</p>
 
-                        <p>Whether you require a chauffeur-driven executive vehicle for business travel, a
-                            luxury car
-                            for a special occasion, or a high-performance supercar for a memorable experience,
-                            our
-                            carefully curated fleet ensures every journey exceeds expectations.</p>
+                        <p>Whether you’re hiring a vehicle for a special occasion, business travel, a weekend experience or a luxury event, our goal is to provide a seamless and unforgettable service. At Suave Executive Travel, every journey is designed to reflect sophistication, prestige and attention to detail.</p>
                     </div>
                 </div>
             </div>
@@ -52,13 +42,8 @@
         <section class="section dark journey-section">
             <div class="container">
                 <h2>Our Journey</h2>
-                <p>Suave Executive Travel was founded with a vision to redefine the standards of executive
-                    travel services in the UK. From day one, we have focused on customer satisfaction, attention
-                    to detail, and delivering personalised luxury transport solutions tailored to individual
-                    client needs.</p>
-                <p>Over the years, we have built strong relationships with corporate clients, private
-                    travellers, event planners, and luxury enthusiasts who trust us for reliable and stylish
-                    transportation.</p>
+                <p></p>
+                <p>Since launching the company, the founders have grown Suave Executive Travel into a trusted name within the luxury travel space. The brand is frequently chosen for celebrity appearances, music video shoots, luxury events and high-profile content productions, as well as by business owners and professionals seeking premium vehicles for important occasions.</p>
             </div>
         </section>
 
@@ -76,7 +61,7 @@
                     <li>Long-term vehicle hire solutions</li>
                 </ul>
                 <p class="extra">
-                    Our fleet includes prestigious brands such as Lamborghini, Rolls-Royce, Mercedes-Benz, Audi,
+                    Our fleet includes prestigious brands such as Lamborghini, Rolls-Royce,BMW, Audi,
                     Bentley and more, ensuring every client enjoys a premium experience tailored to their
                     expectations.
                 </p>
@@ -136,7 +121,7 @@
         </section>
 
         <!-- FOUNDER -->
-        <section class="section-founder dark">
+        {{-- <section class="section-founder dark">
             <div class="container">
                 <h2>Founder / Leadership</h2>
 
@@ -146,18 +131,19 @@
                     <li>Industry Background</li>
                 </ul>
             </div>
-        </section>
+        </section> --}}
 
         <!-- TIMELINE -->
         <section class="section-timeline">
             <div class="container">
                 <h2>Years of Experience</h2>
                 <div class="timeline">
-                    <div class="timeline-item"><span>2020</span> Company Started</div>
-                    <div class="timeline-item"><span>2021</span> Fleet Expansion</div>
-                    <div class="timeline-item"><span>2022</span> Corporate Clients Onboard</div>
-                    <div class="timeline-item"><span>2023</span> Nationwide Coverage</div>
-                    <div class="timeline-item"><span>2024</span> Supercar Fleet Expansion</div>
+                    <div class="timeline-item"><span>2022</span> Company Founded <br>
+                    </div>
+                    <div class="timeline-item"><span>2023</span> Brand Expansion</div>
+                    <div class="timeline-item"><span>2024</span> Fleet Growth</div>
+                    <div class="timeline-item"><span>Today</span> Premium Luxury Experiences</div>
+                    
                 </div>
             </div>
         </section>
@@ -215,7 +201,7 @@
                 <h2>Serving Clients Across the United Kingdom</h2>
                 <p>London · Manchester · Birmingham · Leeds · Nationwide travel</p>
 
-                <a href="#" class="review-btn">Explore Our Cars →</a>
+                <a href="{{route('fleets')}}" class="review-btn">Explore Our Cars →</a>
             </div>
         </section>
 
@@ -257,7 +243,7 @@
         </section>
 
         <!-- AWARDS -->
-        <section class="section-industry">
+        {{-- <section class="section-industry">
             <div class="container">
                 <h2>Industry Recognition</h2>
 
@@ -268,7 +254,7 @@
                 </ul>
 
             </div>
-        </section>
+        </section> --}}
     </div>
 
 

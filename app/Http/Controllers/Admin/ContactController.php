@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Booking;
 
 class ContactController extends Controller
 {
@@ -15,4 +16,6 @@ class ContactController extends Controller
         return view('admin.tickets',compact('tickets'));
         
     }
+
+    
 }

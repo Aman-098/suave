@@ -87,19 +87,23 @@
 <div class="footer-section">
     <div class="footer-container">
         <div class="footer-col">
-            <img src="{{asset('assets_front/images/logo/logo2.png')}}" alt="Logo">
+            <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
             <div class="footer-add-contact">
                 <p class="s-icon">Call: <a href="tel:+4408081680808">+44 0808 168 0808</a></p>
                 <p class="s-icon">Email: <a
                         href="mailto:info@suaveexecutivetravel.co.uk">info@suaveexecutivetravel.co.uk</a></p>
                 <div class="social-icons">
                     <ul class="footer-social-links">
-                        <li><a href="#"><img src="{{asset('assets_front/img/icons/facebook.svg')}}" alt=""></a>
+                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
+                                    alt=""></a>
                         </li>
-                        <li><a href="#"><img src="{{asset('assets_front/img/icons/instagram.svg')}}" alt=""></a></li>
-                        <li><a href="#"><img src="{{asset('assets_front/img/icons/linkedin.svg')}}" alt=""></a>
+                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/instagram.svg') }}"
+                                    alt=""></a></li>
+                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/linkedin.svg') }}"
+                                    alt=""></a>
                         </li>
-                        <li><a href="#"><img src="{{asset('assets_front/img/icons/youtube.svg')}}" alt=""></a>
+                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/youtube.svg') }}"
+                                    alt=""></a>
                         </li>
                     </ul>
                 </div>
@@ -108,12 +112,12 @@
             <div class="reviews">
                 <div class="review-box">
                     <a href="#">
-                        <img src="{{asset('assets_front/img/logo/google-pro.png')}}" alt="Google"><br>
+                        <img src="{{ asset('assets_front/img/logo/google-pro.png') }}" alt="Google"><br>
                         ⭐ 4.8 Google Reviews</a>
                 </div>
                 <div class="review-box">
                     <a href="#">
-                        <img src="{{asset('assets_front/img/logo/trustpilot-pro.png')}}" alt="Trustpilot"><br>
+                        <img src="{{ asset('assets_front/img/logo/trustpilot-pro.png') }}" alt="Trustpilot"><br>
                         ⭐ 4.7 Trustpilot</a>
                 </div>
             </div>
@@ -121,12 +125,11 @@
         <div class="footer-col nav-col-link">
             <h4>Navigation</h4>
             <ul>
-                <li><a href="#">Prices</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Reviews</a></li>
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('about') }}">About US</a></li>
+                <li><a href="{{ route('blog') }}">Blog</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+
             </ul>
         </div>
         <div class="footer-col card">
@@ -136,15 +139,28 @@
                 width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-            <p class="map-address text-white">Floor 1, Office no. 7, Second, 3 Uxbridge Rd, Hayes UB4 0JN, United Kingdom
+            <p class="map-address text-white">Floor 1, Office no. 7, Second, 3 Uxbridge Rd, Hayes UB4 0JN, United
+                Kingdom
             </p>
         </div>
         <div class="footer-col card">
             <h4>Contact us</h4>
-            <input type="text" placeholder="Name*" />
-            <input type="text" placeholder="+91 99999 99999" />
-            <textarea placeholder="Enter message"></textarea>
-            <button>Send a message</button>
+            <form id="f_contact_form">
+                @csrf
+                <input type="text" id="f_name" name="name" placeholder="Name*" />
+                <span class="text-danger" id="fnameError"></span>
+
+                <input type="email" id="f_email" name="email" placeholder="example@gmail.com" />
+                <span class="text-danger" id="femailError"></span>
+
+                <input type="text" id="f_phone" name="phone" placeholder="+91 99999 99999" />
+                <span class="text-danger" id="fphoneError"></span>
+
+                <textarea id="f_message" name="message" placeholder="Enter message"></textarea>
+                <span class="text-danger" id="fmessageError"></span>
+
+                <button type="submit">Send a message</button>
+            </form>
         </div>
     </div>
 </div>
@@ -170,7 +186,7 @@
 
 <div class="sticky-video">
     <video controls autoplay muted loop>
-        <source src="{{asset('assets_front/5309381.mp4')}}" type="video/mp4">
+        <source src="{{ asset('assets_front/5309381.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <span class="close-video">✕</span>
@@ -197,6 +213,83 @@
 <script src="{{ asset('assets_front/js/magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/main.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        //alert('hello world');
+
+        $('#f_contact_form').submit(function(e) {
+            e.preventDefault();
+
+            // Clear old errors
+            $('.text-danger').text('');
+
+            var name = $('#f_name').val().trim();
+            var phone = $('#f_phone').val().trim();
+            var email = $('#f_email').val().trim();
+            var message = $('#f_message').val().trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Name validation
+            if (name === '') {
+                showError('#fnameError', 'Name is required.');
+                return false;
+            }
+
+            // Phone validation
+            if (phone === '') {
+                showError('#fphoneError', 'Phone is required.');
+                return false;
+            }
+
+            // Email validation
+            if (email === '') {
+                showError('#femailError', 'Email is required.');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showError('#femailError', 'Enter a valid email.');
+                return false;
+            }
+
+            // Message validation
+            if (message === '') {
+                showError('#fmessageError', 'Message is required.');
+                return false;
+            }
+
+            var formdata = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('contact.save') }}",
+                type: 'POST',
+                data: formdata,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === true) {
+                        notyf.success(response.message);
+                    } else {
+                        notyf.error(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        notyf.error(xhr.responseJSON.message);
+                    } else {
+                        notyf.error('Something went wrong');
+                    }
+                }
+            });
+
+            function showError(element, message) {
+                $(element).text(message).show();
+                setTimeout(() => {
+                    $(element).fadeOut();
+                }, 3000);
+            }
+        });
+    });
+</script>
 
 <script>
     const notyf = new Notyf({

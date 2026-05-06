@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\Product;
+use App\Models\Booking;
+use App\Mail\AdminNewOrderMail;
 
 class FleetController extends Controller
 {
@@ -31,5 +33,46 @@ class FleetController extends Controller
 
         // dd($fleet->category);
         return view('front.fleet-detail',compact('fleet','related_fleet'));
+    }
+
+    public function save_booking(Request $request){
+        if($request->isMethod('post')){
+
+            $validated = $request->validate([
+                'name'        => 'required|string|max:255',
+                'email'       => 'required|email:rfc,dns',
+                'phone'       => 'required|string|max:20',
+                'fleet_name'  => 'required|string|max:255',
+
+                'pickup_date' => 'required|date',
+                'return_date' => 'required|date|after_or_equal:pickup_date',
+
+                'message'     => 'nullable|string'
+            ]);
+
+
+            $booking = Booking::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'],
+                'fleet_name' => $validated['fleet_name'],
+                'pickup_date' => $validated['pickup_date'],
+                'return_date' => $validated['return_date'],
+                'message' => $validated['message'] ?? null,
+            ]);
+
+            if($booking){
+
+                // Send Email
+                Mail::to(config('mail.admin_email'))->send(new AdminNewOrderMail($validated));
+                
+
+                return response()->json(['status'=>true,'message'=>'Thank you for submission! We will contact you soon!']);
+            }else{
+                return response()->json(['status'=>false,'message'=>'Failed to submit booking request ']);
+            }
+
+        }
+
     }
 }

@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets_front/css/nice-select.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets_front/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets_front/css/custom.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 </head>
 
 <body class="body counter-scroll">

@@ -38,10 +38,10 @@ class ProductController extends Controller
                 'rating'=>'nullable',
 
                 // 👉 image validation add kar
-                'image' => 'required|image|mimes:jpg,jpeg,png',
+                'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp,svg',
                 'video' => 'nullable|mimes:mp4,webm', // 10MB
                 'gallery_image' => 'nullable|array',
-                'gallery_image.*' => 'image|mimes:jpg,jpeg,png'
+                'gallery_image.*' => 'image|mimes:jpg,jpeg,png,gif,webp,svg'
                 
             ]); 
 
@@ -134,7 +134,7 @@ class ProductController extends Controller
                 'specification'=>'nullable',
 
                 // multiple image validation
-                'image' => 'nullable|image|mimes:jpg,jpeg,png',
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp,svg',
                 'video' => 'nullable|mimes:mp4,webm', // 10MB
                 
             ]);

@@ -58,6 +58,7 @@
                     <h3>Send Message</h3>
 
                     <form id="contact_form">
+                        @csrf
                         {{-- <div class="form-row">
                             
                             
@@ -153,6 +154,7 @@
                     success: function(response) {
                         if (response.status === true) {
                             notyf.success(response.message);
+                             $('#contact_form')[0].reset();
                         } else {
                             notyf.error(response.message);
                         }

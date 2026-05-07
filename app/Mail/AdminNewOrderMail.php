@@ -17,11 +17,11 @@ class AdminNewOrderMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $order;
-    public function __construct($order)
+    public $booking;
+    public function __construct($booking)
     {
         //
-        $this->order = $order;
+        $this->booking = $booking;
     }
 
     /**

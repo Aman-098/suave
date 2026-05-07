@@ -13,9 +13,9 @@
             <div class="page-title t-al-center">
                 <h1 class="main-title">Our Fleet</h1>
                 <!-- <ul class="breadcrum">
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="#">About us</a></li>
-                                        </ul> -->
+                                                                                        <li><a href="/">Home</a></li>
+                                                                                        <li><a href="#">About us</a></li>
+                                                                                    </ul> -->
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
 
                     <div class="price">
                         {{-- <span class="day">₹ 4,320 / Day</span> --}}
-                        <span class="hour">₤ {{ number_format($fleet->price, 2) }} / Hour</span>
+                        <span class="hour">₤ {{ number_format($fleet->price, 2) }} / Day</span>
                     </div>
 
 
@@ -108,17 +108,13 @@
                         {!! $fleet->description !!}
                     </p>
 
-                    {{-- <!-- FEATURES -->
-                    <ul class="highlights">
-                        <li>✔ Chauffeur Included</li>
-                        <li>✔ Premium Leather Interior</li>
-                        <li>✔ Starlight Ceiling</li>
-                        <li>✔ Smooth Silent Drive</li>
-                    </ul> --}}
-
                     <!-- ACTION -->
                     <div class="actions">
-                        <a href="#" class="btn primary">Book Now</a>
+                        {{-- <a href="javascript:void(0);" class="btn primary" id="openModal">Book Now</a> --}}
+                        <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
+                            data-bs-target="#bookingModal">
+                            Book Now
+                        </a>
                         <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
                         <a href="tel:+919988998899" class="btn outline">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
@@ -130,9 +126,9 @@
                     </div>
 
                     <!-- <div class="extra">
-                      <p>✔ Instant Confirmation</p>
-                      <p>✔ Free Cancellation (24 hrs)</p>
-                    </div> -->
+                                                                  <p>✔ Instant Confirmation</p>
+                                                                  <p>✔ Free Cancellation (24 hrs)</p>
+                                                                </div> -->
 
                 </div>
 
@@ -257,9 +253,236 @@
         </div>
     </section>
 
+    {{-- Booking Modal --}}
+
+    {{-- <div class="booking-modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="car-title">Audi R8</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name <span>*</span></label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                        <small class="error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span>*</span></label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                        <small class="error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span>*</span></label>
+                        <input type="text" id="phone" placeholder="Enter your phone number">
+                        <small class="error"></small>
+                    </div>
+                </div>
+                <div class="form-grid two-column">
+                    <div class="form-group">
+                        <label>Pickup Date <span>*</span></label>
+                        <input type="date" id="pickup">
+                        <small class="error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Return Date <span>*</span></label>
+                        <input type="date" id="return">
+                        <small class="error"></small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea placeholder="Any special request?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Submit Booking Request
+                </button>
+            </form>
+        </div>
+    </div> --}}
+
+    <div class="modal fade booking-modal" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+
+                <span class="close-modal" data-bs-dismiss="modal">&times;</span>
+
+                <div class="modal-body">
+                    <h2 class="car-title" id="fleetTitle"></h2>
+
+                    <form class="booking-form" id="bookingForm">
+                        @csrf
+                        <input type="hidden" id="fleet_name" name="fleet_name">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name <span>*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Enter your full name">
+                                <span class="text-danger" id="nameError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Address <span>*</span></label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email">
+                                <span class="text-danger" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number <span>*</span></label>
+                                <input type="text" id="phone" name="phone"
+                                    placeholder="Enter your phone number">
+                                <span class="text-danger" id="phoneError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-grid two-column">
+                            <div class="form-group">
+                                <label>Pickup Date <span>*</span></label>
+                                <input type="date" id="pickup" name="pickup_date">
+                                <span class="text-danger" id="pickupError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Return Date <span>*</span></label>
+                                <input type="date" id="return" name="return_date">
+                                <span class="text-danger" id="returnError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Additional Notes</label>
+                            <textarea id="message" name="message" placeholder="Any special request?"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Submit Booking Request
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- Booking Modal --}}
+
 @endsection
 
 @push('scripts')
+    <script>
+        // var notyf = new Notyf({
+        //     position: {
+        //         x: 'right', // left / center / right
+        //         y: 'top' // top / bottom
+        //     }
+        // });
+
+        $(document).on('show.bs.modal', '#bookingModal', function(event) {
+            var button = $(event.relatedTarget); // clicked button
+            var fleetName = button.data('fleet'); // data-fleet value
+
+            // hidden input me set
+            $('#fleet_name').val(fleetName);
+
+            // title me show
+            $('#fleetTitle').text(fleetName);
+        });
+
+
+        $('#bookingForm').submit(function(e) {
+            e.preventDefault();
+
+            $('.text-danger').text('');
+
+            var name = $('#name').val().trim();
+            var phone = $('#phone').val().trim();
+            var email = $('#email').val().trim();
+            var pickup = $('#pickup').val();
+            var returnDate = $('#return').val();
+            var message = $('#message').val().trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Name
+            if (name === '') {
+                showError('#nameError', 'Name is required.');
+                return false;
+            }
+
+            // Phone
+            if (phone === '') {
+                showError('#phoneError', 'Phone is required.');
+                return false;
+            }
+
+            // Email
+            if (email === '') {
+                showError('#emailError', 'Email is required.');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showError('#emailError', 'Enter a valid email.');
+                return false;
+            }
+
+            // Pickup
+            if (pickup === '') {
+                showError('#pickupError', 'Pickup date is required.');
+                return false;
+            }
+
+            // Return
+            if (returnDate === '') {
+                showError('#returnError', 'Return date is required.');
+                return false;
+            }
+
+            // Date logic
+            if (returnDate < pickup) {
+                showError('#returnError', 'Return date must be after pickup date.');
+                return false;
+            }
+
+            var formdata = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('booking.save') }}",
+                type: 'POST',
+                data: formdata,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status == true) {
+                        // alert(response.message)
+                        notyf.success(response.message);
+
+                        // setTimeout(() => {
+                            $('#bookingForm')[0].reset();
+                            $('#bookingModal').modal('hide');
+                        // }, 1200);
+                    } else {
+                        notyf.error(response.message);
+                    }
+
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.errors) {
+                        $.each(xhr.responseJSON.errors, function(key, value) {
+                            $('#' + key + 'Error').text(value[0]);
+                        });
+                    } else {
+                        notyf.error('Something went wrong');
+                    }
+                }
+            });
+
+            function showError(element, message) {
+                $(element).text(message).show();
+                setTimeout(() => {
+                    $(element).fadeOut();
+                }, 3000);
+            }
+        });
+    </script>
+
+
     <script>
         function changeImg(el) {
             document.getElementById("mainCarImg").src = el.src;

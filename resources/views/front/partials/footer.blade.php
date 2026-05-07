@@ -213,6 +213,16 @@
 <script src="{{ asset('assets_front/js/magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+<script>
+    var notyf = new Notyf({
+        position: {
+            x: 'right', // left / center / right
+            y: 'top' // top / bottom
+        }
+    });
+</script>
 
 <script>
     $(document).ready(function() {
@@ -268,6 +278,7 @@
                 success: function(response) {
                     if (response.status === true) {
                         notyf.success(response.message);
+                        $('#f_contact_form')[0].reset();
                     } else {
                         notyf.error(response.message);
                     }
@@ -291,14 +302,7 @@
     });
 </script>
 
-<script>
-    const notyf = new Notyf({
-        position: {
-            x: 'right', // left / center / right
-            y: 'top' // top / bottom
-        }
-    });
-</script>
+
 
 @stack('scripts')
 

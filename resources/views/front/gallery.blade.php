@@ -29,50 +29,50 @@
             <div class="gallery-grid">
 
                 <div class="gallery-item">
-                    <img src="assets/img/blog-1.webp" alt="">
+                    <img src="assets_front/img/blog-1.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/blog-2.webp" alt="">
+                    <img src="assets_front/img/blog-2.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/blog-3.webp" alt="">
+                    <img src="assets_front/img/blog-3.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/blog-4.webp" alt="">
+                    <img src="assets_front/img/blog-4.webp" alt="">
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/car1.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets/img/car1.jpg" alt="">
+                    <img src="assets_front/img/car1.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car2.webp" alt="">
+                    <img src="assets_front/img/car1.jpg" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car2.jpg" alt="">
+                    <img src="assets_front/img/car2.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car3.webp" alt="">
+                    <img src="assets_front/img/car2.jpg" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car3.jpg" alt="">
+                    <img src="assets_front/img/car3.webp" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car4.webp" alt="">
+                    <img src="assets_front/img/car3.jpg" alt="">
                 </div>
 
                 <div class="gallery-item">
-                    <img src="assets/img/car4.jpg" alt="">
+                    <img src="assets_front/img/car4.webp" alt="">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="assets_front/img/car4.jpg" alt="">
                 </div>
             </div>
         </div>

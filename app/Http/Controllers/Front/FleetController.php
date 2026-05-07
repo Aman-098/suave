@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\models\Product;
 use App\Models\Booking;
 use App\Mail\AdminNewOrderMail;
+use Illuminate\Support\Facades\Mail;
 
 class FleetController extends Controller
 {
@@ -40,6 +41,7 @@ class FleetController extends Controller
 
             $validated = $request->validate([
                 'name'        => 'required|string|max:255',
+                'fleet_name'  => 'required|string|max:255',
                 'email'       => 'required|email:rfc,dns',
                 'phone'       => 'required|string|max:20',
                 'fleet_name'  => 'required|string|max:255',
@@ -64,10 +66,10 @@ class FleetController extends Controller
             if($booking){
 
                 // Send Email
-                Mail::to(config('mail.admin_email'))->send(new AdminNewOrderMail($validated));
+                Mail::to(config('mail.admin_email'))->send(new AdminNewOrderMail($booking));
                 
 
-                return response()->json(['status'=>true,'message'=>'Thank you for submission! We will contact you soon!']);
+                return response()->json(['status'=>true,'message'=>'Thank you for Booking! We will contact you soon!']);
             }else{
                 return response()->json(['status'=>false,'message'=>'Failed to submit booking request ']);
             }

@@ -111,7 +111,7 @@
                                            
                                         </div>
                                         <div class="mt-5 pb-4 text-center">
-                                            <p class="mb-0 text-gray-9">Copyright &copy; {{Date('Y')}} - Ravair Solar.</p>
+                                            <p class="mb-0 text-gray-9">Copyright &copy; {{Date('Y')}} - Suave Executive Travel.</p>
                                         </div>
                                     </div>
                                 </form>

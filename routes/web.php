@@ -47,11 +47,6 @@ Route::middleware(['auth:admin','admin'])->group(function () {
     Route::get('sysadmin/dashboard',[AdminDashboard::class,'index'])->name('admin.dashboard');
     Route::match(['get','post'],'/edit-order/{id}',[AdminDashboard::class,'edit_order'])->name('edit.order');
 
-    Route::get('sysadmin/sliders',[AdminSlider::class,'index'])->name('admin.sliders');
-    Route::post('/sliders/add',[AdminSlider::class,'add_slider'])->name('admin.slider-add');
-    Route::match(['get','post'],'/edit-slider/{id}',[AdminSlider::class,'edit_slider'])->name('edit.slider');
-    Route::delete('delete-slider/{id}',[AdminSlider::class,'delete_slider'])->name('slider.delete');
-
     Route::get('sysadmin/categories',[Category::class,'index'])->name('admin.cat');
     Route::post('/categories/add',[Category::class,'add_category'])->name('admin.cat-add');
     Route::match(['get','post'],'/edit-category/{id}',[Category::class,'edit_category'])->name('edit.category');
@@ -62,7 +57,6 @@ Route::middleware(['auth:admin','admin'])->group(function () {
     Route::match(['get','post'],'/edit-fleet/{id}',[AdminProduct::class,'edit_product'])->name('edit.product');
     Route::delete('delete-fleet/{id}',[AdminProduct::class,'delete_product'])->name('product.delete');
 
-    Route::get('sysadmin/customers',[AdminDashboard::class,'customers'])->name('admin.customers');
 
     Route::get('sysadmin/manage-blogs',[AdminBlog::class,'index'])->name('admin.blogs');
     Route::post('/blog/add',[AdminBlog::class,'add_blog'])->name('admin.blog-add');
@@ -76,9 +70,7 @@ Route::middleware(['auth:admin','admin'])->group(function () {
     Route::match(['get','post'],'/edit-gallery/{id}',[AdminCms::class,'edit_video'])->name('edit.video');
     Route::delete('delete-gallery/{id}',[AdminCms::class,'delete_video'])->name('video.delete');
 
-    Route::get('sysadmin/manage-cms',[AdminCms::class,'index'])->name('admin.cms');
-    Route::post('/cms/add',[AdminCms::class,'add_cms'])->name('admin.cms-add');
-    Route::match(['get','post'],'/edit-cms/{id}',[AdminCms::class,'edit_cms'])->name('edit.cms');
+
 
 
 });

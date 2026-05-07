@@ -1,30 +1,27 @@
-<h2>Thank you for your order, {{ $order->name }} 🎉</h2>
+<h2>Thank you for your Booking, {{ $booking->name }} 🎉</h2>
 
-<p>Your order has been successfully placed.</p>
+<p>Your Booking has been confimed.</p>
 
-<h3>Order Details</h3>
-<table style="width:100%; border-collapse: collapse; text-align:left; margin-bottom: 20px;">
-    <thead>
-        <tr style="background-color:#f2f2f2;">
-            <th style="border: 1px solid #ddd; padding: 8px;">Product Name</th>
-            <th style="border: 1px solid #ddd; padding: 8px;">Qty</th>
-            <th style="border: 1px solid #ddd; padding: 8px;">Product Price (£)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($order->items as $item)
-        <tr>
-            <td style="border: 1px solid #ddd; padding: 8px;">{{ $item->product_name }}</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">{{ $item->qty }}</td>
-            <td style="border: 1px solid #ddd; padding: 8px;">£{{ $item->price }}</td>
-        </tr>
-        @endforeach
-    </tbody>
+<h3>Booking Details</h3>
+
+<table style="width:100%; border-collapse: collapse; text-align:left;">
+    <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Fleet Name</strong></td>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{ $booking->fleet_name }}</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Pickup Date</strong></td>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{ \Carbon\Carbon::parse($booking->pickup_date)->format('j F Y') }}</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Return Date</strong></td>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{ \Carbon\Carbon::parse($booking->return_date)->format('j F Y') }}</td>
+    </tr>
+
+    <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Message</strong></td>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{ $booking->message ?? '-' }}</td>
+    </tr>
 </table>
 
-<p><strong>Subtotal:</strong> £{{ $order->subtotal }}</p>
-<p><strong>Vat:</strong> £{{ $order->vat }}</p>
-<p><strong>Shipping:</strong> £{{ $order->shipping }}</p>
-<p><strong>Total:</strong> £{{ $order->total }}</p>
 
-<p>We’ll contact you soon for delivery. 🚚</p>

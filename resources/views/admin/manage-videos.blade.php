@@ -1,21 +1,7 @@
 @extends('admin.common.layout')
 
-@section('title', 'Manage Videos')
+@section('title', 'Manage Gllery')
 
-<style>
-    .video-wrapper {
-    width: 250px;        /* table ke hisaab se adjust kar */
-    height: 150px;
-    overflow: hidden;
-}
-
-.video-wrapper iframe,
-.video-wrapper video {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-</style>
 
 @section('content')
 
@@ -26,7 +12,7 @@
             <!-- Breadcrumb -->
             <div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
                 <div class="my-auto mb-2">
-                    <h2 class="mb-1">Manage Videos</h2>
+                    <h2 class="mb-1">Manage Gallery</h2>
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
@@ -44,7 +30,7 @@
                     <div class="mb-2">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#add_cat"
                             class="btn btn-primary d-flex align-items-center"><i class="ti ti-circle-plus me-2"></i>Add
-                            Video</a>
+                            Gallery</a>
                     </div>
 
                 </div>
@@ -63,7 +49,7 @@
                                 </span>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Total Videos</p>
-                                    <h4>{{ $total_video ?? 0 }}</h4>
+                                    <h4>{{ $total_gallery ?? 0 }}</h4>
 
                                 </div>
                             </div>
@@ -83,7 +69,7 @@
                                 </span>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Active Videos</p>
-                                    <h4>{{ $active_video ?? 0 }}</h4>
+                                    <h4>{{ $active_gallery ?? 0 }}</h4>
                                 </div>
                             </div>
                             <div id="active-chart"></div>
@@ -102,7 +88,7 @@
                                 </span>
                                 <div class="ms-2 overflow-hidden">
                                     <p class="fs-12 fw-medium mb-1 text-truncate">Inactive Videos</p>
-                                    <h4>{{ $inactive_video ?? 0 }}</h4>
+                                    <h4>{{ $inactive_gallery ?? 0 }}</h4>
                                 </div>
                             </div>
                             <div id="inactive-chart"></div>
@@ -124,26 +110,22 @@
                                 <tr>
 
                                     <th>S.No</th>
-                                    <th>Title</th>
-                                    <th>Video</th>
+                                    <th>Image</th>
                                     <th>Created Date</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($videos as $index => $item)
+                                @foreach ($gallery as $index => $item)
                                     <tr>
 
                                         <td>{{ $index + 1 }}</td>
 
-
-                                        <td>{{ ucfirst($item->title) }}</td>
-
                                         <td>
-                                            <div class="video-wrapper">
-                                                {!! $item->code !!}
-                                            </div>
+                                            <img src="{{ asset('storage/' . $item->image) }}"
+                                                style="width:60px; height:60px; object-fit:cover;"
+                                                class="img-fluid rounded">
                                         </td>
 
 
@@ -200,7 +182,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Video</h4>
+                    <h4 class="modal-title">Add Gallery Item</h4>
                     <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="ti ti-x"></i>
                     </button>
@@ -212,19 +194,19 @@
 
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Title <span class="text-danger"> *</span></label>
+                                    <label class="form-label">Title </label>
                                     <input type="text" id="title" name="title" class="form-control">
-                                    <span id="titleError" class="text-danger"></span>
+
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Enter Embed Video Code <span class="text-danger">
+                                    <label class="form-label">Upload Image <span class="text-danger">
                                             *</span></label>
-                                    <textarea name="code" id="code" class="form-control" cols="30" rows="5"></textarea>
+                                    <input type="file" name="image" id="image" class="form-control">
 
-                                    <span id="codeError" class="text-danger"></span>
+                                    <span id="imageError" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -254,7 +236,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Video</h4>
+                    <h4 class="modal-title">Edit Gallery Item</h4>
                     <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal"
                         aria-label="Close">
                         <i class="ti ti-x"></i>
@@ -268,19 +250,21 @@
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Title <span class="text-danger"> *</span></label>
+                                    <label class="form-label">Title </label>
                                     <input type="text" id="edit_title" name="title" class="form-control">
-                                    <span id="edit_nameError" class="text-danger"></span>
+
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Enter Embed Video Code <span class="text-danger">
+                                    <label class="form-label">Upload Image<span class="text-danger">
                                             *</span></label>
-                                    <textarea name="code" id="edit_code" class="form-control" cols="30" rows="5"></textarea>
-
-                                    <span id="edit_codeError" class="text-danger"></span>
+                                    <input type="file" id="edit_image" name="image" class="form-control">
+                                    <!-- image preview -->
+                                    <img id="edit_image_preview" src=""
+                                        style="max-width:150px; margin-top:10px; display:none;" class="img-thumbnail">
+                                    <span id="edit_imageError" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -344,17 +328,14 @@
             $('#add_cat_from').submit(function(e) {
                 e.preventDefault();
 
-                // Clear previous errors
-                $('#titleError').text('');
-
                 // Collect form values
-                var title = $('#title').val().trim();
-                var code = $('#code').val().trim();
+                var image = $('#image').val().trim(); // id image honi chahiye
 
                 // Validation
+                if (image === '') {
+                    return showError('#imageError', 'Image is required.');
+                }
 
-                if (title === '') return showError('#titleError', 'Title is required.');
-                if (code === '') return showError('#codeError', 'Embed Code is required.');
 
                 // Prepare FormData
                 var formData = new FormData(this);
@@ -406,16 +387,7 @@
 
                 var edit_id = $('#edit_id').val();
 
-                // Collect form values
-                var title = $('#edit_title').val().trim();
-                var code = $('#edit_code').val().trim();
-
-                // Validation
-
-                if (title === '') return showError('#edit_titleError', 'Title is required.');
-
-                if (code === '') return showError('#edit_authorError', 'Embed Code is required.');
-
+               
                 // Prepare FormData
                 var formData = new FormData(this);
 
@@ -473,16 +445,23 @@
                 url: url,
                 type: "GET",
                 success: function(res) {
-                    let data = res.video;
+                    let data = res.gallery;
 
                     $('#edit_id').val(data.id);
-                    $('#edit_title').val(data.title ?? '');
-                    $('#edit_code').val(data.code ?? '');
+                    $('#edit_title').val(data.name ?? '');
+                    // image preview
+                    if (data.image) {
+                        $('#edit_image_preview')
+                            .attr('src', '/storage/' + data.image)
+                            .show();
+                    } else {
+                        $('#edit_image_preview').hide();
+                    }
                     $('#edit_status').val(data.status).trigger('change');
                 },
                 error: function(err) {
                     // console.error(err);
-                    toastr.error('Failed to fetch video data');
+                    toastr.error('Failed to fetch gallery data');
                 }
             });
         });

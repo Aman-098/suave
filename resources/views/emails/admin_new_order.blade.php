@@ -22,7 +22,7 @@
 
     <tr>
         <td style="border: 1px solid #ddd; padding: 8px;"><strong>Message</strong></td>
-        <td style="border: 1px solid #ddd; padding: 8px;">{{ $booking->message }}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">{{ $booking->message ?? '-' }}</td>
     </tr>
 </table>
 

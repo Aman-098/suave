@@ -83,7 +83,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
-                                    <h2 class="mb-1">{{ $completed_bookings ?? 0 }}</h2>
+                                    <h2 class="mb-1">{{ $confirmed_bookings ?? 0 }}</h2>
                                     <p class="fs-13">Confirmed Bookings</p>
                                 </div>
                             </div>
@@ -175,10 +175,10 @@
                                             <div class="action-icon d-inline-flex">
 
                                                 <!-- View -->
-                                                <a href="#" class="me-2 viewBtn" data-bs-toggle="modal"
+                                                {{-- <a href="#" class="me-2 viewBtn" data-bs-toggle="modal"
                                                     data-bs-target="#view_order" data-order='@json($item)'>
                                                     <i class="ti ti-eye"></i>
-                                                </a>
+                                                </a> --}}
 
 
                                                 <!-- Edit -->
@@ -228,13 +228,13 @@
                     <div class="modal-body pb-0">
                         <input type="hidden" name="edit_id" id="edit_id" value="">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Status<span class="text-danger"> *</span></label>
                                     <select class="select" name="status" id="edit_status">
                                         <option value="confirmed">Confirmed</option>
-                                        <option value="processing">Processing</option>
-                                        <option value="delivered">Delivered</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="cancelled">Cancelled</option>
 
                                     </select>
                                 </div>
@@ -252,7 +252,7 @@
     <!-- /Edit status -->
 
     {{-- view order details --}}
-    <div class="modal fade" id="view_order">
+    {{-- <div class="modal fade" id="view_order">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -333,60 +333,60 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     @push('scripts')
         <script>
             $(document).ready(function() {
-                $('#view_order').on('show.bs.modal', function(event) {
-                    var button = $(event.relatedTarget); // Button that triggered the modal
-                    var order = button.data('order'); // Get JSON object from data-order
+                // $('#view_order').on('show.bs.modal', function(event) {
+                //     var button = $(event.relatedTarget); // Button that triggered the modal
+                //     var order = button.data('order'); // Get JSON object from data-order
 
-                    // Fill customer info
-                    $('#order_number').text(order.order_number);
-                    $('#order_name').text(order.name);
-                    $('#order_email').text(order.email);
-                    $('#order_phone').text(order.phone);
-                    $('#order_address').text(order.address);
-                    $('#order_country').text(order.country);
+                //     // Fill customer info
+                //     $('#order_number').text(order.order_number);
+                //     $('#order_name').text(order.name);
+                //     $('#order_email').text(order.email);
+                //     $('#order_phone').text(order.phone);
+                //     $('#order_address').text(order.address);
+                //     $('#order_country').text(order.country);
 
-                    $('#order_postcode').text(order.postcode);
-                    $('#order_date').text(
-                        new Date(order.created_at).toLocaleDateString('en-GB', {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric'
-                        })
-                    );
-                    if(order.note){
-                        $('#order_note').text(order.note);
-                    }else{
-                        $('#order_note').text('N/A');
-                    }
+                //     $('#order_postcode').text(order.postcode);
+                //     $('#order_date').text(
+                //         new Date(order.created_at).toLocaleDateString('en-GB', {
+                //             day: 'numeric',
+                //             month: 'long',
+                //             year: 'numeric'
+                //         })
+                //     );
+                //     if(order.note){
+                //         $('#order_note').text(order.note);
+                //     }else{
+                //         $('#order_note').text('N/A');
+                //     }
                     
 
-                    $('#order_subtotal').html('£&nbsp;' + order.subtotal);
-                    $('#order_vat').html('£&nbsp;' + order.vat);
-                    $('#order_shipping').html('£&nbsp;' + order.shipping);
-                    $('#order_total').html('£&nbsp;' + order.total);
+                //     $('#order_subtotal').html('£&nbsp;' + order.subtotal);
+                //     $('#order_vat').html('£&nbsp;' + order.vat);
+                //     $('#order_shipping').html('£&nbsp;' + order.shipping);
+                //     $('#order_total').html('£&nbsp;' + order.total);
 
-                    // Clear previous items
-                    $('#orderItemsTable').empty();
+                //     // Clear previous items
+                //     $('#orderItemsTable').empty();
 
-                    // Populate items
-                    $.each(order.items, function(index, item) {
-                        var row = `
-                            <tr>
-                                <td>${index + 1}</td>
-                                <td>${item.product_name}</td>
-                                <td>${item.qty}</td>
-                                <td>£&nbsp;${item.price}</td>
-                            </tr>
-                        `;
-                        $('#orderItemsTable').append(row);
-                    });
-                });
+                //     // Populate items
+                //     $.each(order.items, function(index, item) {
+                //         var row = `
+                //             <tr>
+                //                 <td>${index + 1}</td>
+                //                 <td>${item.product_name}</td>
+                //                 <td>${item.qty}</td>
+                //                 <td>£&nbsp;${item.price}</td>
+                //             </tr>
+                //         `;
+                //         $('#orderItemsTable').append(row);
+                //     });
+                // });
 
                 // Edit Status
                 $('#edit_cat_from').submit(function(e) {
@@ -449,7 +449,7 @@
                     url: url,
                     type: "GET",
                     success: function(res) {
-                        let data = res.order;
+                        let data = res.booking;
 
                         $('#edit_id').val(data.id);
                         $('#edit_status').val(data.status).trigger('change');

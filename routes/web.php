@@ -25,9 +25,9 @@ Route::get('/',[Home::class,'index'])->name('home');
 
 Route::get('/about-us',[Seo::class,'about_us'])->name('about');
 
-Route::get('/our-fleets',[FleetController::class,'index'])->name('fleets');
-Route::get('/fleet/{slug}',[FleetController::class,'fleet_detail'])->name('fleet.detail');
-Route::post('/save/booking',[FleetController::class,'save_booking'])->name('booking.save');
+Route::get('/our-fleets',[Fleet::class,'index'])->name('fleets');
+Route::get('/fleet/{slug}',[Fleet::class,'fleet_detail'])->name('fleet.detail');
+Route::post('/save/booking',[Fleet::class,'save_booking'])->name('booking.save');
 
 Route::get('/contact',[FrontContact::class,'index'])->name('contact');
 Route::post('/save/contact-form',[FrontContact::class,'save_form'])->name('contact.save');

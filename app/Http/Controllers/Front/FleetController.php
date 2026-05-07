@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\models\Product;
+use App\Models\Product;
 use App\Models\Booking;
 use App\Mail\AdminNewOrderMail;
 use Illuminate\Support\Facades\Mail;

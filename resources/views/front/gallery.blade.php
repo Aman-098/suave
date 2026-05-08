@@ -24,7 +24,7 @@
 
     <section class="gallery-section">
         <div class="container">
-            <h2 class="section-title">Our Gallery</h2>
+            {{-- <h2 class="section-title">Our Gallery</h2> --}}
 
             <div class="gallery-grid">
 
@@ -34,49 +34,7 @@
                     </div>
                 @endforeach
 
-                {{-- 
-                <div class="gallery-item">
-                    <img src="assets_front/img/blog-2.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/blog-3.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/blog-4.webp" alt="">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets_front/img/car1.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car1.jpg" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car2.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car2.jpg" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car3.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car3.jpg" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car4.webp" alt="">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="assets_front/img/car4.jpg" alt="">
-                </div> --}}
+                
             </div>
         </div>
     </section>

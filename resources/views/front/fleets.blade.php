@@ -44,14 +44,18 @@
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                <div class="feature">
-                                                   <span>{{ $item->badge }}</span>
-                                                </div>
-                                                <div class="play-btn" onclick="openVideo()">
-                                                    <svg viewBox="0 0 24 24">
-                                                        <polygon points="8,5 19,12 8,19"></polygon>
-                                                    </svg>
-                                                </div>
+                                                @if(!empty($item->badge))
+                                                    <div class="feature">
+                                                        <span>{{ $item->badge }}</span>
+                                                    </div>
+                                                @endif
+                                                @if(!empty($item->video))
+                                                    <div class="play-btn" onclick="openVideo()">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon points="8,5 19,12 8,19"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <img src="{{ asset('storage/' . $item->image) }}" alt="">
                                         </a>

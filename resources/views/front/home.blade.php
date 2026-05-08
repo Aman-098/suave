@@ -241,9 +241,11 @@
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                <div class="feature">
-                                                    <span>{{ $item->badge }}</span>
-                                                </div>
+                                                @if(!empty($item->badge))
+                                                    <div class="feature">
+                                                        <span>{{ $item->badge }}</span>
+                                                    </div>
+                                                @endif
                                                 @if (!empty($item->video))
                                                     <div class="play-btn" onclick="openVideo('{{ $item->video }}')">
                                                         <svg viewBox="0 0 24 24">

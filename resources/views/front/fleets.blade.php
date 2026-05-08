@@ -59,7 +59,7 @@
                                             <h6 class="title">{{ $item->name }}</h6>
                                             <div class="description">
                                                 {{-- <span>4,320 ₤/DAY</span> --}}
-                                                <span>{{ number_format($item->price,2) }} ₤/HOUR</span>
+                                                <span>₤ {{ number_format($item->price,2) }} /Day</span>
                                             </div>
                                             <div class="bottom-btn-wrap-fleet">
                                                 <div class="btn-read-more">

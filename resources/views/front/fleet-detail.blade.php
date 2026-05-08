@@ -215,7 +215,7 @@
             @if (count($related_fleet) > 0)
                 <div class="car-grid">
 
-                    @foreach ($related_fleet as $fleet)
+                    @foreach ($related_fleet as $item)
                         <div class="car-card">
                             <img src="{{ asset('storage/' . $item->image) }}" />
                             <div class="card-overlay">

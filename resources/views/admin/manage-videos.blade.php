@@ -493,7 +493,7 @@
             }
 
             // ✅ Fix: generate correct URL
-            let url = `/delete-video/${deleteId}`;
+            let url = `/delete-gallery/${deleteId}`;
 
             $.ajax({
                 url: url,

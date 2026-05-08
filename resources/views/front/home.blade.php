@@ -97,15 +97,15 @@
                         <h5 class="title-explore">Sports Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/luxury.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/bentley.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Luxury Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/wedding.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;"  alt="">
+                        <img src="{{asset('assets_front/img/luxury.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;"  alt="">
                         <h5 class="title-explore">Wedding Hire</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/weekend.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/m-cle.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
                     
@@ -324,7 +324,7 @@
     <section class="rent-section">
         <div class="rent-container">
             <div class="rent-image">
-                <img src="assets_front/img/car99.jpg" alt="">
+                <img src="{{asset('assets_front/img/ferrari-p.jpeg')}}" alt="">
             </div>
             <div class="rent-content">
                 <h2>Rent your car in 3 easy steps</h2>
@@ -546,7 +546,7 @@
 
                 </div>
                 <div class="feature-car-video video-wrap">
-                    <img src="assets_front/img/faq.jpg" alt="">
+                    <img src="assets_front/img/lambo.jpeg" alt="">
                     <a href="{{ asset('assets_front/videoplayback.mp4') }}" class="popup-youtube icon-video">
                         <i class="icon-Polygon-6"></i>
                     </a>

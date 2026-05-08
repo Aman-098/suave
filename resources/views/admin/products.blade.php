@@ -301,7 +301,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Add Fleet</button>
+                        <button type="submit" id="submitBtn" class="btn btn-primary">Add Fleet</button>
                     </div>
                 </form>
             </div>
@@ -546,6 +546,10 @@
                     return false;
                 }
 
+                // button processing
+                $('#submitBtn')
+                    .prop('disabled', true)
+                    .html('Please wait...');
 
                 // Prepare FormData
                 var formData = new FormData(this);
@@ -568,6 +572,10 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
+                         // restore button
+                            $('#submitBtn')
+                                .prop('disabled', false)
+                                .html('Add Fleet');
                         if (response.status === true) {
                             toastr.success(response.message);
                             $('#add_cat_from')[0].reset();

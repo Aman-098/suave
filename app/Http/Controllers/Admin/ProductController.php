@@ -237,7 +237,6 @@ class ProductController extends Controller
                 'description' => $validated['content'],
                 'specification' => $validated['specification'],
                 'status'      => $request->input('status'),
-
                 'image' => $images['image'],
                 'gallery_images' => $galleryPaths,
                 'video' => $images['video'],

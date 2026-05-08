@@ -93,24 +93,24 @@
                 </div>
                 <div class="explore-car">
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="assets_front/img/car2.jpg" alt="">
+                        <img src="{{asset('assets_front/img/sports.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Sports Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="assets_front/img/car1.jpg" alt="">
+                        <img src="{{asset('assets_front/img/luxury.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Luxury Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="assets_front/img/car3.jpg" alt="">
+                        <img src="{{asset('assets_front/img/wedding.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;"  alt="">
                         <h5 class="title-explore">Wedding Hire</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="assets_front/img/car4.jpg" alt="">
+                        <img src="{{asset('assets_front/img/weekend.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
                     
                 </div>
-                <div class="cen-btn"><a href="#" class="review-btn">From £599/day | Free Delivery
+                <div class="cen-btn"><a href="#" class="review-btn">From £599/day
                         Available</a>
                 </div>
             </div>

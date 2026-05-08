@@ -223,7 +223,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Add Video</button>
+                        <button type="submit" class="btn btn-primary">Add Image</button>
                     </div>
                 </form>
             </div>
@@ -281,7 +281,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update Video</button>
+                        <button type="submit" class="btn btn-primary">Update Image</button>
                     </div>
                 </form>
             </div>
@@ -336,6 +336,10 @@
                     return showError('#imageError', 'Image is required.');
                 }
 
+                // button processing
+                $('#submitBtn')
+                    .prop('disabled', true)
+                    .html('Please wait...');
 
                 // Prepare FormData
                 var formData = new FormData(this);
@@ -356,6 +360,10 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
+                        // restore button
+                        $('#submitBtn')
+                            .prop('disabled', false)
+                            .html('Add Fleet');
                         if (response.status === true) {
                             toastr.success(response.message);
                             $('#add_cat_from')[0].reset();
@@ -369,6 +377,10 @@
                         }
                     },
                     error: function(xhr) {
+                        // restore button
+                        $('#submitBtn')
+                            .prop('disabled', false)
+                            .html('Add Fleet');
                         if (xhr.responseJSON && xhr.responseJSON.errors) {
                             let errors = xhr.responseJSON.errors;
                             for (const key in errors) {
@@ -387,7 +399,7 @@
 
                 var edit_id = $('#edit_id').val();
 
-               
+
                 // Prepare FormData
                 var formData = new FormData(this);
 

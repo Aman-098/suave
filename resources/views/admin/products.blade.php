@@ -435,7 +435,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update Fleet</button>
+                        <button type="submit" id="updateBtn" class="btn btn-primary">Update Fleet</button>
                     </div>
                 </form>
             </div>
@@ -572,10 +572,10 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                         // restore button
-                            $('#submitBtn')
-                                .prop('disabled', false)
-                                .html('Add Fleet');
+                        // restore button
+                        $('#submitBtn')
+                            .prop('disabled', false)
+                            .html('Add Fleet');
                         if (response.status === true) {
                             toastr.success(response.message);
                             $('#add_cat_from')[0].reset();
@@ -589,6 +589,9 @@
                         }
                     },
                     error: function(xhr) {
+                        $('#submitBtn')
+                            .prop('disabled', false)
+                            .html('Add Fleet');
                         if (xhr.responseJSON && xhr.responseJSON.errors) {
                             let errors = xhr.responseJSON.errors;
                             for (const key in errors) {
@@ -612,7 +615,7 @@
                 // Collect form values
                 var name = $('#edit_name').val().trim();
                 var price = $('#edit_price').val().trim();
-                var content = $('#edit_content').summernote('code');
+                // var content = $('#edit_content').summernote('code');
 
 
 
@@ -627,6 +630,11 @@
                     showError("#edit_descError", "Content is required");
                     return false;
                 }
+
+                // before ajax
+                $('#updateBtn')
+                    .prop('disabled', true)
+                    .html('Please wait...');
 
                 // Prepare FormData
                 var formData = new FormData(this);
@@ -652,6 +660,9 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
+                        $('#updateBtn')
+                            .prop('disabled', false)
+                            .html('Update Fleet');
                         if (response.status === true) {
                             toastr.success(response.message);
                             $('#edit_cat').modal('hide');
@@ -664,6 +675,9 @@
                         }
                     },
                     error: function(xhr) {
+                        $('#updateBtn')
+                            .prop('disabled', false)
+                            .html('Update Fleet');
                         if (xhr.responseJSON && xhr.responseJSON.errors) {
                             let errors = xhr.responseJSON.errors;
                             for (const key in errors) {

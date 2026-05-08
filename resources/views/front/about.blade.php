@@ -23,7 +23,7 @@
                 <div class="about-grid">
                     <div class="about-right">
                         <div class="service-box-panel">
-                            <img src="assets_front/img/porsche-911.jpg">
+                            <img src="{{asset('assets_front/img/ferrari-about.jpeg')}}">
                         </div>
                     </div>
                     <div class="about-left">

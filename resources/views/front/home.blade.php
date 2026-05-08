@@ -148,7 +148,7 @@
                     <span class="count">94 Reviews</span>
                 </div>
             </div>
-            <a href="#" class="review-btn">Read Customer Reviews →</a>
+            <a href="#testimonials" class="review-btn">Read Customer Reviews →</a>
         </div>
     </section>
 
@@ -398,7 +398,7 @@
         </div>
     </section>
 
-    <div class="container google-review">
+    <div class="container google-review" id="testimonials">
         <h2>Feedback From Satisfied Clients</h2>
 
         <div class="feedback-slider">
@@ -479,8 +479,8 @@
             <div class="feature-car">
                 <div class="feature-car-content">
                     <div class="heading-section">
-                        <span class="sub-title mb-6 wow fadeInUp">Trusted Car Delaer Service</span>
-                        <h2 class="title mb-40 wow fadeInUp">Frequently Questions & Asking Zone..</h2>
+                        <span class="sub-title mb-6 wow fadeInUp">Trusted Luxury Travel Space</span>
+                        <h2 class="title mb-40 wow fadeInUp">Frequently Questions & Asking Zone.</h2>
 
                     </div>
                     <div class="list-icon-check">
@@ -489,15 +489,13 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq1">
-                                        What do I need to rent a car?
+                                        What types of luxury vehicles we offer?
                                     </button>
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse show"
                                     data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        You need a valid driving license, passport or Emirates ID and a valid
-                                        payment
-                                        method.
+                                        We offer a premium range of luxury sedans, SUVs, executive cars, and sports vehicles for business travel, airport transfers, events, and special occasions.
                                     </div>
                                 </div>
                             </div>
@@ -506,12 +504,12 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq2">
-                                        Can someone else drive the rental car?
+                                        Can I book a luxury or sports car for a single day?
                                     </button>
                                 </h2>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Yes, additional drivers can be added by providing valid documents.
+                                        Yes, we provide flexible rental options including hourly, daily, weekend, and long-term bookings based on your travel requirements.
                                     </div>
                                 </div>
                             </div>
@@ -520,12 +518,12 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq3">
-                                        Is insurance included with the car?
+                                        Do you provide airport pickup and corporate travel services?
                                     </button>
                                 </h2>
                                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Basic insurance is included with every rental vehicle.
+                                        Absolutely. We specialize in airport transfers, corporate transportation, VIP travel, and executive business travel services.
                                     </div>
                                 </div>
                             </div>
@@ -549,7 +547,7 @@
                 </div>
                 <div class="feature-car-video video-wrap">
                     <img src="assets_front/img/faq.jpg" alt="">
-                    <a href="https://www.youtube.com/watch?v=kK4wA93QKoQ" class="popup-youtube icon-video">
+                    <a href="{{ asset('assets_front/videoplayback.mp4') }}" class="popup-youtube icon-video">
                         <i class="icon-Polygon-6"></i>
                     </a>
                 </div>

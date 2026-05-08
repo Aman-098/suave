@@ -186,7 +186,7 @@
 
 <div class="sticky-video">
     <video controls autoplay muted loop>
-        <source src="{{ asset('assets_front/5309381.mp4') }}" type="video/mp4">
+        <source src="{{ asset('assets_front/videoplayback.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <span class="close-video">✕</span>

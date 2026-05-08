@@ -130,12 +130,15 @@ class ProductController extends Controller
                 'name'=>'required',
                 'price'=>'required',
                 'badge'=>'nullable|string',
+                 'rating'=>'nullable',
                 'content'=>'required',
                 'specification'=>'nullable',
 
                 // multiple image validation
                 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp,svg',
                 'video' => 'nullable|mimes:mp4,webm', // 10MB
+                'gallery_image' => 'nullable|array',
+                'gallery_image.*' => 'image|mimes:jpg,jpeg,png,gif,webp,svg'
                 
             ]);
 
@@ -162,6 +165,9 @@ class ProductController extends Controller
             // 🔥 multiple image logic
             $images = [];
 
+            // old gallery images
+            $galleryPaths = $product->gallery_images ?? [];
+
             foreach (['image', 'video'] as $imgField) {
 
                 $images[$imgField] = $product->$imgField; // old image
@@ -187,18 +193,53 @@ class ProductController extends Controller
                 }
             }
 
+            // gallery images upload
+            if ($request->hasFile('gallery_image')) {
+
+                $folder = 'fleets';
+
+                if (!Storage::disk('public')->exists($folder)) {
+                    Storage::disk('public')->makeDirectory($folder);
+                }
+
+                // old gallery delete
+                if (!empty($product->gallery_images)) {
+
+                    foreach ($product->gallery_images as $oldImage) {
+
+                        if (Storage::disk('public')->exists($oldImage)) {
+                            Storage::disk('public')->delete($oldImage);
+                        }
+                    }
+                }
+
+                // upload new gallery
+                $galleryPaths = [];
+
+                foreach ($request->file('gallery_image') as $file) {
+
+                    $imageName = time() . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+                    Storage::disk('public')->putFileAs($folder, $file, $imageName);
+
+                    $galleryPaths[] = $folder . '/' . $imageName;
+                }
+            }
+
             // 🔥 update
             $product->update([
                 'category_id' => $request->input('category_id'),
                 'name'        => $validated['name'],
                 'slug'        => $slug,
                 'price'       => $validated['price'],
-                'badge'       => $validated['badge'],
+                'badge'       => $validated['badge'] ?? null,
+                'rating'       => $validated['rating'],
                 'description' => $validated['content'],
                 'specification' => $validated['specification'],
                 'status'      => $request->input('status'),
 
                 'image' => $images['image'],
+                'gallery_images' => $galleryPaths,
                 'video' => $images['video'],
             ]);
 
@@ -210,23 +251,42 @@ class ProductController extends Controller
 
         $product = Product::with('category')->findOrFail($id);
 
+        // dd($product);
+
         return response()->json([
             'product' => $product
+
         ]);
     }
     
     
-    public function delete_product($id){
-
+    public function delete_product($id)
+    {
         $product = Product::findOrFail($id);
 
-        foreach (['image', 'video' ] as $imgField) {
+        // delete single image & video
+        foreach (['image', 'video'] as $imgField) {
 
-            if ($product->$imgField && Storage::disk('public')->exists($product->$imgField)) {
+            if (
+                $product->$imgField &&
+                Storage::disk('public')->exists($product->$imgField)
+            ) {
                 Storage::disk('public')->delete($product->$imgField);
             }
         }
 
+        // delete gallery images
+        if (!empty($product->gallery_images)) {
+
+            foreach ($product->gallery_images as $galleryImage) {
+
+                if (Storage::disk('public')->exists($galleryImage)) {
+                    Storage::disk('public')->delete($galleryImage);
+                }
+            }
+        }
+
+        // delete product
         $product->delete();
 
         return response()->json([

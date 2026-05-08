@@ -408,9 +408,10 @@
                                     <label class="form-label">Gallery Image<span class="text-danger"> *</span></label>
                                     <input type="file" id="gallery_image" name="gallery_image[]" class="form-control"
                                         multiple>
-                                    <!-- image preview -->
-                                    <img id="edit_gallery_preview" src=""
-                                        style="max-width:150px; margin-top:10px; display:none;" class="img-thumbnail">
+
+                                    {{-- gallery image preview --}}
+                                    <div id="edit_gallery_preview" style="margin-top:10px; display:none;">
+                                    </div>
                                 </div>
                             </div>
 
@@ -702,17 +703,17 @@
                         $('#edit_image_preview1').hide();
                     }
 
-                    if (data.gallery_image && data.gallery_image.length > 0) {
+                    if (data.gallery_images && data.gallery_images.length > 0) {
                         let html = '';
 
-                        data.gallery_image.forEach(function(image) {
+                        data.gallery_images.forEach(function(image) {
                             html += `<img src="/storage/${image}" 
-                                    style="width:100px; height:100px; margin:5px; border-radius:5px;">`;
+                style="width:100px; height:100px; margin:5px; border-radius:5px;">`;
                         });
 
-                        $('#edit_gallery_image').html(html).show();
+                        $('#edit_gallery_preview').html(html).show();
                     } else {
-                        $('#edit_gallery_image').html('').hide();
+                        $('#edit_gallery_preview').html('').hide();
                     }
 
                     $('#edit_badge').val(data.badge ?? '');

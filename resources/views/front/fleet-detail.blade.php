@@ -217,7 +217,10 @@
 
                     @foreach ($related_fleet as $item)
                         <div class="car-card">
-                            <img src="{{ asset('storage/' . $item->image) }}" />
+                            <a href="{{ url('fleet/' . $item->slug) }}">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                            </a>
+                            {{-- <img src="{{ asset('storage/' . $item->image) }}" /> --}}
                             <div class="card-overlay">
                                 <span>{{ $item->category->name }}</span>
                                 <h3>{{ $item->name }}</h3>

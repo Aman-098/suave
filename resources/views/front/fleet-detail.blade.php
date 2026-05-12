@@ -216,11 +216,9 @@
                 <div class="car-grid">
 
                     @foreach ($related_fleet as $item)
+                    <a href="{{ url('fleet/' . $item->slug) }}">
                         <div class="car-card">
-                            <a href="{{ url('fleet/' . $item->slug) }}">
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="">
-                            </a>
-                            {{-- <img src="{{ asset('storage/' . $item->image) }}" /> --}}
+                            <img src="{{ asset('storage/' . $item->image) }}" />
                             <div class="card-overlay">
                                 <span>{{ $item->category->name }}</span>
                                 <h3>{{ $item->name }}</h3>
@@ -228,27 +226,10 @@
                                 <h4>£ {{ number_format($item->price, 2) }} /day</h4>
                             </div>
                         </div>
+                    </a>
                     @endforeach
 
-                    {{-- <div class="car-card">
-                        <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1" />
-                        <div class="card-overlay">
-                            <span>Land Rover</span>
-                            <h3>Range Rover SVR</h3>
-                            <p>Price</p>
-                            <h4>£300/day</h4>
-                        </div>
-                    </div>
-
-                    <div class="car-card">
-                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a" />
-                        <div class="card-overlay">
-                            <span>Ferrari</span>
-                            <h3>488 GTB</h3>
-                            <p>Price</p>
-                            <h4>£1000/day</h4>
-                        </div>
-                    </div> --}}
+                    
 
                 </div>
             @endif

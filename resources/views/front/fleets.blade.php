@@ -30,8 +30,8 @@
                     <div class="fleet-header">
                         <h2>{{ $categoryName }}</h2>
                         <div class="fleet-arrows">
-                            <div class="swiper-button-prev {{ $categoryName }}-prev"></div>
-                            <div class="swiper-button-next {{ $categoryName }}-next"></div>
+                            <div class="swiper-button-prev sport-prev"></div>
+                            <div class="swiper-button-next sport-next"></div>
                         </div>
                     </div>
 

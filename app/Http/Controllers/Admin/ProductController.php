@@ -123,6 +123,7 @@ class ProductController extends Controller
     }
 
     public function edit_product(Request $request, $id){
+        // dd($request->file('image'));
 
         if ($request->isMethod('post')) {
 
@@ -130,7 +131,7 @@ class ProductController extends Controller
                 'name'=>'required',
                 'price'=>'required',
                 'badge'=>'nullable|string',
-                 'rating'=>'nullable',
+                'rating'=>'nullable',
                 'content'=>'required',
                 'specification'=>'nullable',
 

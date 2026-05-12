@@ -386,7 +386,7 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label">Image<span class="text-danger"> *</span></label>
-                                    <input type="file" id="edit_image1" name="image1" class="form-control">
+                                    <input type="file" id="edit_image" name="image" class="form-control">
                                     <!-- image preview -->
                                     <img id="edit_image_preview1" src=""
                                         style="max-width:150px; margin-top:10px; display:none;" class="img-thumbnail">

@@ -190,12 +190,12 @@
                 <ul class="nav nav-pills tab-car-service-v2 justify-content-center mb-30" id="pills-tab-service-v2"
                     role="tablist">
                     @php $i = 0; @endphp
-                    @foreach ($fleets as $categoryName => $products)
+                    @foreach ($fleets as $category )
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
-                                data-bs-toggle="pill" data-bs-target="#tab-{{ $categoryName }}" type="button"
-                                role="tab" aria-selected="true"> {{ $categoryName }}</button>
+                                data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
+                                role="tab" aria-selected="true"> {{ $category->name }}</button>
                         </li>
                         @php $i++; @endphp
                     @endforeach
@@ -232,7 +232,7 @@
                 <div class="tab-content" id="pills-tabContent-v2">
                     @php $i = 0; @endphp
 
-                    @foreach ($fleets as $categoryName => $products)
+                    @foreach ($category->products as $products)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
                         <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $categoryName }}"
                             role="tabpanel">

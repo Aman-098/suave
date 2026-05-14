@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index(){
          $fleets = Product::with('category')
                     ->where('status',1)
-                    ->take(3)
+                    ->limit(3)
                     ->get()
                     ->groupBy('category.name');
 

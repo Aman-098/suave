@@ -292,7 +292,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="btn-group">
-                                                    <a href="#" class="icon-service">
+                                                    <a href="tel:919988998899" class="icon-service">
                                                         <svg width="18" height="18" viewBox="0 0 24 24"
                                                             fill="#fff">
                                                             <path

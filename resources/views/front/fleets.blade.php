@@ -15,9 +15,9 @@
                 <h1 class="main-title">Our Fleet</h1>
 
                 <!-- <ul class="breadcrum">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                </ul> -->
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                    </ul> -->
             </div>
         </div>
     </div>
@@ -44,12 +44,12 @@
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                @if(!empty($item->badge))
+                                                @if (!empty($item->badge))
                                                     <div class="feature">
                                                         <span>{{ $item->badge }}</span>
                                                     </div>
                                                 @endif
-                                                @if(!empty($item->video))
+                                                @if (!empty($item->video))
                                                     <div class="play-btn" onclick="openVideo()">
                                                         <svg viewBox="0 0 24 24">
                                                             <polygon points="8,5 19,12 8,19"></polygon>
@@ -103,7 +103,7 @@
     </section> --}}
 
     {{-- new design for listing --}}
-      <div class="widget-populer-makes-h5">
+    <div class="widget-populer-makes-h5">
         <div class="themesflat-container">
             <div class="populer-makes">
                 {{-- <div class="heading-section t-al-center mb-28">
@@ -160,10 +160,10 @@
                             role="tabpanel">
                             <div class="car-list-item">
                                 @foreach ($products as $item)
-                                    <div class="tf-car-service">
+                                    {{-- <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                @if(!empty($item->badge))
+                                                @if (!empty($item->badge))
                                                     <div class="feature">
                                                         <span>{{ $item->badge }}</span>
                                                     </div>
@@ -199,11 +199,7 @@
                                                             <span>{{ number_format($item->price, 2) }} ₤/DAY</span>
                                                         </div>
                                                     </li>
-                                                    {{-- <li class="listing-information size-engine">
-                                                        <div class="inner">
-                                                            <span>1,500 ₤/HOUR</span>
-                                                        </div>
-                                                    </li> --}}
+                                                    
                                                 </ul>
                                             </div>
                                             <div class="bottom-btn-wrap">
@@ -226,6 +222,57 @@
                                                         <i class="icon-whatsapp-1"></i>
                                                     </a>
                                                     <a href="#" class="icon-service">
+                                                        Book Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="tf-car-service">
+                                        <a href="{{ url('fleet/' . $item->slug) }}" class="image">
+                                            <div class="stm-badge-top">
+                                                @if (!empty($item->badge))
+                                                    <div class="feature">
+                                                        <span>{{ $item->badge }}</span>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($item->video))
+                                                    <div class="play-btn" onclick="openVideo()">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon points="8,5 19,12 8,19"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                        </a>
+                                        <div class="content">
+                                            <h6 class="title">{{ $item->name }}</h6>
+                                            <div class="description">
+
+                                                <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                            </div>
+                                            <div class="bottom-btn-wrap-fleet">
+                                                <div class="btn-read-more">
+                                                    <a class="more-link" href="{{ url('fleet/' . $item->slug) }}">
+                                                        <span>View details</span>
+                                                        <i class="icon-arrow-right2"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="btn-group-panel">
+
+                                                    <a href="tel:919988998899" class="icon-service">
+                                                        <svg width="18" height="18" viewBox="0 0 24 24"
+                                                            fill="#fff">
+                                                            <path
+                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
+                                                        </svg>
+                                                    </a>
+                                                    <a href="https://wa.me/919988998899" target="_blank"
+                                                        class="icon-service">
+                                                        <i class="icon-whatsapp-1"></i>
+                                                    </a>
+                                                    <a href="{{ url('fleet/' . $item->slug) }}" class="icon-service">
                                                         Book Now
                                                     </a>
                                                 </div>

@@ -191,7 +191,7 @@
                     role="tablist">
                     @php $i = 0; @endphp
                     @foreach ($fleets as $category )
-                        {{-- @php $slug = Str::slug($categoryName); @endphp --}}
+                        
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
                                 data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
@@ -232,12 +232,12 @@
                 <div class="tab-content" id="pills-tabContent-v2">
                     @php $i = 0; @endphp
 
-                    @foreach ($category->products as $products)
+                    @foreach ($fleets as $category)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
-                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $categoryName }}"
+                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $category->name }}"
                             role="tabpanel">
                             <div class="car-list-item">
-                                @foreach ($products as $item)
+                                @foreach ($category->products as $item)
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">

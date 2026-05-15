@@ -13,9 +13,9 @@
             <div class="page-title t-al-center">
                 <h1 class="main-title">Our Fleet</h1>
                 <!-- <ul class="breadcrum">
-                                                                                        <li><a href="/">Home</a></li>
-                                                                                        <li><a href="#">About us</a></li>
-                                                                                    </ul> -->
+                                                                                            <li><a href="/">Home</a></li>
+                                                                                            <li><a href="#">About us</a></li>
+                                                                                        </ul> -->
             </div>
         </div>
     </div>
@@ -63,17 +63,19 @@
 
                     <div class="thumb-wrapper">
 
-                        <button class="thumb-btn prev" onclick="scrollThumbs(-1)">‹</button>
+                        @if (!empty($gallery))
+                            <button class="thumb-btn prev" onclick="scrollThumbs(-1)">‹</button>
 
-                        <div class="thumbs" id="thumbSlider">
-                            @if (!empty($gallery))
+                            <div class="thumbs" id="thumbSlider">
+
                                 @foreach ($gallery as $img)
                                     <img src="{{ asset('storage/' . $img) }}" onclick="changeImg(this)">
                                 @endforeach
-                            @endif
-                        </div>
 
-                        <button class="thumb-btn next" onclick="scrollThumbs(1)">›</button>
+                            </div>
+
+                            <button class="thumb-btn next" onclick="scrollThumbs(1)">›</button>
+                        @endif
 
                     </div>
                 </div>
@@ -126,9 +128,9 @@
                     </div>
 
                     <!-- <div class="extra">
-                                                                  <p>✔ Instant Confirmation</p>
-                                                                  <p>✔ Free Cancellation (24 hrs)</p>
-                                                                </div> -->
+                                                                      <p>✔ Instant Confirmation</p>
+                                                                      <p>✔ Free Cancellation (24 hrs)</p>
+                                                                    </div> -->
 
                 </div>
 
@@ -216,20 +218,20 @@
                 <div class="car-grid">
 
                     @foreach ($related_fleet as $item)
-                    <a href="{{ url('fleet/' . $item->slug) }}">
-                        <div class="car-card">
-                            <img src="{{ asset('storage/' . $item->image) }}" />
-                            <div class="card-overlay">
-                                <span>{{ $item->category->name }}</span>
-                                <h3>{{ $item->name }}</h3>
-                                <p>Price</p>
-                                <h4>£ {{ number_format($item->price, 2) }} /day</h4>
+                        <a href="{{ url('fleet/' . $item->slug) }}">
+                            <div class="car-card">
+                                <img src="{{ asset('storage/' . $item->image) }}" />
+                                <div class="card-overlay">
+                                    <span>{{ $item->category->name }}</span>
+                                    <h3>{{ $item->name }}</h3>
+                                    <p>Price</p>
+                                    <h4>£ {{ number_format($item->price, 2) }} /day</h4>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                     @endforeach
 
-                    
+
 
                 </div>
             @endif
@@ -438,8 +440,8 @@
                         notyf.success(response.message);
 
                         // setTimeout(() => {
-                            $('#bookingForm')[0].reset();
-                            $('#bookingModal').modal('hide');
+                        $('#bookingForm')[0].reset();
+                        $('#bookingModal').modal('hide');
                         // }, 1200);
                     } else {
                         notyf.error(response.message);

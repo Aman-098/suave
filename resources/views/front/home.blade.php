@@ -292,14 +292,14 @@
                                                     </a>
                                                 </div>
                                                 <div class="btn-group">
-                                                    <a href="tel:919988998899" class="icon-service">
+                                                    <a href="tel:+4408081680808" class="icon-service">
                                                         <svg width="18" height="18" viewBox="0 0 24 24"
                                                             fill="#fff">
                                                             <path
                                                                 d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
                                                         </svg>
                                                     </a>
-                                                    <a href="https://wa.me/919988998899" target="_blank"
+                                                    <a href="https://wa.me/+4408081680808" target="_blank"
                                                         class="icon-service">
                                                         <i class="icon-whatsapp-1"></i>
                                                     </a>

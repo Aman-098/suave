@@ -93,26 +93,22 @@
                 </div>
                 <div class="explore-car">
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{ asset('assets_front/img/sports.jpeg') }}"
-                            style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/sports.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Sports Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{ asset('assets_front/img/bentley.jpeg') }}"
-                            style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/bentley.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Luxury Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{ asset('assets_front/img/luxury.jpeg') }}"
-                            style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/luxury.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;"  alt="">
                         <h5 class="title-explore">Wedding Hire</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{ asset('assets_front/img/m-cle.jpeg') }}"
-                            style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/m-cle.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
-
+                    
                 </div>
                 <div class="cen-btn"><a href="#" class="review-btn">From £599/day
                         Available</a>
@@ -193,19 +189,11 @@
                 </div>
                 <ul class="nav nav-pills tab-car-service-v2 justify-content-center mb-30" id="pills-tab-service-v2"
                     role="tablist">
-                    {{-- ALL TAB --}}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-all" type="button"
-                            role="tab">
-                            All
-                        </button>
-                    </li>
-
                     @php $i = 0; @endphp
-
-                    @foreach ($fleets as $category)
+                    @foreach ($fleets as $category )
+                        
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-cadilliac-tab-service-v2"
+                            <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
                                 data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
                                 role="tab" aria-selected="true"> {{ $category->name }}</button>
                         </li>
@@ -242,104 +230,18 @@
                 </div>
 
                 <div class="tab-content" id="pills-tabContent-v2">
-                    {{-- ALL PRODUCTS TAB --}}
-                    <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
-                        <div class="car-list-item">
-
-                            @foreach ($fleets as $category)
-                                @foreach ($category->products as $item)
-                                    <div class="tf-car-service">
-                                        <a href="{{ url('fleet/' . $item->slug) }}" class="image">
-                                            <div class="stm-badge-top">
-                                                @if (!empty($item->badge))
-                                                    <div class="feature">
-                                                        <span>{{ $item->badge }}</span>
-                                                    </div>
-                                                @endif
-                                                @if (!empty($item->video))
-                                                    <div class="play-btn" onclick="openVideo('{{ $item->video }}')">
-                                                        <svg viewBox="0 0 24 24">
-                                                            <polygon points="8,5 19,12 8,19"></polygon>
-                                                        </svg>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="listing-images">
-                                                <div class="hover-listing-image">
-                                                    <div class="wrap-hover-listing">
-                                                        <div class="listing-item active" title="">
-                                                            <div class="images">
-                                                                <img src="{{ asset('storage/' . $item->image) }}"
-                                                                    class="swiper-image tfcl-light-gallery"
-                                                                    alt="images">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="content">
-                                            <h6 class="title">{{ $item->name }}</h6>
-                                            <div class="description">
-                                                <ul>
-                                                    <li class="listing-information fuel">
-                                                        <div class="inner">
-                                                            <span>{{ number_format($item->price, 2) }} ₤/DAY</span>
-                                                        </div>
-                                                    </li>
-                                                    {{-- <li class="listing-information size-engine">
-                                                        <div class="inner">
-                                                            <span>1,500 ₤/HOUR</span>
-                                                        </div>
-                                                    </li> --}}
-                                                </ul>
-                                            </div>
-                                            <div class="bottom-btn-wrap">
-                                                <div class="btn-read-more">
-                                                    <a class="more-link" href="{{ url('fleet/' . $item->slug) }}">
-                                                        <span>View details</span>
-                                                        <i class="icon-arrow-right2"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <a href="tel:+4408081680808" class="icon-service">
-                                                        <svg width="18" height="18" viewBox="0 0 24 24"
-                                                            fill="#fff">
-                                                            <path
-                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
-                                                        </svg>
-                                                    </a>
-                                                    <a href="https://wa.me/+4408081680808" target="_blank"
-                                                        class="icon-service">
-                                                        <i class="icon-whatsapp-1"></i>
-                                                    </a>
-                                                    <a href="#" class="icon-service">
-                                                        Book Now
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endforeach
-
-                        </div>
-                    </div>
-
-
-
                     @php $i = 0; @endphp
 
                     @foreach ($fleets as $category)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
-                        <div class="tab-pane fade" id="tab-{{ $category->name }}"
+                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $category->name }}"
                             role="tabpanel">
                             <div class="car-list-item">
                                 @foreach ($category->products as $item)
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                @if (!empty($item->badge))
+                                                @if(!empty($item->badge))
                                                     <div class="feature">
                                                         <span>{{ $item->badge }}</span>
                                                     </div>
@@ -397,7 +299,7 @@
                                                                 d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
                                                         </svg>
                                                     </a>
-                                                    <a href="https://wa.me/+4408081680808" target="_blank"
+                                                    <a href="https://wa.me/919988998899" target="_blank"
                                                         class="icon-service">
                                                         <i class="icon-whatsapp-1"></i>
                                                     </a>
@@ -424,7 +326,7 @@
     <section class="rent-section">
         <div class="rent-container">
             <div class="rent-image">
-                <img src="{{ asset('assets_front/img/ferrari-p.jpeg') }}" alt="">
+                <img src="{{asset('assets_front/img/ferrari-p.jpeg')}}" alt="">
             </div>
             <div class="rent-content">
                 <h2>Rent your car in 3 easy steps</h2>
@@ -595,8 +497,7 @@
                                 <div id="faq1" class="accordion-collapse collapse show"
                                     data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        We offer a premium range of luxury sedans, SUVs, executive cars, and sports vehicles
-                                        for business travel, airport transfers, events, and special occasions.
+                                        We offer a premium range of luxury sedans, SUVs, executive cars, and sports vehicles for business travel, airport transfers, events, and special occasions.
                                     </div>
                                 </div>
                             </div>
@@ -610,8 +511,7 @@
                                 </h2>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Yes, we provide flexible rental options including hourly, daily, weekend, and
-                                        long-term bookings based on your travel requirements.
+                                        Yes, we provide flexible rental options including hourly, daily, weekend, and long-term bookings based on your travel requirements.
                                     </div>
                                 </div>
                             </div>
@@ -625,8 +525,7 @@
                                 </h2>
                                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Absolutely. We specialize in airport transfers, corporate transportation, VIP
-                                        travel, and executive business travel services.
+                                        Absolutely. We specialize in airport transfers, corporate transportation, VIP travel, and executive business travel services.
                                     </div>
                                 </div>
                             </div>

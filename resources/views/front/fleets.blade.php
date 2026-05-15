@@ -80,8 +80,8 @@
                     <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
                         <div class="car-list-item">
 
-                            @foreach ($fleets as $category)
-                                @foreach ($category->products as $item)
+                            @foreach ($fleets as $categoryName => $products)
+                                @foreach ($products as $item)
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">

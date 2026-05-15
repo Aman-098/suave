@@ -205,7 +205,7 @@
 
                     @foreach ($fleets as $category)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
+                            <button class="nav-link" id="pills-cadilliac-tab-service-v2"
                                 data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
                                 role="tab" aria-selected="true"> {{ $category->name }}</button>
                         </li>
@@ -332,7 +332,7 @@
 
                     @foreach ($fleets as $category)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
-                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $category->name }}"
+                        <div class="tab-pane fade" id="tab-{{ $category->name }}"
                             role="tabpanel">
                             <div class="car-list-item">
                                 @foreach ($category->products as $item)

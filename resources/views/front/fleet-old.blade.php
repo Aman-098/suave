@@ -13,43 +13,84 @@
             <div class="page-title t-al-center">
 
                 <h1 class="main-title">Our Fleet</h1>
-
-                <!-- <ul class="breadcrum">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                </ul> -->
             </div>
         </div>
     </div>
 
-    <section class="car-listing-page dark-theme-listing">
-        <div class="themesflat-container">
 
-            @foreach ($fleets as $categoryName => $products)
-                <div class="fleet-section">
-                    <div class="fleet-header">
-                        <h2>{{ $categoryName }}</h2>
-                        <div class="fleet-arrows">
-                            <div class="swiper-button-prev sport-prev"></div>
-                            <div class="swiper-button-next sport-next"></div>
-                        </div>
+    {{-- new design for listing --}}
+    <div class="widget-populer-makes-h5">
+        <div class="themesflat-container">
+            <div class="populer-makes">
+
+                <ul class="nav nav-pills tab-car-service-v2 justify-content-center mb-30" id="pills-tab-service-v2"
+                    role="tablist">
+                    {{-- ALL TAB --}}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-all" type="button"
+                            role="tab">
+                            All
+                        </button>
+                    </li>
+
+                    @php $i = 0; @endphp
+
+                    @foreach ($fleets as $categoryName => $products)
+                        {{-- @php $slug = Str::slug($categoryName); @endphp --}}
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
+                                data-bs-toggle="pill" data-bs-target="#tab-{{ $categoryName }}" type="button"
+                                role="tab" aria-selected="true"> {{ $categoryName }}</button>
+                        </li>
+                        @php $i++; @endphp
+                    @endforeach
+
+                </ul>
+
+
+                <div id="videoPopup" class="video-popup">
+                    <div class="video-content">
+                        <span class="close-btn-video" onclick="closeVideo()">✖</span>
+
+                        <iframe id="videoFrame" src="" frameborder="0" allow="autoplay; encrypted-media"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+
+                <div id="videoPopup" class="video-popup">
+                    <button class="close-btn" onclick="closeVideo()">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+
+                    <div class="video-content">
+                        <iframe id="videoFrame" src="" allowfullscreen>
+                        </iframe>
                     </div>
 
-                    <div class="swiper sport-slider">
-                        <div class="swiper-wrapper">
+                </div>
 
-                            <!-- EACH ITEM -->
-                            @foreach ($products as $item)
-                                <div class="swiper-slide">
+                <div class="tab-content" id="pills-tabContent-v2">
+
+                    {{-- ALL PRODUCTS TAB --}}
+                    <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
+                        <div class="car-list-item">
+
+                            @foreach ($fleets as $category)
+                                @foreach ($category->products as $item)
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
-                                                @if(!empty($item->badge))
+                                                @if (!empty($item->badge))
                                                     <div class="feature">
                                                         <span>{{ $item->badge }}</span>
                                                     </div>
                                                 @endif
-                                                @if(!empty($item->video))
+                                                @if (!empty($item->video))
                                                     <div class="play-btn" onclick="openVideo()">
                                                         <svg viewBox="0 0 24 24">
                                                             <polygon points="8,5 19,12 8,19"></polygon>
@@ -62,8 +103,8 @@
                                         <div class="content">
                                             <h6 class="title">{{ $item->name }}</h6>
                                             <div class="description">
-                                                {{-- <span>4,320 ₤/DAY</span> --}}
-                                                <span>₤ {{ number_format($item->price,2) }} /Day</span>
+
+                                                <span>₤ {{ number_format($item->price, 2) }} /Day</span>
                                             </div>
                                             <div class="bottom-btn-wrap-fleet">
                                                 <div class="btn-read-more">
@@ -73,10 +114,16 @@
                                                     </a>
                                                 </div>
                                                 <div class="btn-group-panel">
-                                                    <a href="tel:919988998899" class="icon-service">
-                                                        <i class="fa fa-phone" style="color: white;"></i>
+
+                                                    <a href="tel:+4408081680808" class="icon-service">
+                                                        <svg width="18" height="18" viewBox="0 0 24 24"
+                                                            fill="#fff">
+                                                            <path
+                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
+                                                        </svg>
                                                     </a>
-                                                    <a href="https://wa.me/919988998899" target="_blank" class="icon-service">
+                                                    <a href="https://wa.me/+4408081680808" target="_blank"
+                                                        class="icon-service">
                                                         <i class="icon-whatsapp-1"></i>
                                                     </a>
                                                     <a href="{{ url('fleet/' . $item->slug) }}" class="icon-service">
@@ -86,21 +133,83 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             @endforeach
-
-        
 
                         </div>
                     </div>
+
+                    @php $i = 0; @endphp
+
+                    @foreach ($fleets as $categoryName => $products)
+                        {{-- @php $slug = Str::slug($categoryName); @endphp --}}
+                        <div class="tab-pane {{ $i == 0 ? 'show active' : '' }}" id="tab-{{ $categoryName }}"
+                            role="tabpanel">
+                            <div class="car-list-item">
+                                @foreach ($products as $item)
+                                    <div class="tf-car-service">
+                                        <a href="{{ url('fleet/' . $item->slug) }}" class="image">
+                                            <div class="stm-badge-top">
+                                                @if (!empty($item->badge))
+                                                    <div class="feature">
+                                                        <span>{{ $item->badge }}</span>
+                                                    </div>
+                                                @endif
+                                                @if (!empty($item->video))
+                                                    <div class="play-btn" onclick="openVideo()">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon points="8,5 19,12 8,19"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                        </a>
+                                        <div class="content">
+                                            <h6 class="title">{{ $item->name }}</h6>
+                                            <div class="description">
+
+                                                <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                            </div>
+                                            <div class="bottom-btn-wrap-fleet">
+                                                <div class="btn-read-more">
+                                                    <a class="more-link" href="{{ url('fleet/' . $item->slug) }}">
+                                                        <span>View details</span>
+                                                        <i class="icon-arrow-right2"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="btn-group-panel">
+
+                                                    <a href="tel:+4408081680808" class="icon-service">
+                                                        <svg width="18" height="18" viewBox="0 0 24 24"
+                                                            fill="#fff">
+                                                            <path
+                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z" />
+                                                        </svg>
+                                                    </a>
+                                                    <a href="https://wa.me/+4408081680808" target="_blank"
+                                                        class="icon-service">
+                                                        <i class="icon-whatsapp-1"></i>
+                                                    </a>
+                                                    <a href="{{ url('fleet/' . $item->slug) }}" class="icon-service">
+                                                        Book Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+
+                        </div>
+                        @php $i++; @endphp
+                    @endforeach
                 </div>
-            @endforeach
 
-
-
-
+            </div>
         </div>
-    </section>
+    </div>
 
 @endsection
 

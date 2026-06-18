@@ -17555,7 +17555,7 @@ a.mapboxgl-ctrl-logo {
 }
 
 .product-gallery{
-  width: 50%;
+  width: 100%;
 }
 
 .product-info{
@@ -17786,6 +17786,7 @@ a.mapboxgl-ctrl-logo {
   align-items: center;
   gap: 10px;
   margin-top: 12px;
+  justify-content: center;
 }
 
 /* SLIDER */

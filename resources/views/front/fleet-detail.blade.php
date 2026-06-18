@@ -13,9 +13,9 @@
             <div class="page-title t-al-center">
                 <h1 class="main-title">Our Fleet</h1>
                 <!-- <ul class="breadcrum">
-                                                                                            <li><a href="/">Home</a></li>
-                                                                                            <li><a href="#">About us</a></li>
-                                                                                        </ul> -->
+                                                                                                <li><a href="/">Home</a></li>
+                                                                                                <li><a href="#">About us</a></li>
+                                                                                            </ul> -->
             </div>
         </div>
     </div>
@@ -80,111 +80,108 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: PRODUCT INFO -->
-                <div class="product-info">
 
-                    <h1>{{ $fleet->name }}</h1>
-
-                    @php
-                        $rating = $fleet->rating;
-                    @endphp
-
-                    @if (isset($rating) && $rating != null)
-                        <div class="rating">
-                            <div class="stars">
-                                @for ($i = 1; $i <= 5; $i++)
-                                    <span class="star {{ $i <= $rating ? 'filled' : '' }}"></span>
-                                @endfor
-                            </div>
-                            <span class="rating-text">{{ $rating }} • Premium Experience</span>
-                        </div>
-                    @endif
-
-                    <div class="price">
-                        {{-- <span class="day">₹ 4,320 / Day</span> --}}
-                        <span class="hour">₤ {{ number_format($fleet->price, 2) }} / Day</span>
-                    </div>
-
-
-                    <p class="desc">
-                        {!! $fleet->description !!}
-                    </p>
-
-                    <!-- ACTION -->
-                    <div class="actions">
-                        {{-- <a href="javascript:void(0);" class="btn primary" id="openModal">Book Now</a> --}}
-                        <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
-                            data-bs-target="#bookingModal">
-                            Book Now
-                        </a>
-                        <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
-                        <a href="tel:+919988998899" class="btn outline">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                <path
-                                    d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- <div class="extra">
-                                                                      <p>✔ Instant Confirmation</p>
-                                                                      <p>✔ Free Cancellation (24 hrs)</p>
-                                                                    </div> -->
-
-                </div>
 
             </div>
 
-            <!-- TABS -->
-            <div class="detail-listing">
-                <div class="product-tabs">
+            <!-- RIGHT: PRODUCT INFO -->
+            <div class="product-info">
 
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="desc">Description</button>
-                        <button class="tab-btn" data-tab="specs">Specifications</button>
-                        {{-- <button class="tab-btn" data-tab="reviews">Reviews</button> --}}
+                <h1>{{ $fleet->name }}</h1>
+
+                @php
+                    $rating = $fleet->rating;
+                @endphp
+
+                @if (isset($rating) && $rating != null)
+                    <div class="rating">
+                        <div class="stars">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <span class="star {{ $i <= $rating ? 'filled' : '' }}"></span>
+                            @endfor
+                        </div>
+                        <span class="rating-text">{{ $rating }} • Premium Experience</span>
                     </div>
+                @endif
 
-                    <div id="desc" class="tab-content active">
-                        {!! $fleet->description !!}
+                <div class="price">
+                    {{-- <span class="day">₹ 4,320 / Day</span> --}}
+                    <span class="hour">₤ {{ number_format($fleet->price, 2) }} / Day</span>
+                </div>
 
 
-                    </div>
+                <p class="desc">
+                    {!! $fleet->description !!}
+                </p>
 
-                    <div id="specs" class="tab-content">
+                <!-- ACTION -->
+                <div class="actions">
+                    {{-- <a href="javascript:void(0);" class="btn primary" id="openModal">Book Now</a> --}}
+                    <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
+                        data-bs-target="#bookingModal">
+                        Book Now
+                    </a>
+                    <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
+                    <a href="tel:+919988998899" class="btn outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
+                            <path
+                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="vehicle-highlights">
+
+                    <h2>Vehicle Highlights</h2>
+
+                    <div class="specification-content">
                         {!! $fleet->specification !!}
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            {{-- INFO SECTION --}}
+            {{-- <div class="fleet-details-section">
+
+                    <div class="fleet-info">
+
+                        <span class="fleet-category">
+                            {{ $fleet->category->name ?? 'Luxury Fleet' }}
+                        </span>
+
+                        <h1>{{ $fleet->name }}</h1>
+
+                        <div class="fleet-description">
+                            {!! $fleet->description !!}
+                        </div>
+
+                        <div class="fleet-price">
+                            <small>Daily Price</small>
+                            <h2>£{{ number_format($fleet->price, 2) }}</h2>
+                        </div>
+
+                        <a href="#" class="reserve-btn" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
+                            data-bs-target="#bookingModal">
+                            Reserve This Car
+                        </a>
 
                     </div>
 
-                    {{-- <div id="reviews" class="tab-content">
-                        <div class="review">
-                            <p class="review-text">
-                                The car was spotless, the driver was highly professional,
-                                and the ride quality was beyond expectations. Perfect for my wedding entry.”
-                            </p>
-                            <span class="review-user">— Rahul Sharma</span>
+                    <div class="vehicle-highlights">
+
+                        <h2>Vehicle Highlights</h2>
+
+                        <div class="specification-content">
+                            {!! $fleet->specification !!}
                         </div>
 
-                        <div class="review">
-                            <p class="review-text">
-                                “Booked for a corporate guest. The impression it created was outstanding.
-                                Smooth booking process and on-time service. Highly recommended!”
-                            </p>
-                            <span class="review-user">— Neha Verma</span>
-                        </div>
+                    </div>
 
-                        <div class="review">
-                            <p class="review-text">
-                                “Luxury at its best. The interior ambience and comfort level is next level.
-                                Worth every rupee for special occasions.”
-                            </p>
-                            <span class="review-user">— Aman Gupta</span>
-                        </div>
-                    </div> --}}
-
-                </div>
-            </div>
+                </div> --}}
 
         </div>
 
@@ -314,8 +311,7 @@
 
                             <div class="form-group">
                                 <label>Phone Number <span>*</span></label>
-                                <input type="text" id="phone" name="phone"
-                                    placeholder="Enter your phone number">
+                                <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
                                 <span class="text-danger" id="phoneError"></span>
                             </div>
                         </div>

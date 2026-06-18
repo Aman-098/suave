@@ -18651,6 +18651,11 @@ width: 100%;
 .desc-wrap-panel .top-content .left h1{
   font-size: 45px;
 }
+
+.desc-wrap-panel .top-content .left h2{
+  font-size: 40px;
+  margin-bottom: 10px;
+}
 .desc-wrap-panel .top-content .left{
   text-align: left;
 }
@@ -18671,7 +18676,7 @@ width: 100%;
 }
 
 .desc-wrap-panel{
-padding: 60px 0;
+padding: 60px 0 0;
 }
 
 .desc-wrap-panel .top-content .right .specification-content p{

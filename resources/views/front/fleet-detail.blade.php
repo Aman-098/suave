@@ -58,7 +58,14 @@
             </div>
 
             <!-- RIGHT: PRODUCT INFO -->
-            <section class="listing-pro desc-wrap-panel">
+            
+
+
+        </div>
+
+    </section>
+
+    <section class="listing-pro desc-wrap-panel">
 
                 <div class="container">
 
@@ -112,11 +119,6 @@
 
                 </div>
             </section>
-
-
-        </div>
-
-    </section>
 
 
     <section class="listing-pro">

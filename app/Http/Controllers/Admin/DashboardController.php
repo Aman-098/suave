@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $user= Auth::user();
         $name=$user->name;
 
-        $bookings=Booking::get();
+        $bookings=Booking::latest()->get();
         $total_bookings=$bookings->count();
         $confirmed_bookings=Booking::where('status','confirmed')->count();
         $cancelled_bookings=Booking::where('status','cancelled')->count();

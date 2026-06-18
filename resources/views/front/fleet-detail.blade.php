@@ -93,7 +93,7 @@
                             </a> --}}
 
                             <div class="actions">                   
-                                <a href="#" class="btn primary" data-fleet="Audi R8" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                                <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal" data-bs-target="#bookingModal">
                                     Book Now
                                 </a>
                                 <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>

@@ -136,6 +136,7 @@
 
             </div>
 
+            
             <!-- TABS -->
             <div class="detail-listing">
                 <div class="product-tabs">

@@ -17569,9 +17569,19 @@ a.mapboxgl-ctrl-logo {
 }
 
 /* GALLERY */
+.main-image{
+width: 100%;
+    height: 500px;
+    overflow: hidden;
+
+}
+
 .detail-listing .main-image img {
   width: 100%;
   border-radius: 14px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .detail-listing .thumbs {
@@ -17902,7 +17912,7 @@ a.mapboxgl-ctrl-logo {
 .listing-pro .top-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: start;
   gap: 40px;
   margin-bottom: 70px;
 }
@@ -18633,3 +18643,29 @@ a.mapboxgl-ctrl-logo {
   color: #000;
 }
 
+
+
+.desc-wrap-panel h1,span{
+  text-align: left;
+}
+.desc-wrap-panel .top-content .left h1{
+  font-size: 45px;
+}
+.desc-wrap-panel .top-content .left{
+  text-align: left;
+}
+.desc-wrap-panel .top-content .right{
+  text-align: left;
+}
+.desc-wrap-panel .top-content .right h2{
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+
+.desc-wrap-panel .top-content .right .specification-content{
+  color: #aaa;
+}
+.desc-wrap-panel .top-content .left .btn.whatsapp {
+    background: #be9b5a;
+    color: #fff!important;
+}

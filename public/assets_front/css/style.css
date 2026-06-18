@@ -18669,3 +18669,17 @@ width: 100%;
     background: #be9b5a;
     color: #fff!important;
 }
+
+.desc-wrap-panel{
+padding: 60px 0;
+}
+
+.desc-wrap-panel .top-content .right .specification-content p{
+    border-bottom: 1px solid #aaa;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    line-height:25px;
+}
+
+
+

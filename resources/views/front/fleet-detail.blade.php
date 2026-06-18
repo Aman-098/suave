@@ -152,7 +152,7 @@
                             <div class="car-card">
                                 <img src="{{ asset('storage/' . $item->image) }}" />
                                 <div class="card-overlay">
-                                    <span>{{ $item->category->name }}</span>
+                                    {{-- <span>{{ $item->category->name }}</span> --}}
                                     <h3>{{ $item->name }}</h3>
                                     <p>Price</p>
                                     <h4>£ {{ number_format($item->price, 2) }} /day</h4>

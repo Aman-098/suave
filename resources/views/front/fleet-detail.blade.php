@@ -30,8 +30,8 @@
 
                 <div class="product-gallery">
                     <h1 class="car-main-title">Audi R8</h1>
-                    <div class="main-image">
-                        <img src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
+                    <div class="main-image" id="mainImageSection">
+                        <img id="mainCarImg" src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
                     </div>
 
                     <div class="luxury-car-gallery">

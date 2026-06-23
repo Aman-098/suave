@@ -1,7 +1,7 @@
 <div id="wpp-fix" class="right shake">
     <a href="https://api.whatsapp.com/send?phone=+4408081680808&amp;text=Hi, Please share your requirement and our team will get back to you shortly!"
         id="wpp-link" class="wpp-form wpp-link"
-        data-href="https://api.whatsapp.com/send?text=welcome to Gridlabs Technologies!&amp;phone=+4408081680808"
+        data-href="https://api.whatsapp.com/send?text=welcome to Suave Executive Travel!&amp;phone=+4408081680808"
         data-wpp="+4408081680808">
         <svg height="682pt" viewBox="-23 -21 682 682.667" width="682pt" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -67,19 +67,19 @@
             </div>
         </div>
 
-        <div class="insta-card">
+        {{-- <div class="insta-card">
             <img src="https://images.pexels.com/photos/32255379/pexels-photo-32255379.jpeg?_gl=1*pcgf2j*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxNzIkajIzJGwwJGgw"
                 alt="">
             <div class="overlay">
                 <span>❤ 1.5K</span>
                 <span>💬 60</span>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
     <div class="insta-btn">
-        <a href="#" target="_blank">Follow on Instagram →</a>
+        <a href="https://www.instagram.com/suave.executive.travel/?hl=en" target="_blank">Follow on Instagram →</a>
     </div>
 </div>
 
@@ -89,34 +89,34 @@
         <div class="footer-col">
             <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
             <div class="footer-add-contact">
-                <p class="s-icon">Call: <a href="tel:+4408081680808">+44 0808 168 0808</a></p>
+                <p class="s-icon">Call: <a href="tel:08081680808 ">0808 168 0808 </a></p>
                 <p class="s-icon">Email: <a
                         href="mailto:info@suaveexecutivetravel.co.uk">info@suaveexecutivetravel.co.uk</a></p>
                 <div class="social-icons">
                     <ul class="footer-social-links">
-                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
+                        <li><a href="https://www.facebook.com/p/Suave-Executive-Travel-61556411261769/" target="_blank"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
                                     alt=""></a>
                         </li>
-                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/instagram.svg') }}"
-                                    alt=""></a></li>
-                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/linkedin.svg') }}"
+                        <li><a href="https://www.instagram.com/suave.executive.travel/?hl=en" target="_blank"><img
+                                    src="{{ asset('assets_front/img/icons/instagram.svg') }}" alt=""></a></li>
+                        <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}"
                                     alt=""></a>
                         </li>
-                        <li><a href="#"><img src="{{ asset('assets_front/img/icons/youtube.svg') }}"
+                        {{-- <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}"
                                     alt=""></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
 
             <div class="reviews">
                 <div class="review-box">
-                    <a href="#">
+                    <a href="https://share.google/hCR5kD1FzbVKzezVP" target="_blank">
                         <img src="{{ asset('assets_front/img/logo/google-pro.png') }}" alt="Google"><br>
                         ⭐ 4.8 Google Reviews</a>
                 </div>
                 <div class="review-box">
-                    <a href="#">
+                    <a href="https://www.trustpilot.com/review/suaveexecutivetravel.co.uk" target="_blank">
                         <img src="{{ asset('assets_front/img/logo/trustpilot-pro.png') }}" alt="Trustpilot"><br>
                         ⭐ 4.7 Trustpilot</a>
                 </div>
@@ -153,7 +153,7 @@
                 <input type="email" id="f_email" name="email" placeholder="example@gmail.com" />
                 <span class="text-danger" id="femailError"></span>
 
-                <input type="text" id="f_phone" name="phone" placeholder="+91 99999 99999" />
+                <input type="text" id="f_phone" name="phone" placeholder="+44 987699 9999" />
                 <span class="text-danger" id="fphoneError"></span>
 
                 <textarea id="f_message" name="message" placeholder="Enter message"></textarea>
@@ -192,13 +192,13 @@
     <span class="close-video">✕</span>
 </div>
 
-<div class="sticky-badge">
+{{-- <div class="sticky-badge">
     <span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.2 22 12 18.27 5.8 22 7 14.14 2 9.27l7.1-1.01L12 2z" />
         </svg>
         Rated 4.9 by Customers Nationwide</span>
-</div>
+</div> --}}
 
 
 <script src="{{ asset('assets_front/js/jquery.min.js') }}"></script>

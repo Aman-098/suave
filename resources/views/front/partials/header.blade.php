@@ -25,9 +25,9 @@
                              </nav>
                          </div>
                          <div class="header-account flex align-center">
-                             <a href="tel:+4408081680808" class="call-ico"><img
+                             <a href="tel:08081680808 " class="call-ico"><img
                                      src="{{ asset('assets_front/img/call.svg') }}">
-                                 +44 0808 168 0808</a>
+                                  0808 168 0808 </a>
                              <div class="flat-bt-top sc-btn-top ml--20 ">
                                  <a class="btn-icon-list" href="{{route('contact')}}">
                                      <span>Get Free Quote</span>

@@ -28,97 +28,80 @@
                         : json_decode($fleet->gallery_images, true);
                 @endphp
 
-
                 <div class="product-gallery">
+                    <h1 class="car-main-title">Audi R8</h1>
                     <div class="main-image">
                         <img src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
                     </div>
 
-                    <div class="thumb-wrapper">
-
-                        @if (!empty($gallery))
-                            <button class="thumb-btn prev" onclick="scrollThumbs(-1)">‹</button>
-
-                            <div class="thumbs" id="thumbSlider">
+                    <div class="luxury-car-gallery">
+                        <div class="luxury-car-grid">
+                            @if (!empty($gallery))
 
                                 @foreach ($gallery as $img)
                                     <img src="{{ asset('storage/' . $img) }}" onclick="changeImg(this)">
                                 @endforeach
 
-                            </div>
+                            @endif
 
-                            <button class="thumb-btn next" onclick="scrollThumbs(1)">›</button>
-                        @endif
-
+                        </div>
                     </div>
                 </div>
-
-
-
             </div>
-
-            <!-- RIGHT: PRODUCT INFO -->
-            
-
-
         </div>
-
     </section>
 
     <section class="listing-pro desc-wrap-panel">
 
-                <div class="container">
+        <div class="container">
 
-                    <!-- Top Content -->
-                    <div class="top-content">
-                        <div class="left">
-                            {{-- <span class="fleet-category">
+            <!-- Top Content -->
+            <div class="top-content">
+                <div class="left">
+                    {{-- <span class="fleet-category">
                                 {{ $fleet->category->name ?? 'Luxury Fleet' }}
                             </span> --}}
 
-                            <h1>{{ $fleet->name }}</h1>
+                    <h1>{{ $fleet->name }}</h1>
 
-                            <div class="fleet-description">
-                                {!! $fleet->description !!}
-                            </div>
-
-                            <div class="fleet-price">
-                                <small>Daily Price</small>
-                                <h2>£{{ number_format($fleet->price, 2) }}</h2>
-                            </div>
-
-                            {{-- <a href="#" class="reserve-btn" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
-                                data-bs-target="#bookingModal">
-                                Reserve This Car
-                            </a> --}}
-
-                            <div class="actions">                   
-                                <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                                    Book Now
-                                </a>
-                                <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
-                                <a href="tel:+919988998899" class="btn outline">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                        <path d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-
-
-                        </div>
-
-                        <div class="right">
-                            <h2>Vehicle Highlights</h2>
-
-                            <div class="specification-content">
-                                {!! $fleet->specification !!}
-                            </div>
-                        </div>
+                    <div class="fleet-description">
+                        {!! $fleet->description !!}
                     </div>
 
+                    <div class="fleet-price">
+                        <small>Daily Price</small>
+                        <h2>£{{ number_format($fleet->price, 2) }}</h2>
+                    </div>
+
+                    <div class="actions">
+                        <a href="#" class="btn primary" data-fleet="{{ $fleet->name }}" data-bs-toggle="modal"
+                            data-bs-target="#bookingModal">
+                            Book Now
+                        </a>
+                        <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
+                        <a href="tel:+919988998899" class="btn outline">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
+                                <path
+                                    d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+
+
                 </div>
-            </section>
+
+                <div class="right">
+                    <h2>Vehicle Highlights</h2>
+
+                    <div class="specification-content">
+                        {!! $fleet->specification !!}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 
     <section class="listing-pro">
@@ -398,12 +381,22 @@
     </script>
 
 
+
+
     <script>
         function changeImg(el) {
+
             document.getElementById("mainCarImg").src = el.src;
+
+            const section = document.getElementById("mainImageSection");
+            const offset = 100; // header height
+
+            window.scrollTo({
+                top: section.offsetTop - offset,
+                behavior: "smooth"
+            });
         }
     </script>
-
     <script>
         $(document).ready(function() {
             const $track = $(".feedback-track");

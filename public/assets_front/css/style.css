@@ -18688,3 +18688,60 @@ padding: 60px 0 0;
 
 
 
+.luxury-car-gallery {
+    width: 100%;
+    background: #000;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.luxury-car-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.luxury-car-grid img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border-radius: 2px;
+    display: block;
+}
+
+.luxury-car-grid img:hover {
+    transform: scale(1.03);
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+    .luxury-car-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .luxury-car-grid img {
+        height: 170px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .luxury-car-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .luxury-car-grid img {
+        height: 140px;
+    }
+}
+
+
+.car-main-title{
+  color: #fff;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 0;
+}

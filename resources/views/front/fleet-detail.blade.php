@@ -78,7 +78,7 @@
                             data-bs-target="#bookingModal">
                             Book Now
                         </a>
-                        <a href="https://wa.me/919988998899" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
+                        <a href="https://wa.me/+4408081680808" class="btn whatsapp"><i class="icon-whatsapp-1"></i></a>
                         <a href="tel:0808 168 0808 " class="btn outline">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
                                 <path

@@ -46,7 +46,7 @@
                 <div class="contact-card">
                     <i class="fa-solid fa-location-dot"></i>
                     <h4>Location</h4>
-                    <p>United Kingdom</p>
+                    <p>Floor 1, Office no. 7, Second, 3 Uxbridge Rd, Hayes UB4 0JN, United Kingdom</p>
                 </div>
             </div>
 
@@ -80,16 +80,7 @@
 
                 <!-- MAP -->
                 <div class="contact-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9478108.126193948!2d-4.4737716!3d54.55127985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25a3b1142c791a9%3A0xc4f8a0433288257a!2sUnited%20Kingdom!5e0!3m2!1sen!2sin!4v1775622830947!5m2!1sen!2sin"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-                    <!-- <div class="map-overlay">
-                                            <h4>Office Address</h4>
-                                            <p>3 Uxbridge Rd, Hayes UB4 0JN</p>
-                                        </div> -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.013711712184!2d-0.3959850476998569!3d51.51296443785538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761383db44a089%3A0xf16e9adb576e8dcf!2sSuave%20Executive%20Travel%20LTD!5e0!3m2!1sen!2sin!4v1782203778994!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
             </div>

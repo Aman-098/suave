@@ -3635,7 +3635,8 @@ ul.social-icon li a i:hover {
 /*------------ Page Title ---------------- */
 .tf-page-title .page-title {
   padding: 144px 0;
-  background-image: url(./../images/abc.jpg);
+  /* background-image: url(./../images/abc.jpg); */
+  background-image: url(./../images/banner.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

@@ -129,7 +129,7 @@
                     <div class="brand-logo">
                         <img src="assets_front/img/logo/google.png" alt="">
                     </div>
-                    <span class="count">237 Reviews</span>
+                    {{-- <span class="count">237 Reviews</span> --}}
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
@@ -137,7 +137,7 @@
                     <div class="brand-logo">
                         <img src="assets_front/img/logo/trustpilot.png" alt="">
                     </div>
-                    <span class="count">128 Reviews</span>
+                    {{-- <span class="count">128 Reviews</span> --}}
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
@@ -145,10 +145,10 @@
                     <div class="brand-logo">
                         <img src="assets_front/img/logo/tripadvisor.png" alt="">
                     </div>
-                    <span class="count">94 Reviews</span>
+                    {{-- <span class="count">94 Reviews</span> --}}
                 </div>
             </div>
-            <a href="#testimonials" class="review-btn">Read Customer Reviews →</a>
+            <a href="https://share.google/hCR5kD1FzbVKzezVP" target="_blank" class="review-btn">Read Customer Reviews →</a>
         </div>
     </section>
 

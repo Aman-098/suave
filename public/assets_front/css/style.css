@@ -16767,7 +16767,7 @@ a.mapboxgl-ctrl-logo {
 }
 
 /* subtle shine effect */
-.review-btn::after {
+/* .review-btn::after {
     content: "";
     position: absolute;
     top: 0;
@@ -16776,7 +16776,7 @@ a.mapboxgl-ctrl-logo {
     height: 100%;
     background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
     transition: 0.5s;
-}
+} */
 
 .review-btn:hover::after {
     left: 100%;

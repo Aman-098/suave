@@ -42,7 +42,7 @@
                         </article>
                         
 
-                        <div class="tag-wrap">
+                        {{-- <div class="tag-wrap">
                             <div class="share-box flex align-center">
                                 <p>Share:</p>
                                 <ul class="social-icon icon-share">
@@ -60,14 +60,14 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <aside class="side-blog">
                         <div class="inner-side-bar pl-30">
 
-                            <div class="widget widget-search ">
+                            {{-- <div class="widget widget-search ">
                                 <h3 class="widget-title">
                                     search here
                                 </h3>
@@ -78,7 +78,7 @@
                                     </label>
                                     <button type="submit" class="search-submit"><i class="icon-search-1"></i></button>
                                 </form>
-                            </div>
+                            </div> --}}
                             <div class="widget widget-recent">
                                 <h3 class="widget-title ">
                                     Related Blogs

@@ -29,7 +29,7 @@
                 @endphp
 
                 <div class="product-gallery">
-                    <h1 class="car-main-title">Audi R8</h1>
+                    <h1 class="car-main-title">{{ $fleet->name }}</h1>
                     <div class="main-image" id="mainImageSection">
                         <img id="mainCarImg" src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
                     </div>

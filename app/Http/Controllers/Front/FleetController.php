@@ -15,6 +15,7 @@ class FleetController extends Controller
     public function index(){
         $fleets = Product::with('category')
                     ->where('status',1)
+                    ->orderBy('sort_order')
                     ->get()
                     ->groupBy('category.name');
         // dd($fleets); 

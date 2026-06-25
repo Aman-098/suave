@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index() {
         $categories = Category::where('status', 1)->get();
         
-        $products=Product::with('category')->get();
+        $products=Product::with('category')->orderBy('sort_order')->get();
 
         $total_product=$products->count();
         $active_product=Product::where('status',1)->count();
@@ -36,6 +36,7 @@ class ProductController extends Controller
                 'content'=>'required',
                 'specification'=>'nullable',
                 'rating'=>'nullable',
+                'sort_order'=>'required',
 
                 // 👉 image validation add kar
                 'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp,svg',
@@ -56,6 +57,7 @@ class ProductController extends Controller
 
             $product = Product::create([
                 'category_id' => $request->input('category_id'), 
+                'sort_order' => $validated['sort_order'], 
                 'name' => $validated['name'],
                 'slug' => $slug,
                 'price' => $validated['price'], 
@@ -134,6 +136,7 @@ class ProductController extends Controller
                 'rating'=>'nullable',
                 'content'=>'required',
                 'specification'=>'nullable',
+                'sort_order'=>'required',
 
                 // multiple image validation
                 'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp,svg',
@@ -230,6 +233,7 @@ class ProductController extends Controller
             // 🔥 update
             $product->update([
                 'category_id' => $request->input('category_id'),
+                'sort_order' => $validated['sort_order'], 
                 'name'        => $validated['name'],
                 'slug'        => $slug,
                 'price'       => $validated['price'],

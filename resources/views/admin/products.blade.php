@@ -257,6 +257,7 @@
                                     <label class="form-label">Image<span class="text-danger"> *</span></label>
                                     <input type="file" id="image" name="image" class="form-control">
                                     <span id="imageError" class="text-danger"></span>
+                                    
                                 </div>
                             </div>
 
@@ -285,6 +286,15 @@
                                     <label class="form-label">Badge</label>
                                     <input type="text" id="badge" name="badge"
                                         placeholder="e.g. Limited Availability" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Sort order</label>
+                                    <input type="number" id="sort_order" name="sort_order"
+                                        placeholder="e.g. 1" class="form-control">
+                                    <span id="sort_orderError" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -424,6 +434,14 @@
 
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label class="form-label">Sort Order</label>
+                                    <input type="number" id="edit_sort_order" name="sort_order" class="form-control">
+                                     <span class="text-danger" id="edit_sort_orderError"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
                                     <label class="form-label">Status<span class="text-danger"> *</span></label>
                                     <select class="select" name="status" id="edit_status">
                                         <option value="1">Active</option>
@@ -529,6 +547,7 @@
                 var name = $('#name').val().trim();
 
                 var price = $('#price').val().trim();
+                var sort_order = $('#sort_order').val();
                 var content = $('#content').summernote('code');
                 var specification = $('#specification').summernote('code');
 
@@ -539,6 +558,8 @@
                 if (name === '') return showError('#nameError', 'Name is required.');
 
                 if (price === '') return showError('#priceError', 'Price is required.');
+
+                if (sort_order === '') return showError('#sort_orderError', 'Sort order is required.');
 
                 // Validate content (tinyMCE)
                 if (content === '') {
@@ -615,6 +636,7 @@
                 // Collect form values
                 var name = $('#edit_name').val().trim();
                 var price = $('#edit_price').val().trim();
+                var sort_order = $('#edit_sort_order').val().trim();
                 // var content = $('#edit_content').summernote('code');
 
 
@@ -624,6 +646,7 @@
                 if (name === '') return showError('#edit_nameError', 'Name is required.');
 
                 if (price === '') return showError('#edit_priceError', 'Price is required.');
+                if (sort_order === '') return showError('#edit_sort_orderError', 'Sort Order is required.');
 
                 // Validate content (tinyMCE)
                 if (content === '') {
@@ -739,6 +762,7 @@
                     }
 
                     $('#edit_badge').val(data.badge ?? '');
+                    $('#edit_sort_order').val(data.sort_order ?? '');
 
                     $('#edit_status').val(data.status).trigger('change');
                 },

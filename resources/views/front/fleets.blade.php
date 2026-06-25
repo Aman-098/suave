@@ -6,6 +6,33 @@
 
 @section('meta_keywords', 'SUAVE')
 
+<style>
+    .category-heading {
+        margin-bottom: 30px;
+    }
+
+    .category-heading h3 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 0;
+        position: relative;
+        padding-left: 18px;
+        color: white !important;
+    }
+
+    .category-heading h3:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 28px;
+        background: #c8a45d;
+        border-radius: 10px;
+    }
+</style>
+
 @section('content')
 
     <div class="tf-page-title mt-10">
@@ -38,9 +65,9 @@
                     @foreach ($fleets as $categoryName => $products)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-cadilliac-tab-service-v2"
-                                data-bs-toggle="pill" data-bs-target="#tab-{{ $categoryName }}" type="button"
-                                role="tab" aria-selected="true"> {{ $categoryName }}</button>
+                            <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
+                                data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
+                                aria-selected="true"> {{ $categoryName }}</button>
                         </li>
                         @php $i++; @endphp
                     @endforeach
@@ -77,17 +104,15 @@
                 <div class="tab-content" id="pills-tabContent-v2">
 
                     {{-- ALL PRODUCTS TAB --}}
-                    <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
+                    {{-- <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
                         <div class="car-list-item">
 
                             @foreach ($fleets as $categoryName => $products)
+                                <div class="category-heading mb-4">
+                                    <h3>{{ $categoryName }}</h3>
+                                </div>
 
-                            <div class="category-heading mb-4">
-                <h3>{{ $categoryName }}</h3>
-            </div>
-                            
                                 @foreach ($products as $item)
-                                
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">
@@ -143,14 +168,82 @@
                             @endforeach
 
                         </div>
+                    </div> --}}
+                    <div class="tab-pane fade show active" id="tab-all" role="tabpanel">
+
+                        @foreach ($fleets as $categoryName => $products)
+                            <div class="category-heading mb-2">
+                                <h3>{{ $categoryName }}</h3>
+                            </div>
+
+                            <div class="car-list-item">
+
+                                @foreach ($products as $item)
+                                    <div class="tf-car-service">
+                                        <a href="{{ url('fleet/' . $item->slug) }}" class="image">
+                                            <div class="stm-badge-top">
+                                                @if (!empty($item->badge))
+                                                    <div class="feature">
+                                                        <span>{{ $item->badge }}</span>
+                                                    </div>
+                                                @endif
+
+                                                @if (!empty($item->video))
+                                                    <div class="play-btn" onclick="openVideo()">
+                                                        <svg viewBox="0 0 24 24">
+                                                            <polygon points="8,5 19,12 8,19"></polygon>
+                                                        </svg>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                        </a>
+
+                                        <div class="content">
+                                            <h6 class="title">{{ $item->name }}</h6>
+
+                                            <div class="description">
+                                                <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                            </div>
+
+                                            <div class="bottom-btn-wrap-fleet">
+                                                <div class="btn-read-more">
+                                                    <a class="more-link" href="{{ url('fleet/' . $item->slug) }}">
+                                                        <span>View details</span>
+                                                        <i class="icon-arrow-right2"></i>
+                                                    </a>
+                                                </div>
+
+                                                <div class="btn-group-panel">
+                                                    <a href="tel:+4408081680808" class="icon-service">
+                                                        <!-- svg -->
+                                                    </a>
+
+                                                    <a href="https://wa.me/+4408081680808" target="_blank"
+                                                        class="icon-service">
+                                                        <i class="icon-whatsapp-1"></i>
+                                                    </a>
+
+                                                    <a href="{{ url('fleet/' . $item->slug) }}" class="icon-service">
+                                                        Book Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        @endforeach
+
                     </div>
 
                     @php $i = 0; @endphp
 
                     @foreach ($fleets as $categoryName => $products)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
-                        <div class="tab-pane fade" id="tab-{{ $categoryName }}"
-                            role="tabpanel">
+                        <div class="tab-pane fade" id="tab-{{ $categoryName }}" role="tabpanel">
                             <div class="car-list-item">
                                 @foreach ($products as $item)
                                     <div class="tf-car-service">

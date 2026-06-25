@@ -13,11 +13,19 @@ class FleetController extends Controller
 {
     //
     public function index(){
+        // $fleets = Product::with('category')
+        //             ->where('status',1)
+        //             ->orderBy('sort_order')
+        //             ->get()
+        //             ->groupBy('category.name');
+
         $fleets = Product::with('category')
-                    ->where('status',1)
-                    ->orderBy('sort_order')
-                    ->get()
-                    ->groupBy('category.name');
+    ->where('status', 1)
+    ->get()
+    ->groupBy('category.name')
+    ->sortBy(function ($products, $categoryName) {
+        return optional($products->first()->category)->sort_order;
+    });
         // dd($fleets); 
         return view('front.fleets',compact('fleets'));
     }

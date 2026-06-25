@@ -81,7 +81,13 @@
                         <div class="car-list-item">
 
                             @foreach ($fleets as $categoryName => $products)
+
+                            <div class="category-heading mb-4">
+                <h3>{{ $categoryName }}</h3>
+            </div>
+                            
                                 @foreach ($products as $item)
+                                
                                     <div class="tf-car-service">
                                         <a href="{{ url('fleet/' . $item->slug) }}" class="image">
                                             <div class="stm-badge-top">

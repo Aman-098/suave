@@ -1,3 +1,18 @@
+ <style>
+.call-ico{
+    text-decoration:none;
+    color:#fff;
+    font-size:16px;
+    font-weight:500;
+    gap:10px;
+}
+
+.call-ico img{
+    width:24px;
+    height:24px;
+}
+ </style>
+ 
  <header id="header" class="main-header header header-fixed ">
      <div class="header-lower">
          <div class="themesflat-container w1700">
@@ -25,9 +40,13 @@
                              </nav>
                          </div>
                          <div class="header-account flex align-center">
-                             <a href="tel:08081680808 " class="call-ico"><img
-                                     src="{{ asset('assets_front/img/call.svg') }}">
-                                  0808 168 0808 </a>
+                            <a href="tel:08081680808" class="call-ico d-inline-flex align-items-center">
+    <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+    <span>
+        <strong>Call Us Now</strong><br>
+        0808 168 0808
+    </span>
+</a>
                              <div class="flat-bt-top sc-btn-top ml--20 ">
                                  <a class="btn-icon-list" href="{{route('contact')}}">
                                      <span>Get Free Quote</span>

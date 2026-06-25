@@ -414,61 +414,51 @@
                 <!-- Card 1 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>I needed a reliable car for my business trip and this service exceeded my expectations.
+                    <p>Extremely happy with the service SET have provided from start to finish. Definitely will be a returning customer in the future.
                     </p>
                     <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=1">
-                        <span>Mark Stevens</span>
+                        {{-- <img src="https://i.pravatar.cc/40?img=1"> --}}
+                        <span>J Ali</span>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>As a frequent traveler for work, I rely on rentals often. This company is my go-to.</p>
+                    <p>One of the best rental company in west London. Top customer service from the team. Prestige cars and great packages deal. 5 star to the Top G’s. Definitely will be coming back.</p>
                     <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=2">
-                        <span>Lisa Anderson</span>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="stars">★★★★★</div>
-                    <p>The car was fuel-efficient and environmentally friendly. Loved the experience.</p>
-                    <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=3">
-                        <span>Brian T</span>
+                        {{-- <img src="https://i.pravatar.cc/40?img=3"> --}}
+                        <span>E S</span>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>Last minute booking was easy and the pickup process was seamless.</p>
+                    <p>Hired a Porsche for a birthday special and honestly couldn’t fault the experience. </p>
                     <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=4">
-                        <span>Emma Johnson</span>
+                        {{-- <img src="https://i.pravatar.cc/40?img=4"> --}}
+                        <span>Jack Foley</span>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>There was plenty of room and customer service was excellent.</p>
+                    <p>Extremely helpful and amazing customer service. Can tell they put the customer first and aim for the best service.</p>
                     <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=5">
-                        <span>Jessica Ramirez</span>
+                        {{-- <img src="https://i.pravatar.cc/40?img=5"> --}}
+                        <span>Ishaaq Ahmed</span>
                     </div>
                 </div>
 
                 <!-- Card 6 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>The car was delivered quickly and handled professionally.</p>
+                    <p>Really impressed with Suave, Jagz was helpful and professional, we had the Land Rover Defender for just over a month and the service was fantastic. </p>
                     <div class="user">
-                        <img src="https://i.pravatar.cc/40?img=6">
-                        <span>Chris P</span>
+                        {{-- <img src="https://i.pravatar.cc/40?img=6"> --}}
+                        <span>Aman</span>
                     </div>
                 </div>
 

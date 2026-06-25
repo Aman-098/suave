@@ -216,6 +216,15 @@
                                     <span id="nameError" class="text-danger"></span>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Sort order</label>
+                                    <input type="number" id="sort_order" name="sort_order"
+                                        placeholder="e.g. 1" class="form-control">
+                                    <span id="sort_orderError" class="text-danger"></span>
+                                </div>
+                            </div>
                             
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -260,6 +269,14 @@
                                     <label class="form-label">Name<span class="text-danger"> *</span></label>
                                     <input type="text" id="edit_name" name="name" class="form-control">
                                     <span id="edit_nameError" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Sort Order</label>
+                                    <input type="number" id="edit_sort_order" name="sort_order" class="form-control">
+                                     <span class="text-danger" id="edit_sort_orderError"></span>
                                 </div>
                             </div>
                             
@@ -325,8 +342,10 @@
 
                 // Collect form values
                 var name = $('#name').val().trim();
+                var sort_order = $('#sort_order').val();
 
                 if (name === '') return showError('#nameError', 'Name is required.');
+                if (sort_order === '') return showError('#sort_orderError', 'Sort order is required.');
 
                 // Prepare FormData
                 var formData = new FormData(this);
@@ -380,10 +399,12 @@
 
                 // Collect form values
                 var name = $('#edit_name').val().trim();
-
+                var sort_order = $('#edit_sort_order').val().trim();
                 // Validation
 
                 if (name === '') return showError('#edit_nameError', 'Name is required.');
+
+                 if (sort_order === '') return showError('#edit_sort_orderError', 'Sort Order is required.');
 
                 var formData = new FormData(this);
 
@@ -446,6 +467,7 @@
                     $('#edit_id').val(data.id);
                    
                     $('#edit_name').val(data.name ?? '');
+                    $('#edit_sort_order').val(data.sort_order ?? '');
                     
                     $('#edit_status').val(data.status).trigger('change');
                 },

@@ -25,7 +25,8 @@ class CategoryController extends Controller
             // dd($request->input());
 
             $validated=$request->validate([
-                'name'=>'required'
+                'name'=>'required',
+                'sort_order'=>'required',
             ]);
 
             $slug = Str::slug($validated['name']);
@@ -39,6 +40,7 @@ class CategoryController extends Controller
 
             $category = Category::create([
                 'name' => $validated['name'],
+                'sort_order' => $validated['sort_order'],
                 'slug'     => $slug,
                 'status'   => $request->input('status')
             ]);
@@ -58,7 +60,8 @@ class CategoryController extends Controller
         if($request->isMethod('post')){
             // dd($request->input());
             $validated=$request->validate([
-                'name'=>'required'
+                'name'=>'required',
+                'sort_order'=>'required'
             ]);
 
             $category = Category::findOrFail($id);
@@ -85,6 +88,7 @@ class CategoryController extends Controller
 
             $category->update([
                 'name'=>$validated['name'],
+                'sort_order'=>$validated['sort_order'],
                 'slug'=> $slug,
                 'status'=>$request->input('status')
             ]);

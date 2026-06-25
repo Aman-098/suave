@@ -14,7 +14,7 @@
     .category-heading h3 {
         font-size: 28px;
         font-weight: 700;
-        margin-bottom: 0;
+        margin: 2rem 0;
         position: relative;
         padding-left: 18px;
         color: white !important;

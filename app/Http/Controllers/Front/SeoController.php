@@ -22,24 +22,10 @@ class SeoController extends Controller
 
     
 
-    public function terms_condition(){
-        return view('front.terms-condition');
+    public function term_condition(){
+        return view('front.termsandcondition');
     }
 
-    public function payment_security(){
-        return view('front.payment-security');
-    }
-
-    public function privacy_policy(){
-        return view('front.privacy-policy');
-    }
-
-    public function delivery_returns(){
-        return view('front.delivery-returns');
-    }
-
-    public function cookie_policy(){
-        return view('front.cookie-policy');
-    }
+    
 
 }

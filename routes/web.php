@@ -37,6 +37,8 @@ Route::get('/gallery',[Seo::class,'gallery'])->name('gallery');
 Route::get('/blogs',[FrontBlog::class,'index'])->name('blog');
 Route::get('/blog/{slug}',[FrontBlog::class,'blog_detail']);
 
+Route::get('/term-and-conditions',[Seo::class,'term_condition'])->name('terms');
+
 
 // Admin Routes
 Route::match(['get', 'post'], '/sysadmin',[Auth::class,'login_user'])->name('login');

@@ -125,10 +125,10 @@
         <div class="footer-col nav-col-link">
             <h4>Navigation</h4>
             <ul>
-                <li><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('about') }}">About US</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
 
             </ul>
         </div>

@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="fleet-price">
-                        @if($fleet->name === 'Vintage')
+                        @if($fleet->price == 0)
                             <h2> POA </h2>
                         @else
                             <small>Daily Price</small>

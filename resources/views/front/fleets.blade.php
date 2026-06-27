@@ -67,7 +67,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
-                                aria-selected="true"> {{ $categoryName }}</button>
+                                aria-selected="true"> {{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</button>
                         </li>
                         @php $i++; @endphp
                     @endforeach

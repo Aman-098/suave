@@ -273,14 +273,10 @@
                                                 <ul>
                                                     <li class="listing-information fuel">
                                                         <div class="inner">
-                                                            <span>{{ number_format($item->price, 2) }} ₤/DAY</span>
+                                                            <span>₤ {{ number_format($item->price, 2) }} /DAY</span>
                                                         </div>
                                                     </li>
-                                                    {{-- <li class="listing-information size-engine">
-                                                        <div class="inner">
-                                                            <span>1,500 ₤/HOUR</span>
-                                                        </div>
-                                                    </li> --}}
+                                                    
                                                 </ul>
                                             </div>
                                             <div class="bottom-btn-wrap">
@@ -290,7 +286,7 @@
                                                         <i class="icon-arrow-right2"></i>
                                                     </a>
                                                 </div>
-                                                <div class="btn-group">
+                                                {{-- <div class="btn-group">
                                                     <a href="tel:+4408081680808" class="icon-service">
                                                         <svg width="18" height="18" viewBox="0 0 24 24"
                                                             fill="#fff">
@@ -305,7 +301,7 @@
                                                     <a href="#" class="icon-service">
                                                         Book Now
                                                     </a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>

@@ -23,9 +23,8 @@
                     Prestige. Power. Presence.<br>That’s Suave.
                 </h1>
 
-                <p class="wow fadeInUp" data-wow-delay="600ms" data-wow-duration="2000ms">
-                    Welcome to Suave Executive Travel — where meticulous attention meets unmatched luxury. From heart‑racing
-                    supercars to elegant executive limousines, we deliver exceptional journeys tailored to your taste.
+                <p class="wow fadeInUp" style="margin: 1em 4em" data-wow-delay="600ms" data-wow-duration="2000ms">
+                    Welcome to Suave Executive Travel — where meticulous attention meets unmatched luxury. From heart‑racing supercars to elegant executive limousines, we deliver exceptional journeys tailored to your taste.
                 </p>
 
                 <div class="group-button wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
@@ -120,7 +119,7 @@
     <section class="review-section">
         <div class="review-box-main">
             <h2 class="review-heading">
-                Trusted By 500+ Happy Clients Across The UK
+                Trusted by Clients Across the UK
             </h2>
             <div class="review-cards">
                 <div class="review-card">
@@ -165,7 +164,7 @@
                     <h2>Drive The Dream.
                         Experience our Most Iconic Supercars</h2>
                     <p>
-                        Established since 2020, Suave Executive has always Thrived to Provide the Ultimate
+                        Established since 2022, Suave Executive has always Thrived to Provide the Ultimate
                         Customer Satisfaction when it comes to Vehicle Rental. We specialise in high end Car
                         Hire/Rental. The type of cars we have available are only the top end of cars from
                         Lamborghini Huracan’s to the Bugatti Chiron. However we also cater to clients who want

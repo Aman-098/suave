@@ -26,21 +26,22 @@
     <section class="contact-section">
         <div class="container">
 
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">We are here to help you anytime</p>
+            {{-- <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Whether you're planning executive travel, hiring a luxury vehicle, arranging wedding transportation or looking for a prestige car for a special occasion, our team is here to help. Get in touch today for personalised assistance, expert recommendations and a seamless booking experience anywhere across the United Kingdom.</p> --}}
 
             <!-- CONTACT CARDS -->
             <div class="contact-cards">
                 <div class="contact-card">
                     <i class="fa-solid fa-phone"></i>
                     <h4>Call Us</h4>
-                    <p>0808 168 0808</p>
+                    <p><a href="tel:08081680808" class="text-white">0808 168 0808</a></p>
                 </div>
 
                 <div class="contact-card">
                     <i class="fa-solid fa-envelope"></i>
                     <h4>Email</h4>
-                    <p>info@suaveexecutivetravel.co.uk</p>
+                    <p><a href="mailto:info@suaveexecutivetravel.co.uk" class="text-white">info@suaveexecutivetravel.co.uk</a></p>
+                    
                 </div>
 
                 <div class="contact-card">

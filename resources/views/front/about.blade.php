@@ -23,15 +23,24 @@
                 <div class="about-grid">
                     <div class="about-right">
                         <div class="service-box-panel">
-                            <img src="{{asset('assets_front/img/ferrari-about.jpeg')}}">
+                            <img src="{{ asset('assets_front/img/ferrari-about.jpeg') }}">
                         </div>
                     </div>
                     <div class="about-left">
                         <h2>About Us</h2>
 
-                        <p>Suave Executive Travel was founded by Jagmeet Singh and Balmeet Singh Gulati, two entrepreneurs with a passion for luxury vehicles and delivering exceptional customer experiences. Their vision was to build a modern luxury car hire brand that combines world-class vehicles with reliable, personalised service.</p>
+                        <p>At Suave Executive Travel, we believe every journey should reflect the same level of quality and
+                            professionalism as the destination itself. Built on a passion for exceptional vehicles and
+                            outstanding customer service, we offer a carefully selected fleet of prestige, executive and
+                            performance cars for individuals, families and businesses seeking a first-class travel
+                            experience.</p>
 
-                        <p>Whether you’re hiring a vehicle for a special occasion, business travel, a weekend experience or a luxury event, our goal is to provide a seamless and unforgettable service. At Suave Executive Travel, every journey is designed to reflect sophistication, prestige and attention to detail.</p>
+                        <p>Whether you're planning a wedding, attending an important business meeting, celebrating a special
+                            occasion or simply enjoying the thrill of driving a luxury vehicle, our team is committed to
+                            delivering an experience that exceeds expectations. Every booking is managed with attention to
+                            detail, ensuring a smooth, reliable and personalised service from enquiry to completion.</p>
+
+                        {{-- <p>Today, clients across London, Berkshire, Buckinghamshire, Surrey and the wider UK trust Suave Executive Travel for premium vehicle hire, executive travel and unforgettable luxury experiences.</p> --}}
                     </div>
                 </div>
             </div>
@@ -42,8 +51,12 @@
         <section class="section dark journey-section">
             <div class="container">
                 <h2>Our Journey</h2>
-                <p></p>
-                <p>Since launching the company, the founders have grown Suave Executive Travel into a trusted name within the luxury travel space. The brand is frequently chosen for celebrity appearances, music video shoots, luxury events and high-profile content productions, as well as by business owners and professionals seeking premium vehicles for important occasions.</p>
+                <p>Suave Executive Travel was created with one clear vision—to make luxury travel more accessible without
+                    compromising on quality, professionalism or customer experience.</p>
+
+                <p>What began with a passion for prestige vehicles has grown into a trusted luxury travel brand, offering an
+                    exclusive fleet and a customer-first approach. Every milestone has been built on reliability,
+                    transparency and consistently delivering exceptional experiences for every client.</p>
             </div>
         </section>
 
@@ -52,18 +65,16 @@
             <div class="container">
                 <h2>What We Offer</h2>
                 <ul class="list">
-                    <li>Executive chauffeur services</li>
-                    <li>Luxury & supercar self-drive hire</li>
-                    <li>Corporate travel solutions</li>
-                    <li>Airport transfers</li>
-                    <li>Wedding & special occasion transport</li>
-                    <li>Photo & video shoot vehicle hire</li>
-                    <li>Long-term vehicle hire solutions</li>
+                    <li>Prestige Car Hire</li>
+                    <li>Executive Travel</li>
+                    <li>Wedding Car Hire</li>
+                    <li>Corporate Travel</li>
+                    <li>Airport Transfers</li>
+                    <li>Self-Drive Supercars</li>
+                    <li>VIP & Special Event Transport</li>
                 </ul>
                 <p class="extra">
-                    Our fleet includes prestigious brands such as Lamborghini, Rolls-Royce,BMW, Audi,
-                    Bentley and more, ensuring every client enjoys a premium experience tailored to their
-                    expectations.
+                    Every service is delivered with the same commitment to quality, professionalism and attention to detail.
                 </p>
             </div>
         </section>
@@ -73,9 +84,13 @@
             <div class="container">
                 <h2>Nationwide Luxury Coverage</h2>
 
-                <p>Although our operations are London-based, our services extend across the United Kingdom.
-                    Whether you require executive transport in major cities or luxury travel for countryside
-                    journeys, our professional chauffeurs and premium vehicles are available nationwide.</p>
+                <p>Our services extend throughout London and across the UK, helping individuals, families and businesses
+                    enjoy premium travel wherever their journey begins.</p>
+                <p>
+                    From executive travel in Central London to airport transfers, wedding vehicle hire and luxury driving
+                    experiences across Berkshire, Surrey, Buckinghamshire, Reading, Windsor, Oxford and beyond, we provide
+                    dependable service backed by premium vehicles and personalised support.
+                </p>
             </div>
         </section>
 
@@ -84,14 +99,14 @@
             <div class="container">
                 <h2>Why Choose Suave Executive Travel</h2>
                 <ul class="check">
-                    <li>Premium luxury vehicle fleet</li>
-                    <li>Professional and experienced chauffeurs</li>
-                    <li>Flexible hire packages</li>
-                    <li>Corporate and private travel solutions</li>
-                    <li>Nationwide service availability</li>
-                    <li>24/7 customer support assistance</li>
+                    <li>Carefully maintained fleet of prestige and luxury vehicles</li>
+                    <li>Transparent pricing with no hidden costs</li>
+                    <li>Flexible hire options tailored to your requirements</li>
+                    <li>Reliable service delivered with professionalism</li>
+                    <li>Simple online booking process</li>
+                    <li>Personal support before, during and after every booking</li>
                 </ul>
-                <p>Every booking is handled with precision to ensure a smooth, safe and memorable journey.</p>
+                <p>We focus on delivering more than transport—we create memorable luxury experiences.</p>
             </div>
         </section>
 
@@ -99,24 +114,21 @@
         <section class="section dark commitment-section">
             <div class="container">
                 <h2>Our Commitment to Excellence</h2>
-                <p>At Suave Executive Travel, we believe luxury travel should be effortless and enjoyable. From
-                    the moment you enquire about a vehicle to the completion of your journey, our dedicated team
-                    ensures a seamless experience with personalised service and attention to detail at every
-                    step.</p>
-                <p>Our goal is to continue building long-term relationships with our clients by consistently
-                    delivering reliability, comfort, and exceptional service standards.</p>
+                <p>Every vehicle within our fleet is professionally inspected, meticulously prepared and presented to the
+                    highest possible standard before every booking</p>
+                <p>Our commitment extends beyond the vehicle itself. We continually invest in customer service, vehicle
+                    quality and operational excellence to ensure every journey reflects the premium standards our clients
+                    expect.</p>
             </div>
         </section>
 
         <!-- CTA -->
         <section class="section-travel-pro center ">
             <div class="container">
-                <h2>Travel in Style with Confidence</h2>
-                <p>Whether you're attending a corporate meeting, celebrating a special occasion, planning a
-                    luxury weekend experience, or arranging transport for an important event, Suave Executive
-                    Travel is your trusted partner for executive chauffeur and prestige car hire across the UK.
+                <h2>Travel with Confidence</h2>
+                <p>Whether you're hiring a prestige vehicle for business, leisure or a once-in-a-lifetime occasion, you can expect outstanding quality, exceptional service and complete peace of mind.
                 </p>
-                <p><strong>Contact our team today to discuss your travel requirements.</strong></p>
+                <p><strong>At Suave Executive Travel, every journey is designed to deliver comfort, confidence and an unforgettable luxury experience.</strong></p>
             </div>
         </section>
 
@@ -143,7 +155,7 @@
                     <div class="timeline-item"><span>2023</span> Brand Expansion</div>
                     <div class="timeline-item"><span>2024</span> Fleet Growth</div>
                     <div class="timeline-item"><span>Today</span> Premium Luxury Experiences</div>
-                    
+
                 </div>
             </div>
         </section>
@@ -201,7 +213,7 @@
                 <h2>Serving Clients Across the United Kingdom</h2>
                 <p>London · Manchester · Birmingham · Leeds · Nationwide travel</p>
 
-                <a href="{{route('fleets')}}" class="review-btn">Explore Our Cars →</a>
+                <a href="{{ route('fleets') }}" class="review-btn">Explore Our Cars →</a>
             </div>
         </section>
 

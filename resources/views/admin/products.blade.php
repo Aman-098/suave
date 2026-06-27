@@ -546,7 +546,7 @@
                 // Collect form values
                 var name = $('#name').val().trim();
 
-                var price = $('#price').val().trim();
+                // var price = $('#price').val().trim();
                 var sort_order = $('#sort_order').val();
                 var content = $('#content').summernote('code');
                 var specification = $('#specification').summernote('code');
@@ -557,7 +557,7 @@
 
                 if (name === '') return showError('#nameError', 'Name is required.');
 
-                if (price === '') return showError('#priceError', 'Price is required.');
+                // if (price === '') return showError('#priceError', 'Price is required.');
 
                 if (sort_order === '') return showError('#sort_orderError', 'Sort order is required.');
 
@@ -635,7 +635,7 @@
 
                 // Collect form values
                 var name = $('#edit_name').val().trim();
-                var price = $('#edit_price').val().trim();
+                // var price = $('#edit_price').val().trim();
                 var sort_order = $('#edit_sort_order').val().trim();
                 // var content = $('#edit_content').summernote('code');
 
@@ -645,7 +645,7 @@
 
                 if (name === '') return showError('#edit_nameError', 'Name is required.');
 
-                if (price === '') return showError('#edit_priceError', 'Price is required.');
+                // if (price === '') return showError('#edit_priceError', 'Price is required.');
                 if (sort_order === '') return showError('#edit_sort_orderError', 'Sort Order is required.');
 
                 // Validate content (tinyMCE)

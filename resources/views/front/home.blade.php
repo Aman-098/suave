@@ -368,7 +368,7 @@
                 <div class="card">
                     <div class="icon">$</div>
                     <h3>Instant Savings</h3>
-                    <p>Get immediate savings on every purchase, powered by AI.</p>
+                    <p class="text-white">Get immediate savings on every purchase, powered by AI.</p>
                 </div>
                 <div class="card">
                     <div class="icon">📈</div>
@@ -378,7 +378,7 @@
                 <div class="card">
                     <div class="icon">⇄</div>
                     <h3>Flexible Plans</h3>
-                    <p>Choose plans that adapt to your business needs.</p>
+                    <p class="text-white" > Choose plans that adapt to your business needs.</p>
                 </div>
                 <div class="card">
                     <div class="icon">🔒</div>
@@ -388,7 +388,7 @@
                 <div class="card">
                     <div class="icon">⚙</div>
                     <h3>Adaptive Features</h3>
-                    <p>AI powered tools that evolve with your business.</p>
+                    <p class="text-white">AI powered tools that evolve with your business.</p>
                 </div>
                 <div class="card">
                     <div class="icon">🎧</div>
@@ -413,7 +413,7 @@
                 <!-- Card 1 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>Extremely happy with the service SET have provided from start to finish. Definitely will be a returning customer in the future.
+                    <p class="text-dark">Extremely happy with the service SET have provided from start to finish. Definitely will be a returning customer in the future.
                     </p>
                     <div class="user">
                         {{-- <img src="https://i.pravatar.cc/40?img=1"> --}}
@@ -434,7 +434,7 @@
                 <!-- Card 4 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>Hired a Porsche for a birthday special and honestly couldn’t fault the experience. </p>
+                    <p class="text-dark">Hired a Porsche for a birthday special and honestly couldn’t fault the experience. </p>
                     <div class="user">
                         {{-- <img src="https://i.pravatar.cc/40?img=4"> --}}
                         <span>Jack Foley</span>
@@ -444,7 +444,7 @@
                 <!-- Card 5 -->
                 <div class="card">
                     <div class="stars">★★★★★</div>
-                    <p>Extremely helpful and amazing customer service. Can tell they put the customer first and aim for the best service.</p>
+                    <p class="text-dark" >Extremely helpful and amazing customer service. Can tell they put the customer first and aim for the best service.</p>
                     <div class="user">
                         {{-- <img src="https://i.pravatar.cc/40?img=5"> --}}
                         <span>Ishaaq Ahmed</span>

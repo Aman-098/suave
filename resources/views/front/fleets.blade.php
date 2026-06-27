@@ -204,7 +204,11 @@
                                             <h6 class="title">{{ $item->name }}</h6>
 
                                             <div class="description">
+                                                @if($item->name == 'Vintage')
+                                                    <span>POA</span>
+                                                @else
                                                 <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                                @endif
                                             </div>
 
                                             <div class="bottom-btn-wrap-fleet">

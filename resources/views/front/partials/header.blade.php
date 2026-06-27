@@ -68,7 +68,7 @@
          <div class="menu-backdrop"></div>
          <nav class="menu-box">
              <div class="nav-logo">
-                 <a href="index.html"><img src="assets_front/images/logo/logo2.png" alt="Logo Motorx"></a>
+                 <a href="{{route('home')}}"><img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo Motorx"></a>
              </div>
              <div class="bottom-canvas">
                  <div class="menu-outer">
@@ -77,13 +77,12 @@
                          <li><a href="{{ route('fleets') }}">Our Fleet</a></li>
                          <li><a href="{{ route('about') }}">About Us</a></li>
                          <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                         {{-- <li><a href="{{route('about')}}">Testimonial</a></li> --}}
                          <li><a href="{{ route('blog') }}">Blog</a></li>
                          <li><a href="{{ route('contact') }}">Contact us</a></li>
                      </ul>
                  </div>
                  <div class="help-bar-mobie login-box">
-                     <a data-bs-toggle="modal" href="{{ route('contact') }}" role="button" class="fw-7 category"><i
+                     <a href="{{ route('contact') }}" role="button" class="fw-7 category"><i
                              class="icon-user"></i>Get Free Quote</a>
                  </div>
              </div>

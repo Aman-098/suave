@@ -18958,32 +18958,5 @@ span {
     position: relative;
 }
 
-.desc-wrap-panel .top-content .left h1 {
-    font-size: 30px;
-}
-.desc-wrap-panel .top-content .left h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-.desc-wrap-panel .top-content .right h2 {
-    font-size: 30px;
-    margin-bottom: 5px;
-}
-.listing-pro {
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    padding: 20px;
-}
-.close-btn .icon{
-display: none;
-}
 
-.listing-pro .right h2 {
-        font-size: 30px;
-    }
-
-.listing-pro .top-content {
-    
-        margin-bottom: 30px;
-    }
 }

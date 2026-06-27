@@ -69,8 +69,13 @@
                     </div>
 
                     <div class="fleet-price">
-                        <small>Daily Price</small>
-                        <h2>£{{ number_format($fleet->price, 2) }}</h2>
+                        @if($fleet->name === 'Vintage')
+                            <h2> POA </h2>
+                        @else
+                            <small>Daily Price</small>
+                            <h2>£ {{ number_format($fleet->price, 2) }}</h2>
+                        @endif
+                        
                     </div>
 
                     <div class="actions">

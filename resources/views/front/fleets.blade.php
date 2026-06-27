@@ -173,7 +173,7 @@
 
                         @foreach ($fleets as $categoryName => $products)
                             <div class="category-heading mb-2">
-                                <h3>{{ $categoryName }}</h3>
+                                <h3>{{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</h3>
                             </div>
 
                             <div class="car-list-item">

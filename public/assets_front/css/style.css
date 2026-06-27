@@ -18877,62 +18877,49 @@ span {
 
 /* 27 june 2026 mobile responsive css */
 @media only screen and (max-width: 768px) {
-  .tf-page-title .page-title {
-    padding: 50px 0;
-  }
-
-  .tf-page-title .page-title .main-title {
-    font-size: 25px;
-  }
-
-  .tf-slider-v3 .slider-v3 p {
-    margin: 20px 0 !important;
-  }
-
-  .tf-slider-v3 .slider-v3 .group-button {
-    gap: 10px;
-  }
-
-  .tf-car-service .content .description ul {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .tf-car-service .image .stm-badge-top {
-    padding: 0;
-  }
-
-  .rent-section {
-    padding: 20px;
-  }
-
-  .rent-image img {
-    padding: 5px;
-  }
-
-  .benefits-section {
-    padding: 20px 20px 50px;
-  }
-
-  .card p {
-    color: #fff;
-  }
-
-  .google-review {
-    padding: 20px 20px;
-    text-align: center;
-  }
-
-  .populer-makes .nav {
+    .tf-page-title .page-title {
+        padding: 50px 0;
+    }
+    .tf-page-title .page-title .main-title {
+        font-size: 25px;
+    }
+    .tf-slider-v3 .slider-v3 p {
+        margin: 20px 0 !important;
+    }
+    .tf-slider-v3 .slider-v3 .group-button {
+        gap: 10px;
+    }
+    .tf-car-service .content .description ul {
+        justify-content: center;
+        width: 100%;
+    }
+    .tf-car-service .image .stm-badge-top {
+        padding: 0;
+    }
+    .rent-section {
+        padding: 20px;
+    }
+    .rent-image img {
+        padding: 5px;
+    }
+    .benefits-section {
+        padding: 20px 20px 50px;
+    }
+    .card p {
+        color: #fff;
+    }
+    .google-review {
+        padding: 20px 20px;
+        text-align: center;
+    }
+    .populer-makes .nav {
     position: relative;
     margin-top: 30px;
-  }
-
-  .description {
+}
+.description {
     justify-content: center;
-  }
-
-  .main-image {
+}
+.main-image {
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -18957,6 +18944,32 @@ span {
 .listing-pro .overlay {
     position: relative;
 }
+.desc-wrap-panel .top-content .left h1 {
+    font-size: 30px;
+}
+.desc-wrap-panel .top-content .left h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.desc-wrap-panel .top-content .right h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.listing-pro {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    padding: 20px;
+}
+.close-btn .icon{
+display: none;
+}
 
+.listing-pro .right h2 {
+        font-size: 30px;
+    }
 
+.listing-pro .top-content {
+    
+        margin-bottom: 30px;
+    }
 }

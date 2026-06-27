@@ -18747,3 +18747,43 @@ padding: 60px 0 0;
   text-align: center;
   margin-bottom: 0;
 }
+
+
+/* 27 june 2026 mobile responsive css */
+@media only screen and (max-width: 768px) {
+    .tf-page-title .page-title {
+        padding: 50px 0;
+    }
+    .tf-page-title .page-title .main-title {
+        font-size: 25px;
+    }
+    .tf-slider-v3 .slider-v3 p {
+        margin: 20px 0 !important;
+    }
+    .tf-slider-v3 .slider-v3 .group-button {
+        gap: 10px;
+    }
+    .tf-car-service .content .description ul {
+        justify-content: center;
+        width: 100%;
+    }
+    .tf-car-service .image .stm-badge-top {
+        padding: 0;
+    }
+    .rent-section {
+        padding: 20px;
+    }
+    .rent-image img {
+        padding: 5px;
+    }
+    .benefits-section {
+        padding: 20px 20px 50px;
+    }
+    .card p {
+        color: #fff;
+    }
+    .google-review {
+        padding: 20px 20px;
+        text-align: center;
+    }
+}

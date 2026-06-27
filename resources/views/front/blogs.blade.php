@@ -212,7 +212,7 @@
                             </div>
                         </article> --}}
                     </div>
-                    <div class="tf-pagination mt-60">
+                    {{-- <div class="tf-pagination mt-60">
                         <a class="prev page-numbers" href="#">
                             <i class="icon-3"></i>
                         </a>
@@ -223,7 +223,7 @@
                         <a class="next page-numbers" href="#">
                             <i class="icon--1"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-4">
                     <aside class="side-blog">

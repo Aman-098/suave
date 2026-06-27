@@ -10,7 +10,7 @@
 
     <div class="tf-slider-v3">
         <video autoplay muted loop playsinline class="bg-video">
-            <source src="assets_front/car-bg.mp4" type="video/mp4">
+            <source src="{{asset('assets_front/car-bg.mp4')}}" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
         <div class="themesflat-container">
@@ -194,7 +194,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
                                 data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
-                                role="tab" aria-selected="true"> {{ $category->name }}</button>
+                                role="tab" aria-selected="true"> {{ $category->name === 'SUV' ? 'Performance SUV' : $category->name }}</button>
                         </li>
                         @php $i++; @endphp
                     @endforeach
@@ -422,14 +422,14 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="card">
+                {{-- <div class="card">
                     <div class="stars">★★★★★</div>
                     <p>One of the best rental company in west London. Top customer service from the team. Prestige cars and great packages deal. 5 star to the Top G’s. Definitely will be coming back.</p>
                     <div class="user">
-                        {{-- <img src="https://i.pravatar.cc/40?img=3"> --}}
+                       
                         <span>E S</span>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Card 4 -->
                 <div class="card">
@@ -452,14 +452,14 @@
                 </div>
 
                 <!-- Card 6 -->
-                <div class="card">
+                {{-- <div class="card">
                     <div class="stars">★★★★★</div>
                     <p>Really impressed with Suave, Jagz was helpful and professional, we had the Land Rover Defender for just over a month and the service was fantastic. </p>
                     <div class="user">
-                        {{-- <img src="https://i.pravatar.cc/40?img=6"> --}}
+                        
                         <span>Aman</span>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

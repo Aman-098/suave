@@ -65,9 +65,19 @@
                     @foreach ($fleets as $categoryName => $products)
                         {{-- @php $slug = Str::slug($categoryName); @endphp --}}
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
+                            {{-- <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
-                                aria-selected="true"> {{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</button>
+                                aria-selected="true"> {{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</button> --}}
+                                <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
+                                data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
+                                aria-selected="true"> 
+                                    {{ $categoryName === 'SUV' 
+                                        ? 'Performance SUV' 
+                                        : ($categoryName === 'Wedding' 
+                                            ? 'Wedding Cars' 
+                                            : $categoryName) 
+                                    }}
+                                </button>
                         </li>
                         @php $i++; @endphp
                     @endforeach
@@ -173,7 +183,16 @@
 
                         @foreach ($fleets as $categoryName => $products)
                             <div class="category-heading mb-2">
-                                <h3>{{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</h3>
+                                {{-- <h3>{{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</h3> --}}
+                                <h3>
+                                    @if($categoryName === 'SUV')
+                                        Performance SUV
+                                    @elseif($categoryName === 'Wedding')
+                                        Wedding Cars
+                                    @else
+                                        {{ $categoryName }}
+                                    @endif
+                                </h3>
                             </div>
 
                             <div class="car-list-item">

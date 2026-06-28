@@ -192,9 +192,17 @@
                     @foreach ($fleets as $category )
                         
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
+                            {{-- <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
                                 data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
-                                role="tab" aria-selected="true"> {{ $category->name === 'SUV' ? 'Performance SUV' : $category->name }}</button>
+                                role="tab" aria-selected="true"> {{ $category->name === 'SUV' ? 'Performance SUV' : $category->name }}</button> --}}
+                                <button class="nav-link {{ $i == 0 ? 'active' : '' }}" id="pills-cadilliac-tab-service-v2"
+                                data-bs-toggle="pill" data-bs-target="#tab-{{ $category->name }}" type="button"
+                                role="tab" aria-selected="true"> {{ $category->name === 'SUV' 
+                                        ? 'Performance SUV' 
+                                        : ($category->name === 'Wedding' 
+                                            ? 'Wedding Cars' 
+                                            : $category->name) 
+                                    }}</button>
                         </li>
                         @php $i++; @endphp
                     @endforeach

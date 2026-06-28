@@ -205,17 +205,12 @@
 
                                             <div class="description">
                                                 
-                                                @if((float) $item->price <= 0)
-                                                    @dd([
-                                                        'name' => $item->name,
-                                                        'price' => $item->price,
-                                                        'float' => (float) $item->price,
-                                                        'comparison' => ((float)$item->price <= 0),
-                                                    ]);
-                                                @endif
-                                                {{-- @else
+                                                @if($item->name === 'VINTAGE')
+                                                
+                                                    <span>POA (Price on Application)</span>
+                                                @else
                                                     <span>₤ {{ number_format($item->price, 2) }} /Day</span>
-                                                @endif --}}
+                                                @endif
                                             </div>
 
                                             <div class="bottom-btn-wrap-fleet">

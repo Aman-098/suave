@@ -31,7 +31,11 @@
                 <div class="product-gallery">
                     <h1 class="car-main-title">{{ $fleet->name }}</h1>
                     <div class="main-image" id="mainImageSection">
+                        <button class="slider-btn prev" onclick="prevImage()">&#10094;</button>
+
                         <img id="mainCarImg" src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
+
+                        <button class="slider-btn next" onclick="nextImage()">&#10095;</button>
                     </div>
 
                     <div class="luxury-car-gallery">
@@ -69,13 +73,13 @@
                     </div>
 
                     <div class="fleet-price">
-                        @if($fleet->price == 0)
+                        @if ($fleet->price == 0)
                             <h2> POA </h2>
                         @else
                             <small>Daily Price</small>
                             <h2>£ {{ number_format($fleet->price, 2) }}</h2>
                         @endif
-                        
+
                     </div>
 
                     <div class="actions">
@@ -272,12 +276,7 @@
 
 @push('scripts')
     <script>
-        // var notyf = new Notyf({
-        //     position: {
-        //         x: 'right', // left / center / right
-        //         y: 'top' // top / bottom
-        //     }
-        // });
+        
 
         $(document).on('show.bs.modal', '#bookingModal', function(event) {
             var button = $(event.relatedTarget); // clicked button
@@ -386,6 +385,52 @@
     </script>
 
 
+
+    <script>
+        const carMainImg = document.getElementById("mainCarImg");
+        const carThumbs = document.querySelectorAll(".luxury-car-grid img");
+
+        let carCurrent = 0;
+
+        function carUpdateImage() {
+            carMainImg.src = carThumbs[carCurrent].src;
+
+            carThumbs.forEach(img => img.classList.remove("active"));
+            carThumbs[carCurrent].classList.add("active");
+        }
+
+        // Thumbnail Click
+        function carChangeImg(el) {
+            carCurrent = Array.from(carThumbs).indexOf(el);
+            carUpdateImage();
+        }
+
+        // Next
+        function carNextImage() {
+            carCurrent++;
+
+            if (carCurrent >= carThumbs.length) {
+                carCurrent = 0;
+            }
+
+            carUpdateImage();
+        }
+
+        // Previous
+        function carPrevImage() {
+            carCurrent--;
+
+            if (carCurrent < 0) {
+                carCurrent = carThumbs.length - 1;
+            }
+
+            carUpdateImage();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            carUpdateImage();
+        });
+    </script>
 
 
     <script>

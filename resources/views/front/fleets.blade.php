@@ -204,7 +204,11 @@
                                             <h6 class="title">{{ $item->name }}</h6>
 
                                             <div class="description">
-                                                {{dump($item->price, gettype($item->price))}}
+                                                @dd([
+    'price' => $item->price,
+    'float' => (float) $item->price,
+    'comparison' => ((float)$item->price <= 0),
+]);
                                                 @if((float) $item->price <= 0)
                                                 
                                                     <span>POA (Price on Application)</span>

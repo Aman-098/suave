@@ -209,7 +209,7 @@
 <script src="{{ asset('assets_front/js/swiper.js') }}"></script>
 <script src="{{ asset('assets_front/js/jquery-countTo.js') }}"></script>
 <script src="{{ asset('assets_front/js/nouislider.min.js') }}"></script>
-<script src="{{ asset('assets_front/js/price-ranger.js') }}"></script>
+{{-- <script src="{{ asset('assets_front/js/price-ranger.js') }}"></script> --}}
 <script src="{{ asset('assets_front/js/magnific-popup.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/wow.min.js') }}"></script>
 <script src="{{ asset('assets_front/js/main.js') }}"></script>

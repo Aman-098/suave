@@ -26,6 +26,10 @@
                     $gallery = is_array($fleet->gallery_images)
                         ? $fleet->gallery_images
                         : json_decode($fleet->gallery_images, true);
+
+                        // shift main image to gallery
+                        $gallery = $gallery ?? [];
+                        array_unshift($gallery, $fleet->image);
                 @endphp
 
                 <div class="product-gallery">
@@ -599,12 +603,12 @@
             });
         });
     </script> --}}
-    {{-- <script>
+    <script>
         document.querySelector(".close-video").onclick = function() {
             document.querySelector(".sticky-video").style.display = "none";
         }
-    </script> --}}
-    {{-- <script>
+    </script>
+    <script>
         function openVideo() {
             document.getElementById("videoPopup").style.display = "flex";
             document.getElementById("videoFrame").src =
@@ -624,7 +628,7 @@
                 closeVideo();
             }
         }
-    </script> --}}
+    </script>
 
 
     {{-- <script>
@@ -644,7 +648,7 @@
         });
     </script> --}}
 
-    <script>
+    {{-- <script>
         const itemsPerPage = 6; // kitne cards per page
         const container = document.getElementById("carContainer");
         const items = Array.from(container.getElementsByClassName("tf-car-service"));
@@ -684,7 +688,7 @@
 
         // INIT
         showPage(1);
-    </script>
+    </script> --}}
 
     {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {

@@ -42,7 +42,7 @@ class FleetController extends Controller
                         ->limit(3)
                         ->get();
 
-        // dd($fleet->category);
+        // dd($fleet);
         return view('front.fleet-detail',compact('fleet','related_fleet'));
     }
 

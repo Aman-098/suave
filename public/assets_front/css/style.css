@@ -18973,4 +18973,17 @@ display: none;
     
         margin-bottom: 30px;
     }
+    .preload-container{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.preload-container .middle{
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+}
 }

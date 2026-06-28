@@ -205,11 +205,10 @@
 
                                             <div class="description">
                                                 
-                                                @if($item->name === 'VINTAGE')
-                                                
+                                                @if($item->price === '0.00')
                                                     <span>POA (Price on Application)</span>
                                                 @else
-                                                    <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                                    <span>₤ {{ number_format((float) $item->price, 2) }} /Day</span>
                                                 @endif
                                             </div>
 

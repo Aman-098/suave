@@ -274,7 +274,13 @@
                                             <h6 class="title">{{ $item->name }}</h6>
                                             <div class="description">
 
-                                                <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                                @if((float) $item->price == 0)
+                                                    <span>POA (Price on Application)</span>
+                                                @else
+                                                    <span>₤ {{ number_format((float) $item->price, 2) }} /Day</span>
+                                                @endif
+
+                                                {{-- <span>₤ {{ number_format($item->price, 2) }} /Day</span> --}}
                                             </div>
                                             <div class="bottom-btn-wrap-fleet">
                                                 <div class="btn-read-more">

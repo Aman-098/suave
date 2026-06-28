@@ -276,8 +276,6 @@
 
 @push('scripts')
     <script>
-        
-
         $(document).on('show.bs.modal', '#bookingModal', function(event) {
             var button = $(event.relatedTarget); // clicked button
             var fleetName = button.data('fleet'); // data-fleet value
@@ -448,6 +446,52 @@
         }
     </script>
     <script>
+        const thumbs = document.querySelectorAll(".luxury-car-grid img");
+        const mainImg = document.getElementById("mainCarImg");
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+
+            if (index < 0)
+                index = thumbs.length - 1;
+
+            if (index >= thumbs.length)
+                index = 0;
+
+            currentIndex = index;
+
+            mainImg.src = thumbs[currentIndex].src;
+
+            thumbs.forEach(img => img.classList.remove("active"));
+            thumbs[currentIndex].classList.add("active");
+
+        }
+
+        function changeImg(el) {
+
+            currentIndex = [...thumbs].indexOf(el);
+
+            showImage(currentIndex);
+
+            const section = document.getElementById("mainImageSection");
+
+            window.scrollTo({
+                top: section.offsetTop - 100,
+                behavior: "smooth"
+            });
+
+        }
+
+        function nextImage() {
+            showImage(currentIndex + 1);
+        }
+
+        function prevImage() {
+            showImage(currentIndex - 1);
+        }
+    </script>
+    {{-- <script>
         $(document).ready(function() {
             const $track = $(".feedback-track");
             let $cards = $(".feedback-track .card");
@@ -554,13 +598,13 @@
                 }
             });
         });
-    </script>
-    <script>
+    </script> --}}
+    {{-- <script>
         document.querySelector(".close-video").onclick = function() {
             document.querySelector(".sticky-video").style.display = "none";
         }
-    </script>
-    <script>
+    </script> --}}
+    {{-- <script>
         function openVideo() {
             document.getElementById("videoPopup").style.display = "flex";
             document.getElementById("videoFrame").src =
@@ -580,10 +624,10 @@
                 closeVideo();
             }
         }
-    </script>
+    </script> --}}
 
 
-    <script>
+    {{-- <script>
         document.getElementById('carSearch').addEventListener('keyup', function() {
             let value = this.value.toLowerCase();
             let cards = document.querySelectorAll('#carContainer .tf-car-service');
@@ -598,7 +642,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
     <script>
         const itemsPerPage = 6; // kitne cards per page
@@ -642,7 +686,7 @@
         showPage(1);
     </script>
 
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
 
             const tabs = document.querySelectorAll(".detail-listing .tab-btn");
@@ -674,11 +718,11 @@
             });
 
         });
-    </script>
+    </script> --}}
 
 
 
-    <script>
+    {{-- <script>
         function scrollThumbs(direction) {
             const slider = document.getElementById("thumbSlider");
             const scrollAmount = 100;
@@ -688,5 +732,5 @@
                 behavior: "smooth"
             });
         }
-    </script>
+    </script> --}}
 @endpush

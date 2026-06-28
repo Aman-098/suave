@@ -204,17 +204,18 @@
                                             <h6 class="title">{{ $item->name }}</h6>
 
                                             <div class="description">
-                                                @dd([
-    'price' => $item->price,
-    'float' => (float) $item->price,
-    'comparison' => ((float)$item->price <= 0),
-]);
-                                                @if((float) $item->price <= 0)
                                                 
-                                                    <span>POA (Price on Application)</span>
-                                                @else
-                                                    <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                                @if((float) $item->price <= 0)
+                                                    @dd([
+                                                        'name' => $item->name,
+                                                        'price' => $item->price,
+                                                        'float' => (float) $item->price,
+                                                        'comparison' => ((float)$item->price <= 0),
+                                                    ]);
                                                 @endif
+                                                {{-- @else
+                                                    <span>₤ {{ number_format($item->price, 2) }} /Day</span>
+                                                @endif --}}
                                             </div>
 
                                             <div class="bottom-btn-wrap-fleet">

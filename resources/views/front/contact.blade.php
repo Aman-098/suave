@@ -126,11 +126,11 @@
                         <input type="number" id="age_driver" name="age_driver" placeholder="Age of Driver">
                         <span class="text-danger" id="ageError"></span>
 
-                        <label for="pickup">Pickup Date</label>
+                        <label for="pickup">Start Date</label>
                         <input type="date" id="pickup" name="pickup_date">
                         <span class="text-danger" id="pickupError"></span>
 
-                        <label for="return">Return Date</label>
+                        <label for="return">End Date</label>
                         <input type="date" id="return" name="return_date">
                         <span class="text-danger" id="returnError"></span>
 

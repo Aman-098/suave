@@ -49,6 +49,8 @@
                                     <th>S.No</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Vehicle Required</th>
+                                    <th>Age of Driver</th>
                                     <th>Message</th>
                                     <th>Submitted On</th>
                                     {{-- <th>Status</th> --}}
@@ -61,6 +63,8 @@
                                         <td>{{$index+1}}</td>
                                         <td>{{ucfirst($item->name)}}</td>
                                         <td>{{$item->email}}</td>
+                                        <td>{{$item->vehicle}}</td>
+                                        <td>{{$item->age_driver}}</td>
                                         {{-- <td>{{ \Illuminate\Support\Str::words($item->message, 30, '...') }}</td> --}}
                                         <td>{{ $item->message ?? 'N/A'}}</td>
 

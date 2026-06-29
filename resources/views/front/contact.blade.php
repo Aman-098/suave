@@ -72,6 +72,12 @@
                         <input type="email" id="email" name="email" placeholder="Email Address">
                         <span class="text-danger" id="emailError"></span>
 
+                        <input type="text" id="vehicle" name="vehicle" placeholder="Vehicle Required">
+                        <span class="text-danger" id="vehicleError"></span>
+
+                        <input type="number" id="age_driver" name="age_driver" placeholder="Age of Driver">
+                        <span class="text-danger" id="ageError"></span>
+
                         <textarea id="message" name="message" placeholder="Write your message..."></textarea>
                         <span class="text-danger" id="messageError"></span>
 
@@ -105,6 +111,8 @@
                 var name = $('#name').val().trim();
                 var phone = $('#phone').val().trim();
                 var email = $('#email').val().trim();
+                var vehicle = $('#vehicle').val().trim();
+                var age = $('#age_driver').val().trim();
                 var message = $('#message').val().trim();
 
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -133,6 +141,17 @@
                 // Message validation
                 if (message === '') {
                     showError('#messageError', 'Message is required.');
+                    return false;
+                }
+
+                // Phone validation
+                if (vehicle === '') {
+                    showError('#vehicleError', 'Vehicle is required.');
+                    return false;
+                }
+
+                if (age === '') {
+                    showError('#ageError', 'Age is required.');
                     return false;
                 }
 

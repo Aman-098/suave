@@ -21,6 +21,8 @@ class ContactController extends Controller
             $validated = $request->validate([
                 'name'    => 'required|string',
                 'email'   => 'required|email',
+                'vehicle'   => 'required',
+                'age_driver'   => 'required',
                 'phone' => 'required|string|max:20',
                 'message' => 'required|string'
             ]);
@@ -29,6 +31,8 @@ class ContactController extends Controller
             $contact = Contact::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
+                'vehicle' => $validated['vehicle'],
+                'age_driver' => $validated['age_driver'],
                 'phone' => $validated['phone'],
                 'message' => $validated['message'],
             ]);

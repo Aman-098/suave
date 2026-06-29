@@ -51,6 +51,8 @@
                                     <th>Email</th>
                                     <th>Vehicle Required</th>
                                     <th>Age of Driver</th>
+                                    <th>Pickup Date</th>
+                                    <th>Return Date</th>
                                     <th>Message</th>
                                     <th>Submitted On</th>
                                     {{-- <th>Status</th> --}}
@@ -65,7 +67,12 @@
                                         <td>{{$item->email}}</td>
                                         <td>{{$item->vehicle}}</td>
                                         <td>{{$item->age_driver}}</td>
-                                        {{-- <td>{{ \Illuminate\Support\Str::words($item->message, 30, '...') }}</td> --}}
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($item['pickup_date'])->format('d M Y') }}
+                                        </td>
+                                         <td>
+                                            {{ \Carbon\Carbon::parse($item['return_date'])->format('d M Y') }}
+                                        </td>
                                         <td>{{ $item->message ?? 'N/A'}}</td>
 
                                         <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>

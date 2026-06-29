@@ -89,7 +89,8 @@
         <div class="footer-col">
             <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
             <div class="footer-add-contact">
-                <p class="s-icon">Call: <a href="tel:08081680808 ">0808 168 0808 </a></p>
+                <p class="s-icon">Call: <a href="tel:+447599999690">+44 7599 999690</a></p>
+                <p class="s-icon">Call: <a href="tel:+447956919584">+44 7956 919584</a></p>
                 <p class="s-icon">Email: <a
                         href="mailto:info@suaveexecutivetravel.co.uk">info@suaveexecutivetravel.co.uk</a></p>
                 <div class="social-icons">

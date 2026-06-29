@@ -12,6 +12,8 @@ class Contact extends Model
         'email',
         'vehicle',
         'age_driver',
+        'pickup_date',
+        'return_date',
         'phone',
         'message'
 

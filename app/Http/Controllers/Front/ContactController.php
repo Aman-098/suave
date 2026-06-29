@@ -23,6 +23,8 @@ class ContactController extends Controller
                 'email'   => 'required|email',
                 'vehicle'   => 'required',
                 'age_driver'   => 'required',
+                'pickup_date' => 'required|date',
+                'return_date' => 'required|date|after_or_equal:pickup_date',
                 'phone' => 'required|string|max:20',
                 'message' => 'required|string'
             ]);
@@ -33,6 +35,8 @@ class ContactController extends Controller
                 'email' => $validated['email'],
                 'vehicle' => $validated['vehicle'],
                 'age_driver' => $validated['age_driver'],
+                'pickup_date' => $validated['pickup_date'],
+                'return_date' => $validated['return_date'],
                 'phone' => $validated['phone'],
                 'message' => $validated['message'],
             ]);

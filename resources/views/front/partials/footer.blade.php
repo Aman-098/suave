@@ -66,16 +66,6 @@
                 <span>💬 300</span>
             </div>
         </div>
-
-        {{-- <div class="insta-card">
-            <img src="https://images.pexels.com/photos/32255379/pexels-photo-32255379.jpeg?_gl=1*pcgf2j*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxNzIkajIzJGwwJGgw"
-                alt="">
-            <div class="overlay">
-                <span>❤ 1.5K</span>
-                <span>💬 60</span>
-            </div>
-        </div> --}}
-
     </div>
 
     <div class="insta-btn">
@@ -89,19 +79,20 @@
         <div class="footer-col">
             <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
             <div class="footer-add-contact">
-                <p class="s-icon">Call: <a href="tel:+447599999690">+44 7599 999690</a></p>
-                <p class="s-icon">Call: <a href="tel:+447956919584">+44 7956 919584</a></p>
+                <p class="s-icon">Mobile: <a href="tel:+447599999690">+44 7599 999690</a></p>
+                <p class="s-icon">Mobile: <a href="tel:+447956919584">+44 7956 919584</a></p>
                 <p class="s-icon">Email: <a
                         href="mailto:info@suaveexecutivetravel.co.uk">info@suaveexecutivetravel.co.uk</a></p>
                 <div class="social-icons">
                     <ul class="footer-social-links">
-                        <li><a href="https://www.facebook.com/p/Suave-Executive-Travel-61556411261769/" target="_blank"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
+                        <li><a href="https://www.facebook.com/p/Suave-Executive-Travel-61556411261769/"
+                                target="_blank"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
                                     alt=""></a>
                         </li>
                         <li><a href="https://www.instagram.com/suave.executive.travel/?hl=en" target="_blank"><img
                                     src="{{ asset('assets_front/img/icons/instagram.svg') }}" alt=""></a></li>
-                        <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}"
-                                    alt=""></a>
+                        <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img
+                                    src="{{ asset('assets_front/img/icons/tiktok.svg') }}" alt=""></a>
                         </li>
                         {{-- <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}"
                                     alt=""></a>

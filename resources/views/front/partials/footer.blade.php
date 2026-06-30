@@ -79,6 +79,7 @@
         <div class="footer-col">
             <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
             <div class="footer-add-contact">
+                <p class="s-icon">Mobile: <a href="tel:0808 168 0808">0808 168 0808</a></p>
                 <p class="s-icon">Mobile: <a href="tel:+447599999690">+44 7599 999690</a></p>
                 <p class="s-icon">Mobile: <a href="tel:+447956919584">+44 7956 919584</a></p>
                 <p class="s-icon">Email: <a

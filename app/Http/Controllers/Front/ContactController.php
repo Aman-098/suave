@@ -44,10 +44,14 @@ class ContactController extends Controller
             if($contact){
 
                 // Send Email
-                Mail::to(config('mail.admin_email'))->send(new ContactEnquiry($validated));
+                // Mail::to(config('mail.admin_email'))->send(new ContactEnquiry($validated));
+
+                Mail::to(config('mail.admin_email'))
+                ->cc('ads.qorvatech@gmail.com')
+                ->send(new ContactEnquiry($validated));
                 
 
-                return response()->json(['status'=>true,'message'=>'Thank you for submission! We will contact you soon!']);
+                return response()->json(['status'=>true,'message'=>'Thank you for submission! We will contact you soon!','redirect'=>route('thankyou')]);
             }else{
                 return response()->json(['status'=>false,'message'=>'Failed to submit form ']);
             }
@@ -56,7 +60,7 @@ class ContactController extends Controller
 
     }
 
-    // public function thank_you(){
-    //     return view('front.thankyou');
-    // }
+    public function thank_you(){
+        return view('front.thank-you');
+    }
 }

@@ -354,13 +354,15 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response.status == true) {
-                        // alert(response.message)
+                        
                         notyf.success(response.message);
 
-                        // setTimeout(() => {
                         $('#bookingForm')[0].reset();
                         $('#bookingModal').modal('hide');
-                        // }, 1200);
+                        
+                        setTimeout(function () {
+                            window.location.href = response.redirect;
+                        }, 1000);
                     } else {
                         notyf.error(response.message);
                     }

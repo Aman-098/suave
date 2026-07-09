@@ -246,6 +246,11 @@
                         if (response.status === true) {
                             notyf.success(response.message);
                             $('#contact_form')[0].reset();
+
+                            setTimeout(function () {
+                                window.location.href = response.redirect;
+                            }, 1000);
+                            
                         } else {
                             notyf.error(response.message);
                         }

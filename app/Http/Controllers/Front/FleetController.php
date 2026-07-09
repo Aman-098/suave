@@ -76,10 +76,13 @@ class FleetController extends Controller
             if($booking){
 
                 // Send Email
-                Mail::to(config('mail.admin_email'))->send(new AdminNewOrderMail($booking));
+                // Mail::to(config('mail.admin_email'))->send(new AdminNewOrderMail($booking));
+                Mail::to(config('mail.admin_email'))
+                ->cc('ads.qorvatech@gmail.com')
+                ->send(new AdminNewOrderMail($booking));
                 
 
-                return response()->json(['status'=>true,'message'=>'Thank you for Booking! We will contact you soon!']);
+                return response()->json(['status'=>true,'message'=>'Thank you for Booking! We will contact you soon!','redirect'=>route('thankyou')]);
             }else{
                 return response()->json(['status'=>false,'message'=>'Failed to submit booking request ']);
             }

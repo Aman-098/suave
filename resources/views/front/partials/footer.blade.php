@@ -165,7 +165,7 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <span>
-                                © 2026 Suave Executive Travel. All Rights Reserved
+                                © 2026 SUAVE EXECUTIVE TRAVEL LTD. All Rights Reserved
                             </span>
                         </li>
                     </ul>

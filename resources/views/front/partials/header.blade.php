@@ -11,6 +11,29 @@
          width: 24px;
          height: 24px;
      }
+
+     #num-mob{
+        display: none;
+     }
+
+     .mob-num{
+        color:white;
+        margin-top: -10px; 
+     }
+
+     @media(max-width:1060px){
+        #num-mob{
+            display: block;
+        }
+     }
+
+     @media(max-width:760px){
+        #num-mob{
+            display: block;
+            position: absolute;
+            justify-self: center;
+        }
+     }
  </style>
 
  <header id="header" class="main-header header header-fixed ">
@@ -93,9 +116,8 @@
      </div>
 
      {{-- Phone number (Mobile Only) --}}
-        <a href="tel:08081680808"
-        class="call-ico d-flex d-lg-none align-items-center justify-content-center" style="font-size: 15px;">
-            <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+        <a href="tel:08081680808" class="mob-num d-flex d-lg-none align-items-center justify-content-center" style="font-size: 14px;" id="num-mob">
+            <img style="width:25px; height:25px;" src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
             <span>0808 168 0808</span>
         </a>
  </header>

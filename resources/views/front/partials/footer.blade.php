@@ -264,7 +264,7 @@
             var formdata = $(this).serialize();
 
             $.ajax({
-                url: "{{ route('contact.save') }}",
+                url: "{{ route('footer.save') }}",
                 type: 'POST',
                 data: formdata,
                 dataType: 'json',
@@ -272,6 +272,9 @@
                     if (response.status === true) {
                         notyf.success(response.message);
                         $('#f_contact_form')[0].reset();
+                        setTimeout(function () {
+                                window.location.href = response.redirect;
+                            }, 1000);
                     } else {
                         notyf.error(response.message);
                     }

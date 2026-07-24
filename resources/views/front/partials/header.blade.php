@@ -1,18 +1,18 @@
  <style>
-.call-ico{
-    text-decoration:none;
-    color:#fff;
-    font-size:16px;
-    font-weight:500;
-    gap:10px;
-}
+     .call-ico {
+         text-decoration: none;
+         color: #fff;
+         font-size: 16px;
+         font-weight: 500;
+         gap: 10px;
+     }
 
-.call-ico img{
-    width:24px;
-    height:24px;
-}
+     .call-ico img {
+         width: 24px;
+         height: 24px;
+     }
  </style>
- 
+
  <header id="header" class="main-header header header-fixed ">
      <div class="header-lower">
          <div class="themesflat-container w1700">
@@ -40,15 +40,15 @@
                              </nav>
                          </div>
                          <div class="header-account flex align-center">
-                            <a href="tel:08081680808" class="call-ico d-inline-flex align-items-center">
-    <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
-    <span>
-        <strong>Call Us Now</strong><br>
-        0808 168 0808
-    </span>
-</a>
+                             <a href="tel:08081680808" class="call-ico d-inline-flex align-items-center">
+                                 <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+                                 <span>
+                                     <strong>Call Us Now</strong><br>
+                                     0808 168 0808
+                                 </span>
+                             </a>
                              <div class="flat-bt-top sc-btn-top ml--20 ">
-                                 <a class="btn-icon-list" href="{{route('contact')}}">
+                                 <a class="btn-icon-list" href="{{ route('contact') }}">
                                      <span>Get Free Quote</span>
                                  </a>
                              </div>
@@ -68,7 +68,8 @@
          <div class="menu-backdrop"></div>
          <nav class="menu-box">
              <div class="nav-logo">
-                 <a href="{{route('home')}}"><img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo Motorx"></a>
+                 <a href="{{ route('home') }}"><img src="{{ asset('assets_front/images/logo/logo2.png') }}"
+                         alt="Logo Motorx"></a>
              </div>
              <div class="bottom-canvas">
                  <div class="menu-outer">
@@ -82,10 +83,19 @@
                      </ul>
                  </div>
                  <div class="help-bar-mobie login-box">
-                     <a href="{{ route('contact') }}" role="button" class="fw-7 category"><i
-                             class="icon-user"></i>Get Free Quote</a>
+                     <a href="{{ route('contact') }}" role="button" class="fw-7 category"><i class="icon-user"></i>Get
+                         Free Quote</a>
                  </div>
              </div>
+
+             
          </nav>
      </div>
+
+     {{-- Phone number (Mobile Only) --}}
+        <a href="tel:08081680808"
+        class="call-ico d-flex d-lg-none align-items-center justify-content-center" style="font-size: 15px;">
+            <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+            <span>0808 168 0808</span>
+        </a>
  </header>

@@ -31,6 +31,161 @@
         background: #c8a45d;
         border-radius: 10px;
     }
+
+    .suave-consult-card {
+        display: none;
+    }
+
+    .suave-consult-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    }
+
+    .suave-consult-card {
+        /* background: linear-gradient(180deg, #1b2251 0%, #141a40 100%); */
+        border-radius: 20px;
+        padding: 40px 36px;
+        box-shadow: 0 20px 45px rgba(10, 14, 40, 0.35);
+    }
+
+    .suave-consult-title {
+        color: #ffffff;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 0 32px;
+        letter-spacing: 0.3px;
+    }
+
+    .suave-consult-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 22px;
+    }
+
+    .suave-consult-field {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .suave-consult-field.full {
+        flex: 1 1 100%;
+    }
+
+    .suave-consult-field label {
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+
+    .suave-consult-field input,
+    .suave-consult-field textarea {
+        border: none;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13px;
+        font-family: inherit;
+        background: #ffffff;
+        color: #1b2251;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .suave-consult-field input::placeholder,
+    .suave-consult-field textarea::placeholder {
+        color: #8a8fa3;
+    }
+
+    .suave-consult-field input:focus,
+    .suave-consult-field textarea:focus {
+        box-shadow: 0 0 0 3px rgba(200, 164, 93, 0.55);
+    }
+
+    .suave-consult-field textarea {
+        height: 40px;
+        resize: vertical;
+        overflow-y: hidden;
+    }
+
+    .suave-consult-btn-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .suave-consult-btn {
+        background: #be9b5a;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        padding: 16px 42px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+    }
+
+    .suave-consult-btn:hover {
+        background: #b6924e;
+    }
+
+    @media(max-width:1060px) {
+        .suave-consult-card {
+            display: block;
+            border: 1px solid;
+        }
+    }
+
+    /* Mobile — fields stay in a row, just tighter spacing/sizing */
+    @media (max-width: 640px) {
+        .suave-consult-card {
+            display: block;
+            margin-top: -50px;
+            z-index: 2;
+            padding: 10px 16px;
+            border-radius: 16px;
+            position: relative;
+            background-color: black;
+            border: 1px solid;
+        }
+
+        .suave-consult-title {
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+
+        .suave-consult-row {
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .suave-consult-field label {
+            font-size: 13px;
+            white-space: normal;
+        }
+
+        .suave-consult-field input,
+        .suave-consult-field textarea {
+            height: 40px;
+            /* line-height: 40px; */
+            padding: 0 8px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .suave-consult-btn {
+            width: 100%;
+            padding: 14px 0;
+            font-size: 14px;
+        }
+    }
 </style>
 
 @section('content')
@@ -43,6 +198,51 @@
             </div>
         </div>
     </div>
+
+
+    {{-- contact form  --}}
+    <div class="suave-consult-wrap">
+        <div class="suave-consult-card">
+            <h2 class="suave-consult-title">Get a Quote</h2>
+
+            <form id="suave_consult_form"  method="POST">
+                @csrf
+                <div class="suave-consult-row">
+                    <div class="suave-consult-field">
+                        <label for="sc_name">Name</label>
+                        <input type="text" name="name" id="sc_name" name="name" />
+                        <span class="text-danger" id="nameError"></span>
+                    </div>
+
+                    <div class="suave-consult-field">
+                        <label for="sc_phone">Phone</label>
+                        <input type="text" id="sc_phone" name="phone" />
+                        <span class="text-danger" id="phoneError"></span>
+                    </div>
+
+                    <div class="suave-consult-field">
+                        <label for="sc_email">Email</label>
+                        <input type="email" id="sc_email" name="email" />
+                        <span class="text-danger" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="suave-consult-row">
+                    <div class="suave-consult-field full">
+                        <label for="sc_message">Message</label>
+                        <textarea id="sc_message" name="message"></textarea>
+                        <span class="text-danger" id="messageError"></span>
+                    </div>
+                </div>
+
+                <div class="suave-consult-btn-row">
+                    <button type="submit" class="suave-consult-btn">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 
 
     {{-- new design for listing --}}
@@ -68,16 +268,11 @@
                             {{-- <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
                                 aria-selected="true"> {{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</button> --}}
-                                <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
+                            <button class="nav-link" id="pills-cadilliac-tab-service-v2" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $categoryName }}" type="button" role="tab"
-                                aria-selected="true"> 
-                                    {{ $categoryName === 'SUV' 
-                                        ? 'Performance SUV' 
-                                        : ($categoryName === 'Wedding' 
-                                            ? 'Wedding Cars' 
-                                            : $categoryName) 
-                                    }}
-                                </button>
+                                aria-selected="true">
+                                {{ $categoryName === 'SUV' ? 'Performance SUV' : ($categoryName === 'Wedding' ? 'Wedding Cars' : $categoryName) }}
+                            </button>
                         </li>
                         @php $i++; @endphp
                     @endforeach
@@ -185,7 +380,7 @@
                             <div class="category-heading mb-2">
                                 {{-- <h3>{{ $categoryName === 'SUV' ? 'Performance SUV' : $categoryName }}</h3> --}}
                                 <h3>
-                                    @if($categoryName === 'SUV')
+                                    @if ($categoryName === 'SUV')
                                         Performance SUV
                                     @elseif($categoryName === 'Wedding')
                                         Wedding Cars
@@ -223,7 +418,7 @@
                                             <h6 class="title">{{ $item->name }}</h6>
 
                                             <div class="description">
-                                                @if((float) $item->price == 0)
+                                                @if ((float) $item->price == 0)
                                                     <span>POA (Price on Application)</span>
                                                 @else
                                                     <span>₤ {{ number_format((float) $item->price, 2) }} /Day</span>
@@ -240,8 +435,11 @@
 
                                                 <div class="btn-group-panel">
                                                     <a href="tel:+4408081680808" class="icon-service">
-                                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
-                                                            <path d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z"></path>
+                                                        <svg width="18" height="18" viewBox="0 0 24 24"
+                                                            fill="#fff">
+                                                            <path
+                                                                d="M6.6 10.8C8.1 13.8 10.2 15.9 13.2 17.4L15.6 15C15.9 14.7 16.3 14.6 16.7 14.7C18 15.1 19.4 15.3 20.8 15.3C21.3 15.3 21.7 15.7 21.7 16.2V20C21.7 20.5 21.3 20.9 20.8 20.9C10.4 20.9 2.1 12.6 2.1 2.2C2.1 1.7 2.5 1.3 3 1.3H6.8C7.3 1.3 7.7 1.7 7.7 2.2C7.7 3.6 7.9 5 8.3 6.3C8.4 6.7 8.3 7.1 8 7.4L6.6 10.8Z">
+                                                            </path>
                                                         </svg>
                                                     </a>
 
@@ -293,7 +491,7 @@
                                             <h6 class="title">{{ $item->name }}</h6>
                                             <div class="description">
 
-                                                @if((float) $item->price == 0)
+                                                @if ((float) $item->price == 0)
                                                     <span>POA (Price on Application)</span>
                                                 @else
                                                     <span>₤ {{ number_format((float) $item->price, 2) }} /Day</span>
@@ -392,6 +590,81 @@
                 }
             });
 
+        });
+
+        $('#suave_consult_form').submit(function(e) {
+            e.preventDefault();
+
+            // Clear old errors
+            $('.text-danger').text('');
+
+            var name = $('#sc_name').val().trim();
+            var phone = $('#sc_phone').val().trim();
+            var email = $('#sc_email').val().trim();
+            var message = $('#sc_message').val().trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Name validation
+            if (name === '') {
+                showError('#nameError', 'required.');
+                return false;
+            }
+
+            // Phone validation
+            if (phone === '') {
+                showError('#phoneError', 'required.');
+                return false;
+            }
+
+            // Email validation
+            if (email === '') {
+                showError('#emailError', 'required.');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showError('#emailError', 'Enter a valid email.');
+                return false;
+            }
+
+            // Message validation
+            if (message === '') {
+                showError('#messageError', 'required.');
+                return false;
+            }
+
+            var formdata = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('footer.save') }}",
+                type: 'POST',
+                data: formdata,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === true) {
+                        notyf.success(response.message);
+                        $('#suave_consult_form')[0].reset();
+                        setTimeout(function () {
+                                window.location.href = response.redirect;
+                            }, 1000);
+                    } else {
+                        notyf.error(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        notyf.error(xhr.responseJSON.message);
+                    } else {
+                        notyf.error('Something went wrong');
+                    }
+                }
+            });
+
+            function showError(element, message) {
+                $(element).text(message).show();
+                setTimeout(() => {
+                    $(element).fadeOut();
+                }, 3000);
+            }
         });
     </script>
 @endpush

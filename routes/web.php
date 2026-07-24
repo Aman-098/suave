@@ -31,6 +31,7 @@ Route::post('/save/booking',[Fleet::class,'save_booking'])->name('booking.save')
 
 Route::get('/contact',[FrontContact::class,'index'])->name('contact');
 Route::post('/save/contact-form',[FrontContact::class,'save_form'])->name('contact.save');
+Route::post('/quote-form',[FrontContact::class,'footer_form'])->name('footer.save');
 Route::get('/thank-you',[FrontContact::class,'thank_you'])->name('thankyou');
 
 Route::get('/gallery',[Seo::class,'gallery'])->name('gallery');

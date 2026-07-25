@@ -6,6 +6,163 @@
 
 @section('meta_keywords', 'SUAVE')
 
+<style>
+    .suave-consult-card {
+        display: none;
+    }
+
+    .suave-consult-wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    }
+
+    .suave-consult-card {
+        /* background: linear-gradient(180deg, #1b2251 0%, #141a40 100%); */
+        border-radius: 20px;
+        padding: 40px 36px;
+        box-shadow: 0 20px 45px rgba(10, 14, 40, 0.35);
+    }
+
+    .suave-consult-title {
+        color: #ffffff;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 0 32px;
+        letter-spacing: 0.3px;
+    }
+
+    .suave-consult-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 22px;
+    }
+
+    .suave-consult-field {
+        flex: 1 1 0;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .suave-consult-field.full {
+        flex: 1 1 100%;
+    }
+
+    .suave-consult-field label {
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+
+    .suave-consult-field input,
+    .suave-consult-field textarea {
+        border: none;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13px;
+        font-family: inherit;
+        background: #ffffff;
+        color: #1b2251;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .suave-consult-field input::placeholder,
+    .suave-consult-field textarea::placeholder {
+        color: #8a8fa3;
+    }
+
+    .suave-consult-field input:focus,
+    .suave-consult-field textarea:focus {
+        box-shadow: 0 0 0 3px rgba(200, 164, 93, 0.55);
+    }
+
+    .suave-consult-field textarea {
+        height: 40px;
+        resize: vertical;
+        overflow-y: hidden;
+    }
+
+    .suave-consult-btn-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .suave-consult-btn {
+        background: #be9b5a;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        padding: 16px 42px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+    }
+
+    .suave-consult-btn:hover {
+        background: #b6924e;
+    }
+
+    @media(max-width:1060px) {
+        .suave-consult-card {
+            display: block;
+            border: 1px solid;
+        }
+    }
+
+    /* Mobile — fields stay in a row, just tighter spacing/sizing */
+    @media (max-width: 640px) {
+        .suave-consult-card {
+            display: block;
+            margin-top: -50px;
+            z-index: 2;
+            padding: 10px 16px;
+            border-radius: 16px;
+            position: relative;
+            background-color: black;
+            border: 1px solid;
+        }
+
+        .suave-consult-title {
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+
+        .suave-consult-row {
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .suave-consult-field label {
+            font-size: 13px;
+            white-space: normal;
+        }
+
+        .suave-consult-field input,
+        .suave-consult-field textarea {
+            height: 40px;
+            /* line-height: 40px; */
+            padding: 0 8px;
+            font-size: 13px;
+            border-radius: 8px;
+        }
+
+        .suave-consult-btn {
+            width: 100%;
+            padding: 14px 0;
+            font-size: 14px;
+        }
+    }
+</style>
+
 @section('content')
 
     <div class="tf-page-title mt-10">
@@ -13,6 +170,49 @@
             <div class="page-title t-al-center">
                 <h1 class="main-title">Our Fleet</h1>
             </div>
+        </div>
+    </div>
+
+    {{-- contact form --}}
+    <div class="suave-consult-wrap">
+        <div class="suave-consult-card">
+            <h2 class="suave-consult-title">Get a Quote</h2>
+
+            <form id="suave_consult_form"  method="POST">
+                @csrf
+                <div class="suave-consult-row">
+                    <div class="suave-consult-field">
+                        <label for="sc_name">Name</label>
+                        <input type="text" name="name" id="sc_name" name="name" />
+                        <span class="text-danger" id="nameError"></span>
+                    </div>
+
+                    <div class="suave-consult-field">
+                        <label for="sc_phone">Phone</label>
+                        <input type="text" id="sc_phone" name="phone" />
+                        <span class="text-danger" id="phoneError"></span>
+                    </div>
+
+                    <div class="suave-consult-field">
+                        <label for="sc_email">Email</label>
+                        <input type="email" id="sc_email" name="email" />
+                        <span class="text-danger" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="suave-consult-row">
+                    <div class="suave-consult-field full">
+                        <label for="sc_message">Message</label>
+                        <textarea id="sc_message" name="message"></textarea>
+                        <span class="text-danger" id="messageError"></span>
+                    </div>
+                </div>
+
+                <div class="suave-consult-btn-row">
+                    <button type="submit" class="suave-consult-btn">Submit</button>
+                </div>
+
+            </form>
         </div>
     </div>
 
@@ -386,6 +586,81 @@
                 }, 3000);
             }
         });
+
+        $('#suave_consult_form').submit(function(e) {
+            e.preventDefault();
+
+            // Clear old errors
+            $('.text-danger').text('');
+
+            var name = $('#sc_name').val().trim();
+            var phone = $('#sc_phone').val().trim();
+            var email = $('#sc_email').val().trim();
+            var message = $('#sc_message').val().trim();
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Name validation
+            if (name === '') {
+                showError('#nameError', 'required.');
+                return false;
+            }
+
+            // Phone validation
+            if (phone === '') {
+                showError('#phoneError', 'required.');
+                return false;
+            }
+
+            // Email validation
+            if (email === '') {
+                showError('#emailError', 'required.');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showError('#emailError', 'Enter a valid email.');
+                return false;
+            }
+
+            // Message validation
+            if (message === '') {
+                showError('#messageError', 'required.');
+                return false;
+            }
+
+            var formdata = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('footer.save') }}",
+                type: 'POST',
+                data: formdata,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === true) {
+                        notyf.success(response.message);
+                        $('#suave_consult_form')[0].reset();
+                        setTimeout(function () {
+                                window.location.href = response.redirect;
+                            }, 1000);
+                    } else {
+                        notyf.error(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        notyf.error(xhr.responseJSON.message);
+                    } else {
+                        notyf.error('Something went wrong');
+                    }
+                }
+            });
+
+            function showError(element, message) {
+                $(element).text(message).show();
+                setTimeout(() => {
+                    $(element).fadeOut();
+                }, 3000);
+            }
+        });
     </script>
 
 
@@ -497,114 +772,7 @@
             showImage(currentIndex - 1);
         }
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            const $track = $(".feedback-track");
-            let $cards = $(".feedback-track .card");
-
-            // ✅ Responsive visible count
-            function getVisible() {
-                if (window.innerWidth <= 576) return 1; // mobile
-                if (window.innerWidth <= 992) return 2; // tablet
-                return 3; // desktop
-            }
-
-            let visible = getVisible();
-            let index = visible;
-
-            function initSlider() {
-
-                $track.css("transition", "none");
-
-                $track.empty();
-                $track.append($cards.clone());
-
-                let allCards = $(".feedback-track .card");
-
-                // Clone last items to start
-                for (let i = allCards.length - visible; i < allCards.length; i++) {
-                    $track.prepend(allCards.eq(i).clone());
-                }
-
-                // Clone first items to end
-                allCards = $(".feedback-track .card");
-                for (let i = 0; i < visible; i++) {
-                    $track.append(allCards.eq(i).clone());
-                }
-
-                allCards = $(".feedback-track .card");
-
-                let cardWidth = allCards.outerWidth(true);
-                index = visible;
-
-                $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-
-                // NEXT
-                function nextSlide() {
-                    index++;
-                    $track.css({
-                        "transition": "0.5s",
-                        "transform": "translateX(-" + (index * cardWidth) + "px)"
-                    });
-
-                    if (index >= allCards.length - visible) {
-                        setTimeout(function() {
-                            $track.css("transition", "none");
-                            index = visible;
-                            $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-                        }, 500);
-                    }
-                }
-
-                // PREV
-                function prevSlide() {
-                    index--;
-                    $track.css({
-                        "transition": "0.5s",
-                        "transform": "translateX(-" + (index * cardWidth) + "px)"
-                    });
-
-                    if (index <= 0) {
-                        setTimeout(function() {
-                            $track.css("transition", "none");
-                            index = allCards.length - (visible * 2);
-                            $track.css("transform", "translateX(-" + (index * cardWidth) + "px)");
-                        }, 500);
-                    }
-                }
-
-                // Remove old events and rebind
-                $(".next").off().on("click", nextSlide);
-                $(".prev").off().on("click", prevSlide);
-
-                // Auto slide
-                clearInterval(window.autoSlide);
-                window.autoSlide = setInterval(nextSlide, 3000);
-
-                // Pause on hover
-                $(".feedback-slider").off().hover(
-                    function() {
-                        clearInterval(window.autoSlide);
-                    },
-                    function() {
-                        window.autoSlide = setInterval(nextSlide, 3000);
-                    }
-                );
-            }
-
-            // Init
-            initSlider();
-            // Resize handling
-            $(window).resize(function() {
-                let newVisible = getVisible();
-
-                if (newVisible !== visible) {
-                    visible = newVisible;
-                    initSlider(); // reinitialize slider
-                }
-            });
-        });
-    </script> --}}
+    
     <script>
         document.querySelector(".close-video").onclick = function() {
             document.querySelector(".sticky-video").style.display = "none";
@@ -633,110 +801,7 @@
     </script>
 
 
-    {{-- <script>
-        document.getElementById('carSearch').addEventListener('keyup', function() {
-            let value = this.value.toLowerCase();
-            let cards = document.querySelectorAll('#carContainer .tf-car-service');
+    
 
-            cards.forEach(function(card) {
-                let title = card.querySelector('.title').innerText.toLowerCase();
-
-                if (title.includes(value)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        });
-    </script> --}}
-
-    {{-- <script>
-        const itemsPerPage = 6; // kitne cards per page
-        const container = document.getElementById("carContainer");
-        const items = Array.from(container.getElementsByClassName("tf-car-service"));
-        const pagination = document.getElementById("pagination");
-
-        let currentPage = 1;
-
-        function showPage(page) {
-            currentPage = page;
-
-            let start = (page - 1) * itemsPerPage;
-            let end = start + itemsPerPage;
-
-            items.forEach((item, index) => {
-                item.style.display = (index >= start && index < end) ? "block" : "none";
-            });
-
-            updatePagination();
-        }
-
-        function updatePagination() {
-            const pageCount = Math.ceil(items.length / itemsPerPage);
-            pagination.innerHTML = "";
-
-            for (let i = 1; i <= pageCount; i++) {
-                let btn = document.createElement("button");
-                btn.innerText = i;
-
-                if (i === currentPage) {
-                    btn.classList.add("active");
-                }
-
-                btn.addEventListener("click", () => showPage(i));
-                pagination.appendChild(btn);
-            }
-        }
-
-        // INIT
-        showPage(1);
-    </script> --}}
-
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-            const tabs = document.querySelectorAll(".detail-listing .tab-btn");
-
-            tabs.forEach(btn => {
-                btn.addEventListener("click", function() {
-
-                    const parent = this.closest(".product-tabs");
-
-                    // remove active from buttons
-                    parent.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-
-                    // hide all content
-                    parent.querySelectorAll(".tab-content").forEach(c => c.classList.remove(
-                        "active"));
-
-                    // activate clicked button
-                    this.classList.add("active");
-
-                    // show selected tab
-                    const target = this.getAttribute("data-tab");
-                    const content = parent.querySelector("#" + target);
-
-                    if (content) {
-                        content.classList.add("active");
-                    }
-
-                });
-            });
-
-        });
-    </script> --}}
-
-
-
-    {{-- <script>
-        function scrollThumbs(direction) {
-            const slider = document.getElementById("thumbSlider");
-            const scrollAmount = 100;
-
-            slider.scrollBy({
-                left: direction * scrollAmount,
-                behavior: "smooth"
-            });
-        }
-    </script> --}}
+    
 @endpush

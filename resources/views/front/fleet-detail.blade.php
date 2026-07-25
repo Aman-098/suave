@@ -6,162 +6,9 @@
 
 @section('meta_keywords', 'SUAVE')
 
-<style>
-    .suave-consult-card {
-        display: none;
-    }
+{{-- anshika css --}}
 
-    .suave-consult-wrap {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 20px;
-        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-    }
 
-    .suave-consult-card {
-        /* background: linear-gradient(180deg, #1b2251 0%, #141a40 100%); */
-        border-radius: 20px;
-        padding: 40px 36px;
-        box-shadow: 0 20px 45px rgba(10, 14, 40, 0.35);
-    }
-
-    .suave-consult-title {
-        color: #ffffff;
-        text-align: center;
-        font-size: 30px;
-        font-weight: 700;
-        margin: 0 0 32px;
-        letter-spacing: 0.3px;
-    }
-
-    .suave-consult-row {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 22px;
-    }
-
-    .suave-consult-field {
-        flex: 1 1 0;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .suave-consult-field.full {
-        flex: 1 1 100%;
-    }
-
-    .suave-consult-field label {
-        color: #ffffff;
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        white-space: nowrap;
-    }
-
-    .suave-consult-field input,
-    .suave-consult-field textarea {
-        border: none;
-        border-radius: 10px;
-        padding: 12px 14px;
-        font-size: 13px;
-        font-family: inherit;
-        background: #ffffff;
-        color: #1b2251;
-        outline: none;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .suave-consult-field input::placeholder,
-    .suave-consult-field textarea::placeholder {
-        color: #8a8fa3;
-    }
-
-    .suave-consult-field input:focus,
-    .suave-consult-field textarea:focus {
-        box-shadow: 0 0 0 3px rgba(200, 164, 93, 0.55);
-    }
-
-    .suave-consult-field textarea {
-        height: 40px;
-        resize: vertical;
-        overflow-y: hidden;
-    }
-
-    .suave-consult-btn-row {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    .suave-consult-btn {
-        background: #be9b5a;
-        color: #ffffff;
-        border: none;
-        border-radius: 10px;
-        padding: 16px 42px;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        letter-spacing: 0.3px;
-    }
-
-    .suave-consult-btn:hover {
-        background: #b6924e;
-    }
-
-    @media(max-width:1060px) {
-        .suave-consult-card {
-            display: block;
-            border: 1px solid;
-        }
-    }
-
-    /* Mobile — fields stay in a row, just tighter spacing/sizing */
-    @media (max-width: 640px) {
-        .suave-consult-card {
-            display: block;
-            margin-top: -50px;
-            z-index: 2;
-            padding: 10px 16px;
-            border-radius: 16px;
-            position: relative;
-            background-color: black;
-            border: 1px solid;
-        }
-
-        .suave-consult-title {
-            font-size: 20px;
-            margin-bottom: 22px;
-        }
-
-        .suave-consult-row {
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .suave-consult-field label {
-            font-size: 13px;
-            white-space: normal;
-        }
-
-        .suave-consult-field input,
-        .suave-consult-field textarea {
-            height: 40px;
-            /* line-height: 40px; */
-            padding: 0 8px;
-            font-size: 13px;
-            border-radius: 8px;
-        }
-
-        .suave-consult-btn {
-            width: 100%;
-            padding: 14px 0;
-            font-size: 14px;
-        }
-    }
-</style>
 
 @section('content')
 
@@ -174,47 +21,50 @@
     </div>
 
     {{-- contact form --}}
-    <div class="suave-consult-wrap">
-        <div class="suave-consult-card">
-            <h2 class="suave-consult-title">Get a Quote</h2>
+    <section>
+        <div class="suave-consult-wrap">
+            <div class="suave-consult-card">
+                <h2 class="suave-consult-title">Get a Quote</h2>
 
-            <form id="suave_consult_form"  method="POST">
-                @csrf
-                <div class="suave-consult-row">
-                    <div class="suave-consult-field">
-                        <label for="sc_name">Name</label>
-                        <input type="text" name="name" id="sc_name" name="name" />
-                        <span class="text-danger" id="nameError"></span>
+                <form id="suave_consult_form"  method="POST">
+                    @csrf
+                    <div class="suave-consult-row">
+                        <div class="suave-consult-field">
+                            <label for="sc_name">Name</label>
+                            <input type="text" name="name" id="sc_name" name="name" />
+                            <span class="text-danger" id="nameError"></span>
+                        </div>
+
+                        <div class="suave-consult-field">
+                            <label for="sc_phone">Phone</label>
+                            <input type="text" id="sc_phone" name="phone" />
+                            <span class="text-danger" id="phoneError"></span>
+                        </div>
+
+                        <div class="suave-consult-field">
+                            <label for="sc_email">Email</label>
+                            <input type="email" id="sc_email" name="email" />
+                            <span class="text-danger" id="emailError"></span>
+                        </div>
                     </div>
 
-                    <div class="suave-consult-field">
-                        <label for="sc_phone">Phone</label>
-                        <input type="text" id="sc_phone" name="phone" />
-                        <span class="text-danger" id="phoneError"></span>
+                    <div class="suave-consult-row">
+                        <div class="suave-consult-field full">
+                            <label for="sc_message">Message</label>
+                            <textarea id="sc_message" name="message"></textarea>
+                            <span class="text-danger" id="messageError"></span>
+                        </div>
                     </div>
 
-                    <div class="suave-consult-field">
-                        <label for="sc_email">Email</label>
-                        <input type="email" id="sc_email" name="email" />
-                        <span class="text-danger" id="emailError"></span>
+                    <div class="suave-consult-btn-row">
+                        <button type="submit" class="suave-consult-btn">Submit</button>
                     </div>
-                </div>
 
-                <div class="suave-consult-row">
-                    <div class="suave-consult-field full">
-                        <label for="sc_message">Message</label>
-                        <textarea id="sc_message" name="message"></textarea>
-                        <span class="text-danger" id="messageError"></span>
-                    </div>
-                </div>
-
-                <div class="suave-consult-btn-row">
-                    <button type="submit" class="suave-consult-btn">Submit</button>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    </section>
+    
 
 
     <section class="car-product detail-listing">

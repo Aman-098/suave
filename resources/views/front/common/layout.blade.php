@@ -14,8 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <title>SUAVE | Luxury Car Rental</title>
 
-    <meta name="author" content="themesflat.com">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="suaveexecutivetravel">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets_front/css/style.css')}}">

@@ -6,6 +6,38 @@
 
 @section('meta_keywords', 'SUAVE Executive Travel blog, luxury car hire London')
 
+@section('og_image', asset('storage/' . $blog->image))
+
+@section('schema')
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ addslashes($blog->title) }}",
+        "description": "{{ addslashes($metaDescription) }}",
+        "image": "{{ asset('storage/' . $blog->image) }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ addslashes($blog->author) }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "SUAVE Executive Travel",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ asset('assets_front/images/logo/logo.png') }}"
+            }
+        },
+        "datePublished": "{{ \Carbon\Carbon::parse($blog->created_at)->toIso8601String() }}",
+        "dateModified": "{{ \Carbon\Carbon::parse($blog->updated_at ?? $blog->created_at)->toIso8601String() }}",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ url()->current() }}"
+        }
+    }
+</script>
+@endsection
+
 @section('content')
 
     <div class="tf-page-title mt-10">

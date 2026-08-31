@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', 'Our Fleet | Luxury & Supercar Hire | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'Browse the SUAVE Executive Travel fleet of luxury and supercars available to hire in London, including Lamborghini, Ferrari, Rolls-Royce, Bentley and more.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'luxury car fleet, supercar hire London, rent Lamborghini London, rent Rolls Royce London')
 
 <style>
     .category-heading {

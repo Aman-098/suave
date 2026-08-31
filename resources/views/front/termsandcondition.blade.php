@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Terms and Conditions')
+@section('title', 'Terms & Conditions | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'Read the terms and conditions for hiring a vehicle with SUAVE Executive Travel, London luxury and supercar rental specialists.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'SUAVE Executive Travel terms and conditions')
 
 <style>
     .about-luxury{

@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', 'SUAVE | Luxury & Supercar Hire in London')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'Hire luxury and supercar rentals in London with SUAVE Executive Travel. Sports cars, SUVs, executive limousines and wedding car hire, delivered with 5-star service.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'luxury car hire London, supercar rental London, executive car hire, wedding car hire London')
 
 @section('content')
 

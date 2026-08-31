@@ -19,15 +19,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <script type="application/ld+json">
         {
-        "@context": "https://schema.org",
-        "@type": "AutoRental",
+        "@@context": "https://schema.org",
+        "@@type": "AutoRental",
         "name": "SUAVE Executive Travel",
         "image": "{{ asset('assets_front/images/logo/logo.png') }}",
         "url": "{{ url('/') }}",
         "telephone": "0808 168 0808",
         "priceRange": "££££",
         "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "addressLocality": "London",
         "addressCountry": "GB"
         },

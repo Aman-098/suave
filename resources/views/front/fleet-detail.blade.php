@@ -10,18 +10,18 @@
 @section('schema')
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Product",
+        "@@context": "https://schema.org",
+        "@@type": "Product",
         "name": "{{ addslashes($fleet->name) }}",
         "description": "{{ addslashes(Str::limit(strip_tags($fleet->description), 300, '...')) }}",
         "image": "{{ asset('storage/' . $fleet->image) }}",
         "url": "{{ url()->current() }}",
         "brand": {
-            "@type": "Brand",
+            "@@type": "Brand",
             "name": "SUAVE Executive Travel"
         },
         "offers": {
-            "@type": "Offer",
+            "@@type": "Offer",
             "url": "{{ url()->current() }}",
             "priceCurrency": "GBP",
             "price": "{{ $fleet->price }}",
@@ -30,7 +30,7 @@
         }
         @if(!empty($fleet->rating))
         ,"aggregateRating": {
-            "@type": "AggregateRating",
+            "@@type": "AggregateRating",
             "ratingValue": "{{ $fleet->rating }}",
             "bestRating": "5",
             "reviewCount": "1"

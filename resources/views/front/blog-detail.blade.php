@@ -11,28 +11,28 @@
 @section('schema')
 <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@@context": "https://schema.org",
+        "@@type": "BlogPosting",
         "headline": "{{ addslashes($blog->title) }}",
         "description": "{{ addslashes($metaDescription) }}",
         "image": "{{ asset('storage/' . $blog->image) }}",
         "author": {
-            "@type": "Person",
+            "@@type": "Person",
             "name": "{{ addslashes($blog->author) }}"
         },
         "publisher": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "SUAVE Executive Travel",
             "logo": {
-                "@type": "ImageObject",
+                "@@type": "ImageObject",
                 "url": "{{ asset('assets_front/images/logo/logo.png') }}"
             }
         },
         "datePublished": "{{ \Carbon\Carbon::parse($blog->created_at)->toIso8601String() }}",
         "dateModified": "{{ \Carbon\Carbon::parse($blog->updated_at ?? $blog->created_at)->toIso8601String() }}",
         "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "{{ url()->current() }}"
+            "@@type": "WebPage",
+            "@@id": "{{ url()->current() }}"
         }
     }
 </script>

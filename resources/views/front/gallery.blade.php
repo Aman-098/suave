@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', 'Gallery | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'View photos and videos of the SUAVE Executive Travel luxury and supercar fleet in action across London.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'SUAVE Executive Travel gallery, luxury car photos London')
 
 @section('content')
 

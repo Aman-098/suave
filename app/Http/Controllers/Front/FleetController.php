@@ -8,88 +8,79 @@ use App\Models\Product;
 use App\Models\Booking;
 use App\Mail\AdminNewOrderMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class FleetController extends Controller
-{
-    //
-    public function index(){
-        // $fleets = Product::with('category')
-        //             ->where('status',1)
-        //             ->orderBy('sort_order')
-        //             ->get()
-        //             ->groupBy('category.name');
-
-        $fleets = Product::with('category')
+    {
+        public function index(){
+            $fleets = Product::with('category')
                 ->where('status', 1)
                 ->get()
-                ->sortBy('sort_order') // products inside category
+                ->sortBy('sort_order')
                 ->groupBy('category.name')
                 ->sortBy(function ($products) {
                     return $products->first()->category->sort_order ?? 999;
                 });
-        // dd($fleets); 
-        return view('front.fleets',compact('fleets'));
-    }
- 
-    public function fleet_detail($slug){
-        $fleet = Product::where('slug', $slug)
+            return view('front.fleets',compact('fleets'));
+        }
+
+public function fleet_detail($slug){
+    $fleet = Product::where('slug', $slug)
         ->where('status', 1)
         ->firstOrFail();
 
         $related_fleet = Product::with('category')->where('status', 1)
-                        ->where('category_id', $fleet->category_id)
-                        ->where('id', '!=', $fleet->id)
-                        ->limit(3)
-                        ->get();
+            ->where('category_id', $fleet->category_id)
+            ->where('id', '!=', $fleet->id)
+            ->limit(3)
+            ->get();
 
-        // dd($fleet);
-        return view('front.fleet-detail',compact('fleet','related_fleet'));
+        $metaTitle = $fleet->name . ' Hire | SUAVE Executive Travel';
+    $metaDescription = Str::limit(strip_tags($fleet->description), 155, '...');
+    if (empty(trim($metaDescription))) {
+        $metaDescription = 'Hire the ' . $fleet->name . ' with SUAVE Executive Travel. Luxury and supercar rental across London with flexible daily, weekend and long-term hire options.';
     }
 
-    public function save_booking(Request $request){
-        if($request->isMethod('post')){
+        return view('front.fleet-detail',compact('fleet','related_fleet','metaTitle','metaDescription'));
+}
 
-            $validated = $request->validate([
-                'name'        => 'required|string|max:255',
-                'fleet_name'  => 'required|string|max:255',
-                'email'       => 'required|email:rfc,dns',
-                'phone'       => 'required|string|max:20',
-                'fleet_name'  => 'required|string|max:255',
+public function save_booking(Request $request){
+    if($request->isMethod('post')){
 
-                'pickup_date' => 'required|date',
-                'return_date' => 'required|date|after_or_equal:pickup_date',
+    $validated = $request->validate([
+                                    'name' => 'required|string|max:255',
+                                    'fleet_name' => 'required|string|max:255',
+                                    'email' => 'required|email:rfc,dns',
+                                    'phone' => 'required|string|max:20',
+                                    'pickup_date' => 'required|date',
+                                    'return_date' => 'required|date|after_or_equal:pickup_date',
+                                    'message' => 'nullable|string'
+                                    ]);
 
-                'message'     => 'nullable|string'
-            ]);
+    $booking = Booking::create([
+                               'name' => $validated['name'],
+                               'email' => $validated['email'],
+                               'phone' => $validated['phone'],
+                               'fleet_name' => $validated['fleet_name'],
+                               'pickup_date' => $validated['pickup_date'],
+                               'return_date' => $validated['return_date'],
+                               'message' => $validated['message'] ?? null,
+                               ]);
 
-
-            $booking = Booking::create([
-                'name' => $validated['name'],
-                'email' => $validated['email'],
-                'phone' => $validated['phone'],
-                'fleet_name' => $validated['fleet_name'],
-                'pickup_date' => $validated['pickup_date'],
-                'return_date' => $validated['return_date'],
-                'message' => $validated['message'] ?? null,
-            ]);
-
-            if($booking){
-
-                // Send Email
-                try {
-                    Mail::to(config('mail.admin_email'))->cc('ads.qorvatech@gmail.com')
-                    ->send(new AdminNewOrderMail($booking));
-
-                }catch (\Exception $e) {
-                    \Log::error('Admin email failed: ' . $e->getMessage());
-                }
-
-                return response()->json(['status'=>true,'message'=>'Thank you for Booking! We will contact you soon!','redirect'=>route('thankyou')]);
-            }else{
-                return response()->json(['status'=>false,'message'=>'Failed to submit booking request ']);
-            }
-
+    if($booking){
+        try {
+            Mail::to(config('mail.admin_email'))->cc('ads.qorvatech@gmail.com')
+                ->send(new AdminNewOrderMail($booking));
+        }catch (\Exception $e) {
+            \Log::error('Admin email failed: ' . $e->getMessage());
         }
 
+        return response()->json(['status'=>true,'message'=>'Thank you for Booking! We will contact you soon!','redirect'=>route('thankyou')]);
+    }else{
+        return response()->json(['status'=>false,'message'=>'Failed to submit booking request ']);
     }
+
+    }
+
 }
+    }

@@ -12,8 +12,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script> gtag('config', 'AW-16576848800/VkLrCO-BuNgcEKDHuuA9', { 'phone_conversion_number': '0808 168 0808' }); </script>
     <meta charset="utf-8">
 
-    <title>SUAVE | Luxury Car Rental</title>
+    <title>@yield('title', 'SUAVE | Luxury Car Rental')</title>
+    <meta name="description" content="@yield('meta_description', 'SUAVE Executive Travel offers luxury and supercar hire across London, including sports cars, SUVs, executive limousines and wedding car hire.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'luxury car hire London, supercar rental, executive car hire, wedding car hire')">
+    <link rel="canonical" href="{{ url()->current() }}">
 
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        "name": "SUAVE Executive Travel",
+        "image": "{{ asset('assets_front/images/logo/logo.png') }}",
+        "url": "{{ url('/') }}",
+        "telephone": "0808 168 0808",
+        "priceRange": "££££",
+        "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+        },
+        "sameAs": []
+        }
+    </script>
+    @yield('schema')
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SUAVE Executive Travel">
+    <meta property="og:title" content="@yield('title', 'SUAVE | Luxury Car Rental')">
+    <meta property="og:description" content="@yield('meta_description', 'SUAVE Executive Travel offers luxury and supercar hire across London, including sports cars, SUVs, executive limousines and wedding car hire.')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="@yield('og_image', asset('assets_front/images/logo/logo.png'))">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'SUAVE | Luxury Car Rental')">
+    <meta name="twitter:description" content="@yield('meta_description', 'SUAVE Executive Travel offers luxury and supercar hire across London, including sports cars, SUVs, executive limousines and wedding car hire.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('assets_front/images/logo/logo.png'))">
     <meta name="author" content="suaveexecutivetravel">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 

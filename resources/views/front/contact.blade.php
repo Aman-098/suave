@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Contact')
+@section('title', 'Contact Us | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'Get in touch with SUAVE Executive Travel for luxury and supercar hire enquiries, bookings and quotes across London. Call 0808 168 0808.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'contact SUAVE Executive Travel, luxury car hire enquiry London')
 
 <style>
     #contact_form label {

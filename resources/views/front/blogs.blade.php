@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', 'Blog | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'News, guides and stories from SUAVE Executive Travel - London luxury and supercar rental specialists.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'luxury car blog, supercar news, SUAVE Executive Travel blog')
 
 @section('content')
 

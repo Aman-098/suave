@@ -1,10 +1,44 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', $metaTitle)
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', $metaDescription)
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', $fleet->name . ' hire, ' . $fleet->name . ' rental London, luxury car hire London')
+@section('og_image', asset('storage/' . $fleet->image))
+
+@section('schema')
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "{{ addslashes($fleet->name) }}",
+        "description": "{{ addslashes(Str::limit(strip_tags($fleet->description), 300, '...')) }}",
+        "image": "{{ asset('storage/' . $fleet->image) }}",
+        "url": "{{ url()->current() }}",
+        "brand": {
+            "@type": "Brand",
+            "name": "SUAVE Executive Travel"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "{{ url()->current() }}",
+            "priceCurrency": "GBP",
+            "price": "{{ $fleet->price }}",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition"
+        }
+        @if(!empty($fleet->rating))
+        ,"aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ $fleet->rating }}",
+            "bestRating": "5",
+            "reviewCount": "1"
+        }
+        @endif
+    }
+</script>
+@endsection
 
 {{-- anshika css --}}
 

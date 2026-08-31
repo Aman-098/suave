@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\FleetController as Fleet;
 use App\Http\Controllers\Front\ContactController as FrontContact;
 use App\Http\Controllers\Front\BlogController as FrontBlog;
 use App\Http\Controllers\Front\SeoController as Seo;
+use App\Http\Controllers\Front\SitemapController as Sitemap;
 
 
 // Admin Controllers
@@ -38,6 +39,8 @@ Route::get('/gallery',[Seo::class,'gallery'])->name('gallery');
 
 Route::get('/blogs',[FrontBlog::class,'index'])->name('blog');
 Route::get('/blog/{slug}',[FrontBlog::class,'blog_detail']);
+
+Route::get('/sitemap.xml', [Sitemap::class, 'index'])->name('sitemap');
 
 Route::get('/term-and-conditions',[Seo::class,'term_condition'])->name('terms');
 

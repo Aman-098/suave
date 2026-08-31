@@ -181,7 +181,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }} hire in London">
                                         </a>
                                         <div class="content">
                                             <h6 class="title">{{ $item->name }}</h6>
@@ -258,7 +258,7 @@
                                                 @endif
                                             </div>
 
-                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }} hire in London">
                                         </a>
 
                                         <div class="content">
@@ -332,7 +332,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }} hire in London">
                                         </a>
                                         <div class="content">
                                             <h6 class="title">{{ $item->name }}</h6>

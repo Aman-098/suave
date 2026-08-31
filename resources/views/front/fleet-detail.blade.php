@@ -12,8 +12,8 @@
     {
         "@@context": "https://schema.org",
         "@@type": "Product",
-        "name": "{{ addslashes($fleet->name) }}",
-        "description": "{{ addslashes(Str::limit(strip_tags($fleet->description), 300, '...')) }}",
+        "name": @json($fleet->name),
+        "description": @json(Str::limit(strip_tags($fleet->description), 300, '...')),
         "image": "{{ asset('storage/' . $fleet->image) }}",
         "url": "{{ url()->current() }}",
         "brand": {
@@ -49,7 +49,7 @@
     <div class="tf-page-title mt-10">
         <div class="themesflat-container full">
             <div class="page-title t-al-center">
-                <h1 class="main-title">Our Fleet</h1>
+                <h2 class="main-title">Our Fleet</h2>
             </div>
         </div>
     </div>
@@ -117,11 +117,11 @@
                 @endphp
 
                 <div class="product-gallery">
-                    <h1 class="car-main-title">{{ $fleet->name }}</h1>
+                    <h2 class="car-main-title">{{ $fleet->name }}</h2>
                     <div class="main-image" id="mainImageSection">
                         <button class="slider-btn prev" onclick="prevImage()">&#10094;</button>
 
-                        <img id="mainCarImg" src="{{ asset('storage/' . $fleet->image) }}" id="mainCarImg">
+                        <img id="mainCarImg" src="{{ asset('storage/' . $fleet->image) }}" alt="{{ $fleet->name }} for hire in London">
 
                         <button class="slider-btn next" onclick="nextImage()">&#10095;</button>
                     </div>
@@ -131,7 +131,7 @@
                             @if (!empty($gallery))
 
                                 @foreach ($gallery as $img)
-                                    <img src="{{ asset('storage/' . $img) }}" onclick="changeImg(this)">
+                                    <img src="{{ asset('storage/' . $img) }}" onclick="changeImg(this)" alt="{{ $fleet->name }} - photo {{ $loop->iteration }}">
                                 @endforeach
 
                             @endif
@@ -230,7 +230,7 @@
                     @foreach ($related_fleet as $item)
                         <a href="{{ url('fleet/' . $item->slug) }}">
                             <div class="car-card">
-                                <img src="{{ asset('storage/' . $item->image) }}" />
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }} hire in London" />
                                 <div class="card-overlay">
                                     {{-- <span>{{ $item->category->name }}</span> --}}
                                     <h3>{{ $item->name }}</h3>

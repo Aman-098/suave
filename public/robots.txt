@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://suaveexecutivetravel.co.uk/sitemap.xml

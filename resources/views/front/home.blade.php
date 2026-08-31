@@ -42,36 +42,36 @@
             </div>
             <div class="brand-slider">
                 <div class="brand-card">
-                    <img src="assets_front/images/porsche.png">
+                    <img src="assets_front/images/porsche.png" alt="Porsche hire London">
                     <p>Porsche</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/lamborghini.png">
+                    <img src="assets_front/images/lamborghini.png" alt="Lamborghini hire London">
                     <p>Lamborghini</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/mercedes.png">
+                    <img src="assets_front/images/mercedes.png" alt="Mercedes hire London">
                     <p>Mercedes</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/bmw.png">
+                    <img src="assets_front/images/bmw.png" alt="BMW hire London">
                     <p>BMW</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/bentley.png">
+                    <img src="assets_front/images/bentley.png" alt="Bentley hire London">
                     <p>Bentley</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/audi.png">
+                    <img src="assets_front/images/audi.png" alt="Audi hire London">
                     <p>Audi</p>
                 </div>
 
                 <div class="brand-card">
-                    <img src="assets_front/images/ferrari.png">
+                    <img src="assets_front/images/ferrari.png" alt="Ferrari hire London">
                     <p>Ferrari</p>
                 </div>
                 <div class="brand-card">
-                    <img src="assets_front/images/rolls-royce.png">
+                    <img src="assets_front/images/rolls-royce.png" alt="Rolls Royce hire London">
                     <p>Rolls Royce</p>
                 </div>
             </div>
@@ -92,11 +92,11 @@
                 </div>
                 <div class="explore-car">
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/sports.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/sports.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="Sports car hire in London">
                         <h5 class="title-explore">Sports Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/bentley.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/bentley.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="Luxury car hire in London">
                         <h5 class="title-explore">Luxury Cars</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
@@ -104,7 +104,7 @@
                         <h5 class="title-explore">Wedding Hire</h5>
                     </a>
                     <a href="{{ route('fleets') }}" class="explore-car-item">
-                        <img src="{{asset('assets_front/img/m-cle.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="">
+                        <img src="{{asset('assets_front/img/m-cle.jpeg')}}" style="height: 250px; width: 100%; object-fit: cover;" alt="Weekend car hire in London">
                         <h5 class="title-explore">Weekend Hire</h5>
                     </a>
                     
@@ -126,7 +126,7 @@
                     <div class="stars">★★★★★</div>
                     <h3 class="rating">4.9</h3>
                     <div class="brand-logo">
-                        <img src="assets_front/img/logo/google.png" alt="">
+                        <img src="assets_front/img/logo/google.png" alt="Google Reviews rating for SUAVE Executive Travel">
                     </div>
                     {{-- <span class="count">237 Reviews</span> --}}
                 </div>
@@ -134,7 +134,7 @@
                     <div class="stars">★★★★★</div>
                     <h3 class="rating">4.8</h3>
                     <div class="brand-logo">
-                        <img src="assets_front/img/logo/trustpilot.png" alt="">
+                        <img src="assets_front/img/logo/trustpilot.png" alt="Trustpilot rating for SUAVE Executive Travel">
                     </div>
                     {{-- <span class="count">128 Reviews</span> --}}
                 </div>
@@ -142,7 +142,7 @@
                     <div class="stars">★★★★★</div>
                     <h3 class="rating">4.7</h3>
                     <div class="brand-logo">
-                        <img src="assets_front/img/logo/tripadvisor.png" alt="">
+                        <img src="assets_front/img/logo/tripadvisor.png" alt="Tripadvisor rating for SUAVE Executive Travel">
                     </div>
                     {{-- <span class="count">94 Reviews</span> --}}
                 </div>
@@ -156,7 +156,7 @@
             <div class="about-grid">
                 <div class="about-right">
                     <div class="service-box-panel">
-                        <img src="assets_front/img/porsche-911.jpg">
+                        <img src="assets_front/img/porsche-911.jpg" alt="Porsche 911 supercar hire in London">
                     </div>
                 </div>
                 <div class="about-left">
@@ -268,7 +268,7 @@
                                                             <div class="images">
                                                                 <img src="{{ asset('storage/' . $item->image) }}"
                                                                     class="swiper-image tfcl-light-gallery"
-                                                                    alt="images">
+                                                                    alt="{{ $item->name }} hire in London">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -329,7 +329,7 @@
     <section class="rent-section">
         <div class="rent-container">
             <div class="rent-image">
-                <img src="{{asset('assets_front/img/ferrari-p.jpeg')}}" alt="">
+                <img src="{{asset('assets_front/img/ferrari-p.jpeg')}}" alt="Ferrari supercar rental in London">
             </div>
             <div class="rent-content">
                 <h2>Rent your car in 3 easy steps</h2>
@@ -541,7 +541,7 @@
 
                 </div>
                 <div class="feature-car-video video-wrap">
-                    <img src="assets_front/img/lambo.jpeg" alt="">
+                    <img src="assets_front/img/lambo.jpeg" alt="Lamborghini supercar hire in London">
                     <a href="{{ asset('assets_front/videoplayback.mp4') }}" class="popup-youtube icon-video">
                         <i class="icon-Polygon-6"></i>
                     </a>
@@ -570,7 +570,7 @@
                                         </ul>
                                     </div> --}}
                                     <a href="{{ url('blog/' . $item->slug) }}">
-                                        <img src="{{ asset('storage/' . $item->image) }}" alt="image">
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ ucfirst($item->title) }}">
                                     </a>
                                 </div>
                                 <div class="main-post">
@@ -606,7 +606,7 @@
                                     </ul>
                                 </div>
                                 <a href="#">
-                                    <img src="assets_front/img/car2.jpg" alt="image">
+                                    <img src="assets_front/img/car2.jpg" alt="{{ ucfirst($item->title) }}">
                                 </a>
                             </div>
                             <div class="main-post">
@@ -641,7 +641,7 @@
                                     </ul>
                                 </div>
                                 <a href="#">
-                                    <img src="assets_front/img/car5.jpg" alt="image">
+                                    <img src="assets_front/img/car5.jpg" alt="{{ ucfirst($item->title) }}">
                                 </a>
                             </div>
                             <div class="main-post">

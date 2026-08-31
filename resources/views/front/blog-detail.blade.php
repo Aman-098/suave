@@ -13,12 +13,12 @@
     {
         "@@context": "https://schema.org",
         "@@type": "BlogPosting",
-        "headline": "{{ addslashes($blog->title) }}",
-        "description": "{{ addslashes($metaDescription) }}",
+        "headline": @json($blog->title),
+        "description": @json($metaDescription),
         "image": "{{ asset('storage/' . $blog->image) }}",
         "author": {
             "@@type": "Person",
-            "name": "{{ addslashes($blog->author) }}"
+            "name": @json($blog->author)
         },
         "publisher": {
             "@@type": "Organization",
@@ -44,7 +44,7 @@
         <div class="themesflat-container full">
             <div class="page-title t-al-center">
 
-                <h1 class="main-title">Our Blog</h1>
+                <h2 class="main-title">Our Blog</h2>
 
                 <!-- <ul class="breadcrum">
                                 <li><a href="/">Home</a></li>
@@ -61,14 +61,14 @@
                 <div class="col-lg-8">
                     <div class="post-wrap">
                         <article class="entry format-standard-details">
-                            <img src="{{ asset('storage/' . $blog->image) }}" alt="image" class="imge-blog-details mb-25">
+                            <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ ucfirst($blog->title) }}" class="imge-blog-details mb-25">
                             <div class="entry-meta horizontal">
                                 <span class="author line"><i class="icon-user"></i><a href="#">{{ ucfirst($blog->author) }}</a></span>
                                 <span class="comment line"><i class="icon-1"></i><a href="#">{{ \Carbon\Carbon::parse($blog->created_at)->format('d F Y') }}</a></span>
                             </div>
-                            <h2 class="entry-title mb-20">
+                            <h1 class="entry-title mb-20">
                                 <a href="javascript:void(0);">{{ $blog->title }}</a>
-                            </h2>
+                            </h1>
                             {!! $blog->description !!}
                             
                         </article>
@@ -120,7 +120,7 @@
                                         <div class="list-recent">
                                             <div class="recent-image">
                                                 <a href="{{ url('blog/' . $item->slug) }}">
-                                                    <img src="{{ asset('storage/' . $item->image) }}" alt="Image">
+                                                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ ucfirst($item->title) }}">
                                                 </a>
                                             </div>
                                             <div class="recent-info">

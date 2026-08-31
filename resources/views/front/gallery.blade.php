@@ -30,7 +30,7 @@
 
                 @foreach ($gallery as $item)
                     <div class="gallery-item">
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt="SUAVE Executive Travel luxury car hire London - gallery photo {{ $loop->iteration }}">
                     </div>
                 @endforeach
 

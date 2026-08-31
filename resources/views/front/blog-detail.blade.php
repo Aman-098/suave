@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', $metaTitle)
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', $metaDescription)
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'SUAVE Executive Travel blog, luxury car hire London')
 
 @section('content')
 

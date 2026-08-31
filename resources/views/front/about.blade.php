@@ -1,10 +1,10 @@
 @extends('front.common.layout')
 
-@section('title', 'Home')
+@section('title', 'About Us | SUAVE Executive Travel')
 
-@section('meta_description', 'SUAVE')
+@section('meta_description', 'Learn about SUAVE Executive Travel, London luxury and supercar rental specialists, established 2022, offering premium vehicle hire and PCO vehicles.')
 
-@section('meta_keywords', 'SUAVE')
+@section('meta_keywords', 'about SUAVE Executive Travel, luxury car rental company London')
 
 @section('content')
 

@@ -46,19 +46,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ]
         }
     </script>
-@if(request()->path() === '/')
-    <script type="application/ld+json">
-        {
-        "@@context": "https://schema.org",
-        "@@type": "WebSite",
-        "@@id": "{{ rtrim(url('/'), '/') }}/#website",
-        "url": "{{ rtrim(url('/'), '/') }}",
-        "name": "Suave Executive Travel",
-        "inLanguage": "en-GB",
-        "publisher": { "@@id": "{{ rtrim(url('/'), '/') }}/#organisation" }
-        }
-    </script>
-    @endif
     @yield('schema')
 
     <meta property="og:type" content="website">

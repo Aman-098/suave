@@ -40,6 +40,17 @@
         @endif
     }
 </script>
+<script type="application/ld+json">
+{
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [
+        { "@@type": "ListItem", "position": 1, "name": "Home", "item": "{{ rtrim(url('/'), '/') }}" },
+        { "@@type": "ListItem", "position": 2, "name": "Our Fleet", "item": "{{ url('/our-fleets') }}" },
+        { "@@type": "ListItem", "position": 3, "name": @json($fleet->name), "item": "{{ url()->current() }}" }
+    ]
+}
+</script>
 <style>.fleet-price-value{font-size:40px;font-weight:700;line-height:48px;margin:0 0 10px;color:#fff;}.fleet-compare{margin-top:40px}.fleet-compare h2{font-size:28px;margin-bottom:12px}.fleet-compare p{margin-bottom:18px;opacity:.85}.fleet-compare-scroll{overflow-x:auto}.fleet-compare table{width:100%;border-collapse:collapse;font-size:15px}.fleet-compare th,.fleet-compare td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}.fleet-compare th{font-weight:700;white-space:nowrap}.fleet-compare td a{text-decoration:underline}.fleet-compare tr.is-current{background:rgba(255,255,255,.06)}</style>
 @endsection
 

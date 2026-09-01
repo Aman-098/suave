@@ -51,7 +51,7 @@
     ]
 }
 </script>
-<style>.fleet-price-value{font-size:40px;font-weight:700;line-height:48px;margin:0 0 10px;color:#fff;}.fleet-compare{margin-top:40px}.fleet-compare h2{font-size:28px;margin-bottom:12px}.fleet-compare p{margin-bottom:18px;opacity:.85}.fleet-compare-scroll{overflow-x:auto}.fleet-compare table{width:100%;max-width:720px;margin:0 auto;border-collapse:collapse;font-size:15px}.fleet-compare th,.fleet-compare td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}.fleet-compare th:last-child,.fleet-compare td:last-child{text-align:right;white-space:nowrap;width:1%}.fleet-compare th{font-weight:700;white-space:nowrap}.fleet-compare td a{text-decoration:underline}.fleet-compare tr.is-current{background:rgba(255,255,255,.06)}</style>
+<style>.fleet-price-value{font-size:40px;font-weight:700;line-height:48px;margin:0 0 10px;color:#fff;}.fleet-compare{margin-top:40px;grid-column:1/-1}.fleet-compare h2{font-size:28px;margin-bottom:12px}.fleet-compare p{max-width:680px;margin:0 auto 26px;opacity:.75;font-size:16px;line-height:1.6}.fleet-compare-scroll{overflow-x:auto}.fleet-compare table{width:100%;max-width:720px;margin:0 auto;border-collapse:collapse;font-size:15px}.fleet-compare th,.fleet-compare td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}.fleet-compare th:last-child,.fleet-compare td:last-child{text-align:right;white-space:nowrap;width:1%}.fleet-compare th{font-weight:700;white-space:nowrap}.fleet-compare td a{text-decoration:underline}.fleet-compare tr.is-current{background:rgba(255,255,255,.06)}</style>
 @endsection
 
 {{-- anshika css --}}
@@ -213,7 +213,7 @@
                 @if(($comparison ?? collect())->count() > 1)
                     <div class="fleet-compare">
                         <h2>How does the {{ $fleet->name }} compare on price?</h2>
-                        <p>Daily hire prices for every {{ strtolower(optional($fleet->category)->name ?: 'vehicle') }} in our fleet, cheapest first. All prices are a starting point &mdash; the final figure depends on hire length, delivery and whether you want a chauffeur.</p>
+                        <p>Starting daily rates across our {{ strtolower(optional($fleet->category)->name ?: 'full') }} fleet, cheapest first. Your final quote depends on hire length, delivery and whether you&rsquo;d like a chauffeur.</p>
                         <div class="fleet-compare-scroll">
                             <table>
                                 <thead>

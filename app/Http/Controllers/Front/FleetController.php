@@ -48,8 +48,15 @@ public function fleet_detail($slug){
         $comparison = Product::where('status', 1)
             ->where('category_id', $fleet->category_id)
             ->orderBy('price')
-            ->limit(6)
             ->get(['id', 'name', 'slug', 'price']);
+
+        // Show a window of nearest price neighbours so the current car is always in its own table.
+        if ($comparison->count() > 6) {
+            $index = $comparison->search(fn ($row) => $row->id === $fleet->id);
+            $index = $index === false ? 0 : $index;
+            $start = max(0, min($index - 2, $comparison->count() - 6));
+            $comparison = $comparison->slice($start, 6)->values();
+        }
 
         return view('front.fleet-detail',compact('fleet','related_fleet','comparison','metaTitle','metaDescription'));
 }

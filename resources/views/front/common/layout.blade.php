@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB">
 
 <head>
     <!-- Google Tag Manager -->
@@ -20,18 +20,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script type="application/ld+json">
         {
         "@@context": "https://schema.org",
-        "@@type": "AutoRental",
-        "name": "SUAVE Executive Travel",
+        "@@type": ["LocalBusiness", "AutoRental"],
+        "@@id": "{{ rtrim(url('/'), '/') }}/#organisation",
+        "name": "Suave Executive Travel",
         "image": "{{ asset('assets_front/images/logo/logo.png') }}",
-        "url": "{{ url('/') }}",
-        "telephone": "0808 168 0808",
-        "priceRange": "££££",
+        "logo": "{{ asset('assets_front/images/logo/logo.png') }}",
+        "url": "{{ rtrim(url('/'), '/') }}",
+        "telephone": "+448081680808",
+        "email": "info@@suaveexecutivetravel.co.uk",
+        "priceRange": "£££",
+        "foundingDate": "2022",
         "address": {
         "@@type": "PostalAddress",
-        "addressLocality": "London",
+        "streetAddress": "Floor 1, Office 7, 3 Uxbridge Road",
+        "addressLocality": "Hayes",
+        "addressRegion": "Greater London",
+        "postalCode": "UB4 0JN",
         "addressCountry": "GB"
         },
-        "sameAs": []
+        "sameAs": [
+        "https://www.facebook.com/p/Suave-Executive-Travel-61556411261769/",
+        "https://www.instagram.com/suave.executive.travel/",
+        "https://www.tiktok.com/@@suaveexecutivetravel",
+        "https://www.trustpilot.com/review/suaveexecutivetravel.co.uk"
+        ]
         }
     </script>
     @yield('schema')

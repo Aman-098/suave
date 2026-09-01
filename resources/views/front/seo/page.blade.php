@@ -16,7 +16,7 @@
     $baseUrl = rtrim(config('app.url') ?: url('/'), '/');
 
     $localBusiness = [
-        '@type'    => 'AutoRental',
+        '@type'    => ['LocalBusiness', 'AutoRental'],
         '@id'      => $baseUrl . '/#organisation',
         'name'     => 'Suave Executive Travel',
         'url'      => $baseUrl,

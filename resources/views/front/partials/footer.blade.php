@@ -178,8 +178,8 @@
 </div>
 
 <div class="sticky-video">
-    <video controls autoplay muted loop>
-        <source src="{{ asset('assets_front/videoplayback.mp4') }}" type="video/mp4">
+    <video controls muted loop playsinline preload="none" poster="/assets_front/videoplayback-poster.jpg">
+        <source src="{{ asset('assets_front/videoplayback-opt.mp4') }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <span class="close-video">✕</span>

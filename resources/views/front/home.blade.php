@@ -9,8 +9,8 @@
 @section('content')
 
     <div class="tf-slider-v3">
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="{{asset('assets_front/car-bg.mp4')}}" type="video/mp4">
+        <video autoplay muted loop playsinline preload="metadata" poster="/assets_front/car-bg-poster.jpg" class="bg-video">
+            <source src="{{asset('assets_front/car-bg-opt.mp4')}}" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
         <div class="themesflat-container">
@@ -542,7 +542,7 @@
                 </div>
                 <div class="feature-car-video video-wrap">
                     <img src="assets_front/img/lambo.jpeg" alt="Lamborghini supercar hire in London">
-                    <a href="{{ asset('assets_front/videoplayback.mp4') }}" class="popup-youtube icon-video">
+                    <a href="{{ asset('assets_front/videoplayback-opt.mp4') }}" class="popup-youtube icon-video">
                         <i class="icon-Polygon-6"></i>
                     </a>
                 </div>

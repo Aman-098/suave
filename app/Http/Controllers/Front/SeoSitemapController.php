@@ -7,16 +7,11 @@ use App\Models\SeoPage;
 
 class SeoSitemapController extends Controller
 {
-    /**
-     * XML sitemap for the pages held in seo_pages.
-     * Kept separate from the existing /sitemap.xml so that file is untouched;
-     * both are declared in robots.txt, which Google accepts.
-     */
     public function index()
     {
         $pages = SeoPage::published()
             ->where('noindex', false)
-            ->where('type', '!=', 'fleet')   // fleet rows enrich existing /fleet/ URLs
+            ->where('type', '!=', 'fleet')
             ->orderBy('type')
             ->orderBy('sort')
             ->get();
@@ -30,7 +25,33 @@ class SeoSitemapController extends Controller
             SeoPage::TYPE_DIRECTIONS => '0.6',
         ];
 
-        $xml = view('front.seo.sitemap', compact('pages', 'priority'))->render();
+        // Hub pages: only listed when they actually have children (they 404 otherwise).
+        $hubMap = [
+            'services'         => SeoPage::TYPE_SERVICE,
+            'chauffeur-hire'   => SeoPage::TYPE_AREA,
+            'transfers'        => SeoPage::TYPE_ROUTE,
+            'luxury-car-hire'  => SeoPage::TYPE_HIRE,
+            'wedding-car-hire' => SeoPage::TYPE_WEDDING,
+        ];
+
+        $hubs = [];
+
+        foreach ($hubMap as $slug => $type) {
+            $children = $pages->where('type', $type);
+
+            if ($children->isEmpty()) {
+                continue;
+            }
+
+            $newest = $children->sortByDesc('updated_at')->first();
+
+            $hubs[] = [
+                'loc'     => url('/' . $slug),
+                'lastmod' => optional($newest?->updated_at)->toAtomString(),
+            ];
+        }
+
+        $xml = view('front.seo.sitemap', compact('pages', 'priority', 'hubs'))->render();
 
         return response($xml, 200)->header('Content-Type', 'application/xml');
     }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\SeoPageController;
 use App\Http\Controllers\Front\SeoSitemapController;
+use App\Http\Controllers\Front\SeoHubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,10 @@ Route::get('/transfers/{slug}', [SeoPageController::class, 'route'])
     ->where('slug', '[a-z0-9-]+')->name('seo.route');
 
 Route::get('/sitemap-seo.xml', [SeoSitemapController::class, 'index'])->name('seo.sitemap');
+
+// Hub / index pages - parents of the /{prefix}/{slug} pages above.
+Route::get('/services', [SeoHubController::class, 'show'])->defaults('hub', 'services')->name('seo.hub.services');
+Route::get('/chauffeur-hire', [SeoHubController::class, 'show'])->defaults('hub', 'chauffeur-hire')->name('seo.hub.chauffeur');
+Route::get('/transfers', [SeoHubController::class, 'show'])->defaults('hub', 'transfers')->name('seo.hub.transfers');
+Route::get('/luxury-car-hire', [SeoHubController::class, 'show'])->defaults('hub', 'luxury-car-hire')->name('seo.hub.hire');
+Route::get('/wedding-car-hire', [SeoHubController::class, 'show'])->defaults('hub', 'wedding-car-hire')->name('seo.hub.wedding');

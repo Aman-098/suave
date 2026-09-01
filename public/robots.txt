@@ -2,3 +2,4 @@ User-agent: *
 Disallow:
 
 Sitemap: https://suaveexecutivetravel.co.uk/sitemap.xml
+Sitemap: https://suaveexecutivetravel.co.uk/sitemap-seo.xml

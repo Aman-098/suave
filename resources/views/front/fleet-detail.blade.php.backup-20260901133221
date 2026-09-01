@@ -360,10 +360,6 @@
 
     {{-- Booking Modal --}}
 
-
-    @include("front.seo.partials.fleet-content", ["fleet" => $fleet])
-    @include("front.seo.partials.fleet-links", ["fleet" => $fleet])
-
 @endsection
 
 @push('scripts')

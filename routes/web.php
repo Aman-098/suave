@@ -81,3 +81,7 @@ Route::middleware(['auth:admin','admin'])->group(function () {
 
 
 });
+
+
+// SEO landing pages (services, areas, wedding areas, transfers, directions)
+require __DIR__.'/seo.php';

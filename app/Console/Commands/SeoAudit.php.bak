@@ -50,26 +50,12 @@ class SeoAudit extends Command
         // 2. Orphans - fewer than 3 inbound internal links.
         $this->components->info('Orphan pages (under ' . Interlink::MIN_INBOUND . ' inbound links)');
         $orphans = Interlink::auditInbound();
-
-        // Fleet rows attach to the existing /fleet/{slug} URLs, which are linked
-        // from /our-fleets and from each other. This graph only walks seo_pages,
-        // so it cannot see those links. Report them, but do not block publishing.
-        $fleetOrphans = array_filter($orphans, fn ($p) => str_starts_with($p, 'fleet/'), ARRAY_FILTER_USE_KEY);
-        $pageOrphans  = array_diff_key($orphans, $fleetOrphans);
-
-        foreach ($pageOrphans as $path => $count) {
+        foreach ($orphans as $path => $count) {
             $this->warn("  {$path} has {$count} inbound");
             $problems++;
         }
-        if (! $pageOrphans) {
+        if (! $orphans) {
             $this->line('  none');
-        }
-
-        if ($fleetOrphans) {
-            $this->components->info('Vehicles not featured on a landing page (informational, not blocking)');
-            foreach ($fleetOrphans as $path => $count) {
-                $this->line("  {$path} - linked from {$count} landing page(s)");
-            }
         }
 
         // 3. noindex still switched on.

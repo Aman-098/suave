@@ -53,7 +53,7 @@ class SeoPageController extends Controller
             'nearbyAreas'   => Interlink::nearbyAreas($page),
             'relatedRoutes' => Interlink::relatedRoutes($page),
             'endpointAreas' => $type === SeoPage::TYPE_ROUTE ? Interlink::endpointAreas($page) : collect(),
-            'fleet'         => Interlink::fleet($page),
+            'fleet'         => Interlink::fleet($page, 6),
             'relatedPages'  => Interlink::relatedPages($page),
         ]);
     }

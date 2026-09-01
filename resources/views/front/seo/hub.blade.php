@@ -37,6 +37,19 @@
             ],
         ],
     ];
+
+    if (! empty($config['faqs'])) {
+        $graph[] = [
+            '@type' => 'FAQPage',
+            'mainEntity' => collect($config['faqs'])->map(function ($faq) {
+                return [
+                    '@type' => 'Question',
+                    'name'  => $faq['q'],
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
+                ];
+            })->all(),
+        ];
+    }
 @endphp
 <script type="application/ld+json">{!! json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 @endsection
@@ -56,24 +69,100 @@
 
     <section class="seo-body">
         <div class="seo-wrap">
-            <div class="seo-section">
-                <ul class="seo-linkblock-list">
-                    @foreach($pages as $p)
-                        <li>
-                            <a href="{{ url('/' . ltrim($p->url_path, '/')) }}">{{ $p->h1 }}</a>
-                            @if($p->meta_description)
-                                <span> &mdash; {{ \Illuminate\Support\Str::limit(strip_tags($p->meta_description), 120) }}</span>
-                            @endif
-                        </li>
+
+            @if(! empty($config['answer']))
+                <div class="seo-answer" id="answer">
+                    <p>{{ $config['answer'] }}</p>
+                </div>
+            @endif
+
+            @foreach(($config['sections'] ?? []) as $i => $section)
+                <div class="seo-section">
+                    <h2>{{ $section['h2'] }}</h2>
+                    {!! $section['html'] !!}
+                </div>
+
+                @if($i === 0)
+                    <div class="seo-section">
+                        <h2>{{ $config['listTitle'] ?? 'In this section' }}</h2>
+                        <ul class="seo-linkblock-list">
+                            @foreach($pages as $p)
+                                <li>
+                                    <a href="{{ url('/' . ltrim($p->url_path, '/')) }}">{{ $p->h1 }}</a>
+                                    @if($p->meta_description)
+                                        <span> &mdash; {{ \Illuminate\Support\Str::limit(strip_tags($p->meta_description), 120) }}</span>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if($i === 1 && ! empty($config['comparison']['rows']))
+                    <div class="seo-section">
+                        <h2>{{ $config['comparison']['caption'] ?? 'At a glance' }}</h2>
+                        <div class="seo-table-scroll">
+                            <table class="seo-table">
+                                <thead>
+                                    <tr>
+                                        @foreach($config['comparison']['headers'] as $header)
+                                            <th>{{ $header }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($config['comparison']['rows'] as $row)
+                                        <tr>
+                                            @foreach($row as $cell)
+                                                <td>{{ $cell }}</td>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+
+            @if(! empty($config['faqs']))
+                <div class="seo-section seo-faq">
+                    <h2>Frequently asked questions</h2>
+                    @foreach($config['faqs'] as $faq)
+                        <details class="seo-faq-item">
+                            <summary>{{ $faq['q'] }}</summary>
+                            <div class="seo-faq-answer"><p>{{ $faq['a'] }}</p></div>
+                        </details>
                     @endforeach
-                </ul>
-            </div>
+                </div>
+            @endif
 
             <div class="seo-cta">
-                <p>Not sure which one you need? Call
-                    <a href="tel:08081680808">0808 168 0808</a>
-                    and we will quote your journey directly.</p>
+                <h2>Ready to book?</h2>
+                <p>Call <a href="tel:08081680808">0808 168 0808</a> and we will quote your journey directly, or use the enquiry form.</p>
             </div>
+
+            <div class="seo-byline">
+                <p>
+                    <strong>Reviewed by Suave Executive Travel Team</strong>, Luxury Travel &amp; Vehicle Hire Specialists
+                    &middot; Last reviewed {{ \Illuminate\Support\Carbon::parse('2026-09-01')->format('j F Y') }}
+                </p>
+            </div>
+
+            @if(! empty($config['sources']))
+                <div class="seo-sources">
+                    <h2>Sources</h2>
+                    <ul>
+                        @foreach($config['sources'] as $source)
+                            <li>
+                                <a href="{{ $source['url'] }}" rel="nofollow noopener" target="_blank">{{ $source['label'] }}</a>
+                                @if(! empty($source['publisher'])) &mdash; {{ $source['publisher'] }} @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
         </div>
     </section>
 

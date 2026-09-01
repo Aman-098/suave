@@ -58,7 +58,7 @@
                                                 <li><a href="{{ route('seo.hub.services') }}">All Services</a></li>
                                                 <li><a href="{{ route('seo.hub.chauffeur') }}">Chauffeur Hire by Area</a></li>
                                                 <li><a href="{{ route('seo.hub.transfers') }}">Heathrow Transfers</a></li>
-                                                <li><a href="{{ route('seo.hub.hire') }}">Luxury Car Hire</a></li>
+                                                <li><a href="{{ route('seo.service', 'luxury-car-hire') }}">Luxury Car Hire</a></li>
                                             </ul>
                                         </li>
                                          <li><a href="{{ route('about') }}">About Us</a></li>
@@ -110,7 +110,7 @@
                         <li><a href="{{ route('seo.hub.services') }}">Services</a></li>
                         <li><a href="{{ route('seo.hub.chauffeur') }}">Chauffeur Hire</a></li>
                         <li><a href="{{ route('seo.hub.transfers') }}">Heathrow Transfers</a></li>
-                        <li><a href="{{ route('seo.hub.hire') }}">Luxury Car Hire</a></li>
+                        <li><a href="{{ route('seo.service', 'luxury-car-hire') }}">Luxury Car Hire</a></li>
                          <li><a href="{{ route('about') }}">About Us</a></li>
                          <li><a href="{{ route('gallery') }}">Gallery</a></li>
                          <li><a href="{{ route('blog') }}">Blog</a></li>

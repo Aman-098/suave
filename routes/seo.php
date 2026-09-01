@@ -37,5 +37,5 @@ Route::get('/sitemap-seo.xml', [SeoSitemapController::class, 'index'])->name('se
 Route::get('/services', [SeoHubController::class, 'show'])->defaults('hub', 'services')->name('seo.hub.services');
 Route::get('/chauffeur-hire', [SeoHubController::class, 'show'])->defaults('hub', 'chauffeur-hire')->name('seo.hub.chauffeur');
 Route::get('/transfers', [SeoHubController::class, 'show'])->defaults('hub', 'transfers')->name('seo.hub.transfers');
-Route::get('/luxury-car-hire', [SeoHubController::class, 'show'])->defaults('hub', 'luxury-car-hire')->name('seo.hub.hire');
+Route::redirect('/luxury-car-hire', '/services/luxury-car-hire', 301);
 Route::get('/wedding-car-hire', [SeoHubController::class, 'show'])->defaults('hub', 'wedding-car-hire')->name('seo.hub.wedding');

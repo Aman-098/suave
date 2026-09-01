@@ -30,7 +30,6 @@ class SeoSitemapController extends Controller
             'services'         => SeoPage::TYPE_SERVICE,
             'chauffeur-hire'   => SeoPage::TYPE_AREA,
             'transfers'        => SeoPage::TYPE_ROUTE,
-            'luxury-car-hire'  => SeoPage::TYPE_HIRE,
             'wedding-car-hire' => SeoPage::TYPE_WEDDING,
         ];
 

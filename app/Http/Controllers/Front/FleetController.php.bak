@@ -35,23 +35,13 @@ public function fleet_detail($slug){
             ->limit(3)
             ->get();
 
-        $base = $fleet->name . ' Hire London';
-        $metaTitle = strlen($base . ' | Suave Executive Travel') <= 60
-            ? $base . ' | Suave Executive Travel'
-            : $base . ' | Suave';
-    $body = trim(preg_replace('/\s+/', ' ', strip_tags($fleet->description)));
-    $metaDescription = Str::limit($fleet->name . ' hire in London and the Thames Valley. ' . $body, 155, '...');
+        $metaTitle = $fleet->name . ' Hire | SUAVE Executive Travel';
+    $metaDescription = Str::limit(strip_tags($fleet->description), 155, '...');
     if (empty(trim($metaDescription))) {
         $metaDescription = 'Hire the ' . $fleet->name . ' with SUAVE Executive Travel. Luxury and supercar rental across London with flexible daily, weekend and long-term hire options.';
     }
 
-        $comparison = Product::where('status', 1)
-            ->where('category_id', $fleet->category_id)
-            ->orderBy('price')
-            ->limit(6)
-            ->get(['id', 'name', 'slug', 'price']);
-
-        return view('front.fleet-detail',compact('fleet','related_fleet','comparison','metaTitle','metaDescription'));
+        return view('front.fleet-detail',compact('fleet','related_fleet','metaTitle','metaDescription'));
 }
 
 public function save_booking(Request $request){

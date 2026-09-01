@@ -8,14 +8,6 @@
 @section('og_image', asset('storage/' . $fleet->image))
 
 @section('schema')
-@php
-    $multiWordBrands = ['Rolls Royce', 'Rolls-Royce', 'Land Rover', 'Range Rover', 'Aston Martin', 'Mercedes Benz', 'Mercedes-Benz'];
-    $brandName = null;
-    foreach ($multiWordBrands as $b) {
-        if (\Illuminate\Support\Str::startsWith($fleet->name, $b)) { $brandName = $b; break; }
-    }
-    $brandName = $brandName ?: \Illuminate\Support\Str::before($fleet->name, ' ');
-@endphp
 <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
@@ -26,21 +18,26 @@
         "url": "{{ url()->current() }}",
         "brand": {
             "@@type": "Brand",
-            "name": @json($brandName)
-        }
-        @if((float) $fleet->price > 0)
-        ,"offers": {
+            "name": "SUAVE Executive Travel"
+        },
+        "offers": {
             "@@type": "Offer",
             "url": "{{ url()->current() }}",
             "priceCurrency": "GBP",
-            "price": "{{ number_format((float) $fleet->price, 2, '.', '') }}",
+            "price": "{{ $fleet->price }}",
             "availability": "https://schema.org/InStock",
-            "seller": { "@@id": "{{ rtrim(url('/'), '/') }}/#organisation" }
+            "itemCondition": "https://schema.org/NewCondition"
+        }
+        @if(!empty($fleet->rating))
+        ,"aggregateRating": {
+            "@@type": "AggregateRating",
+            "ratingValue": "{{ $fleet->rating }}",
+            "bestRating": "5",
+            "reviewCount": "1"
         }
         @endif
     }
 </script>
-<style>.fleet-price-value{font-size:40px;font-weight:700;line-height:48px;margin:0 0 10px;color:#fff;}.fleet-compare{margin-top:40px}.fleet-compare h2{font-size:28px;margin-bottom:12px}.fleet-compare p{margin-bottom:18px;opacity:.85}.fleet-compare-scroll{overflow-x:auto}.fleet-compare table{width:100%;border-collapse:collapse;font-size:15px}.fleet-compare th,.fleet-compare td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.15);text-align:left}.fleet-compare th{font-weight:700;white-space:nowrap}.fleet-compare td a{text-decoration:underline}.fleet-compare tr.is-current{background:rgba(255,255,255,.06)}</style>
 @endsection
 
 {{-- anshika css --}}
@@ -157,7 +154,7 @@
                                 {{ $fleet->category->name ?? 'Luxury Fleet' }}
                             </span> --}}
 
-                    <h1>{{ $fleet->name }} Hire in London</h1>
+                    <h1>{{ $fleet->name }}</h1>
 
                     <div class="fleet-description">
                         {!! $fleet->description !!}
@@ -165,10 +162,10 @@
 
                     <div class="fleet-price">
                         @if ($fleet->price == 0)
-                            <div class="fleet-price-value"> POA </div>
+                            <h2> POA </h2>
                         @else
                             <small>Daily Price</small>
-                            <div class="fleet-price-value">£ {{ number_format($fleet->price, 2) }}</div>
+                            <h2>£ {{ number_format($fleet->price, 2) }}</h2>
                         @endif
 
                     </div>
@@ -198,34 +195,6 @@
                         {!! $fleet->specification !!}
                     </div>
                 </div>
-
-                @if(($comparison ?? collect())->count() > 1)
-                    <div class="fleet-compare">
-                        <h2>How does the {{ $fleet->name }} compare on price?</h2>
-                        <p>Daily hire prices for every {{ strtolower(optional($fleet->category)->name ?: 'vehicle') }} in our fleet, cheapest first. All prices are a starting point &mdash; the final figure depends on hire length, delivery and whether you want a chauffeur.</p>
-                        <div class="fleet-compare-scroll">
-                            <table>
-                                <thead>
-                                    <tr><th>Vehicle</th><th>Daily hire from</th></tr>
-                                </thead>
-                                <tbody>
-                                @foreach($comparison as $row)
-                                    <tr @class(['is-current' => $row->id === $fleet->id])>
-                                        <td>
-                                            @if($row->id === $fleet->id)
-                                                <strong>{{ $row->name }}</strong> &mdash; this page
-                                            @else
-                                                <a href="{{ url('/fleet/' . $row->slug) }}">{{ $row->name }}</a>
-                                            @endif
-                                        </td>
-                                        <td>{{ (float) $row->price > 0 ? '£' . number_format($row->price, 2) : 'POA' }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                @endif
             </div>
 
         </div>
@@ -335,7 +304,7 @@
                 <span class="close-modal" data-bs-dismiss="modal">&times;</span>
 
                 <div class="modal-body">
-                    <div class="car-title" id="fleetTitle"></div>
+                    <h2 class="car-title" id="fleetTitle"></h2>
 
                     <form class="booking-form" id="bookingForm">
                         @csrf
@@ -724,4 +693,3 @@
 
     
 @endpush
-

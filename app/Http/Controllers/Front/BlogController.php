@@ -30,12 +30,30 @@ public function blog_detail($slug){
             ->take(3)
             ->get();
 
-        $metaTitle = ucfirst($blog->title) . ' | SUAVE Executive Travel Blog';
+        $title = ucfirst($blog->title);
+        // A subtitle after a colon is the first thing worth dropping.
+        $short = $title;
+        if (str_contains($title, ':')) {
+            $before = trim(Str::before($title, ':'));
+            if (strlen($before) >= 20) { $short = $before; }
+        }
+        if (strlen($short) <= 52) {
+            $metaTitle = $short . ' | Suave';       // room for the brand
+        } elseif (strlen($short) <= 60) {
+            $metaTitle = $short;                    // fits as-is, do not cut
+        } else {
+            $metaTitle = rtrim(preg_replace('/\s+\S*$/', '', substr($short, 0, 58)), " ,:-");
+        }
     $metaDescription = Str::limit(strip_tags($blog->description), 155, '...');
     if (empty(trim($metaDescription))) {
         $metaDescription = 'Read the latest news, guides and stories from SUAVE Executive Travel, London supercar and luxury car rental specialists.';
     }
 
-return view('front.blog-detail', compact('blog', 'recentBlogs', 'metaTitle', 'metaDescription'));
+$haystack = $blog->title . ' ' . strip_tags($blog->description);
+        $relatedVehicles = \App\Models\Product::where('status', 1)->get(['id', 'name', 'slug'])
+            ->filter(fn ($p) => strlen($p->name) >= 6 && stripos($haystack, $p->name) !== false)
+            ->take(3)->values();
+
+        return view('front.blog-detail', compact('blog', 'recentBlogs', 'relatedVehicles', 'metaTitle', 'metaDescription'));
 }
     }

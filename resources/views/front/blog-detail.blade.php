@@ -70,6 +70,17 @@
                                 <a href="javascript:void(0);">{{ $blog->title }}</a>
                             </h1>
                             {!! $blog->description !!}
+
+                            @if(($relatedVehicles ?? collect())->count())
+                                <div class="blog-vehicles">
+                                    <h2>Vehicles mentioned in this post</h2>
+                                    <ul>
+                                        @foreach($relatedVehicles as $vehicle)
+                                            <li><a href="{{ url('/fleet/' . $vehicle->slug) }}">{{ $vehicle->name }} hire</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             
                         </article>
                         

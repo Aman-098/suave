@@ -29,3 +29,7 @@ Thumbs.db
 *.tgz
 *.backup-*
 seo-wire.sh
+
+*.bak
+*.bak2
+*.bak3

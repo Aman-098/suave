@@ -23,8 +23,8 @@
     <div class="insta-grid">
 
         <div class="insta-card">
-            <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?_gl=1*1n9qngb*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAwODMkajQ1JGwwJGgw"
-                alt="">
+            <img src="/assets_front/img/px-120049.webp"
+                alt="Blue Mercedes-Benz saloon with headlights on">
             <div class="overlay">
                 <span>❤ 2.1K</span>
                 <span>💬 120</span>
@@ -32,8 +32,8 @@
         </div>
 
         <div class="insta-card">
-            <img src="https://images.pexels.com/photos/337909/pexels-photo-337909.jpeg?_gl=1*1mgia2l*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxMDkkajE5JGwwJGgw"
-                alt="">
+            <img src="/assets_front/img/px-337909.webp"
+                alt="Red Ferrari sports car on a cobbled street">
             <div class="overlay">
                 <span>❤ 3.4K</span>
                 <span>💬 210</span>
@@ -41,8 +41,8 @@
         </div>
 
         <div class="insta-card">
-            <img src="https://images.pexels.com/photos/6462662/pexels-photo-6462662.png?_gl=1*1nvgqej*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxMjMkajUkbDAkaDA."
-                alt="">
+            <img src="/assets_front/img/px-6462662.webp"
+                alt="White Lamborghini Aventador parked by a brick wall">
             <div class="overlay">
                 <span>❤ 1.8K</span>
                 <span>💬 95</span>
@@ -50,8 +50,8 @@
         </div>
 
         <div class="insta-card">
-            <img src="https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?_gl=1*amy2pp*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxNDEkajU0JGwwJGgw"
-                alt="">
+            <img src="/assets_front/img/px-2127733.webp"
+                alt="Green Lamborghini Huracan parked on a city street">
             <div class="overlay">
                 <span>❤ 2.9K</span>
                 <span>💬 180</span>
@@ -59,8 +59,8 @@
         </div>
 
         <div class="insta-card">
-            <img src="https://images.pexels.com/photos/831475/pexels-photo-831475.jpeg?_gl=1*md8cio*_ga*MTQyNzIyNTg1NS4xNzczNjczNzQ2*_ga_8JE65Q40S6*czE3NzM3MzAwNjgkbzIkZzEkdDE3NzM3MzAxNTYkajM5JGwwJGgw"
-                alt="">
+            <img src="/assets_front/img/px-831475.webp"
+                alt="Red Dodge Viper in an empty car park">
             <div class="overlay">
                 <span>❤ 4.2K</span>
                 <span>💬 300</span>
@@ -77,7 +77,7 @@
 <div class="footer-section">
     <div class="footer-container">
         <div class="footer-col">
-            <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo">
+            <img src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Suave Executive Travel">
             <div class="footer-add-contact">
                 <p class="s-icon">Mobile: <a href="tel:0808 168 0808">0808 168 0808</a></p>
                 <p class="s-icon">Mobile: <a href="tel:+447599999690">+44 7599 999690</a></p>
@@ -87,16 +87,14 @@
                 <div class="social-icons">
                     <ul class="footer-social-links">
                         <li><a href="https://www.facebook.com/p/Suave-Executive-Travel-61556411261769/"
-                                target="_blank"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}"
-                                    alt=""></a>
+                                target="_blank"><img src="{{ asset('assets_front/img/icons/facebook.svg') }}" alt="Facebook"></a>
                         </li>
                         <li><a href="https://www.instagram.com/suave.executive.travel/?hl=en" target="_blank"><img
-                                    src="{{ asset('assets_front/img/icons/instagram.svg') }}" alt=""></a></li>
+                                    src="{{ asset('assets_front/img/icons/instagram.svg') }}" alt="Instagram"></a></li>
                         <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img
-                                    src="{{ asset('assets_front/img/icons/tiktok.svg') }}" alt=""></a>
+                                    src="{{ asset('assets_front/img/icons/tiktok.svg') }}" alt="TikTok"></a>
                         </li>
-                        {{-- <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}"
-                                    alt=""></a>
+                        {{-- <li><a href="https://www.tiktok.com/@suaveexecutivetravel" target="_blank"><img src="{{ asset('assets_front/img/icons/tiktok.svg') }}" alt="TikTok"></a>
                         </li> --}}
                     </ul>
                 </div>
@@ -105,12 +103,12 @@
             <div class="reviews">
                 <div class="review-box">
                     <a href="https://share.google/hCR5kD1FzbVKzezVP" target="_blank">
-                        <img src="{{ asset('assets_front/img/logo/google-pro.png') }}" alt="Google"><br>
+                        <img src="{{ asset('assets_front/img/logo/google-pro.png') }}" alt=""><br>
                         ⭐ 4.8 Google Reviews</a>
                 </div>
                 <div class="review-box">
                     <a href="https://www.trustpilot.com/review/suaveexecutivetravel.co.uk" target="_blank">
-                        <img src="{{ asset('assets_front/img/logo/trustpilot-pro.png') }}" alt="Trustpilot"><br>
+                        <img src="{{ asset('assets_front/img/logo/trustpilot-pro.png') }}" alt=""><br>
                         ⭐ 4.7 Trustpilot</a>
                 </div>
             </div>

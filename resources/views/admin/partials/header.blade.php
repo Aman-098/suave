@@ -3,10 +3,10 @@
 
         <div class="header-left">
             <a href="{{ route('admin.dashboard') }}" class="logo">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Suave Executive Travel">
             </a>
             {{-- <a href="{{ route('admin.dashboard') }}" class="dark-logo">
-                <img src="{{ asset('assets/img/logo-white.svg') }}" alt="Logo">
+                <img src="{{ asset('assets/img/logo-white.svg') }}" alt="Suave Executive Travel">
             </a> --}}
         </div>
 

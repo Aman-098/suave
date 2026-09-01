@@ -44,7 +44,7 @@
                      <div class="inner-container flex justify-space align-center">
                          <div class="logo-box flex">
                              <div class="logo"><a href="{{ route('home') }}"><img
-                                         src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Logo"></a>
+                                         src="{{ asset('assets_front/images/logo/logo2.png') }}" alt="Suave Executive Travel"></a>
                              </div>
                          </div>
                          <div class="nav-outer flex align-center">
@@ -64,7 +64,7 @@
                          </div>
                          <div class="header-account flex align-center">
                              <a href="tel:08081680808" class="call-ico d-inline-flex align-items-center">
-                                 <img src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+                                 <img src="{{ asset('assets_front/img/call.svg') }}" alt="" class="me-2">
                                  <span>
                                      <strong>Call Us Now</strong><br>
                                      0808 168 0808
@@ -92,7 +92,7 @@
          <nav class="menu-box">
              <div class="nav-logo">
                  <a href="{{ route('home') }}"><img src="{{ asset('assets_front/images/logo/logo2.png') }}"
-                         alt="Logo Motorx"></a>
+                         alt="Suave Executive Travel"></a>
              </div>
              <div class="bottom-canvas">
                  <div class="menu-outer">
@@ -117,7 +117,7 @@
 
      {{-- Phone number (Mobile Only) --}}
         <a href="tel:08081680808" class="mob-num d-flex d-lg-none align-items-center justify-content-center" style="font-size: 14px;" id="num-mob">
-            <img style="width:25px; height:25px;" src="{{ asset('assets_front/img/call.svg') }}" alt="Call" class="me-2">
+            <img style="width:25px; height:25px;" src="{{ asset('assets_front/img/call.svg') }}" alt="" class="me-2">
             <span>0808 168 0808</span>
         </a>
  </header>

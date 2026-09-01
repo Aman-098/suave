@@ -66,7 +66,7 @@
                                     <div class="vh-100 d-flex flex-column justify-content-between p-4 pb-0">
                                         <div class=" mx-auto  text-center">
 											<img src="{{asset('assets/img/logo.png')}}"
-												class="img-fluid w-75" alt="Logo">
+												class="img-fluid w-75" alt="Suave Executive Travel">
 										</div>
                                         @if(session('error'))
                                             <div class="alert alert-danger text-center">{{ session('error') }}</div>
